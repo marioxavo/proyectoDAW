@@ -1,4 +1,35 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+.botones{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  background-color: #53e3a6;
+  border: 0;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 3px;
+  width: 250px;
+  margin:auto;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  margin-top: 2em;
+}
+.botones:hover{
+  color: gray;
+  text-decoration: none;
+
+}
+#tengo_usuario{
+  color: white;
+  text-decoration: none;
+  font-size:17px;
+}
+#tengo_usuario:hover {
+  color: gray;
+}
 * {
   box-sizing: border-box;
   margin: 0;

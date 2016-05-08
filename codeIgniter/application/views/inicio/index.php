@@ -163,13 +163,13 @@
             <!-- Three columns of text below the carousel -->
             <div class="row">
             <div class="wrapper">
-	<div class="containero">
-		<h1>Bienvenido</h1>
-		<h3><?php if($mensaje){ echo $mensaje;}?></h3>
+	<div class="container">
+		<center><h1>Bienvenido</h1></center>
+		<center><h3><?php if($mensaje){ echo $mensaje;}?></h3></center>
 		<form class="form" method="post" action="http://localhost/codeIgniter/index.php/inicio/comprobar">
 			<input id="logUsu" name="nombre" type="text" placeholder="Usuario">
 			<input id="passUsu" name="password" type="password" placeholder="Contraseña">
-			<button type="submit" id="login_button">Login</button>
+			<center><button type="submit" id="login_button">Login</button></center>
 		</form>
 	</div>
 	
@@ -189,9 +189,9 @@
             <div class="row" style="margin-top:420px">
                 <center><div class="col-lg-6">
                  
-                        <h1>Candidato</h1>
+                        <h1>Trabajador</h1>
                         <p>Regístrate y encontrarás cientos de trabajos perfectos para tu perfil. Podrás encontrar tanto proyectos puntuales como trabajos de larga duración.</p>
-                        <p><a class="btn btn-lg btn-primary" href="<?php echo $this->config->item('app_url').'/index.php/inicio/registro/1';?>" role="button">Quiero registrarme</a></p>
+                        <p><div style="margin-top: 1.5em"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/1';?>" role="button">Quiero registrarme</a></div></p>
           
                 
                 </div></center><!-- /.col-lg-4 -->
@@ -199,7 +199,7 @@
                    
                         <h1>Empresa</h1>
                         <p>Crea tu perfil y encuentra trabajadores que encajen a la perfección con tu proyecto o idea. Podrás dar con tu trabajador ideal en unos sencillos pasos.</p>
-                        <p><a class="btn btn-lg btn-primary" href="<?php echo $this->config->item('app_url').'/index.php/inicio/registro/2';?>" role="button">Quiero registrar mi empresa</a></p>
+                        <p><div style="margin-top: 1.5em"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/2';?>" role="button">Quiero registrar mi empresa</a></div></p>
                   
                     
                 </div></center><!-- /.col-lg-4 -->

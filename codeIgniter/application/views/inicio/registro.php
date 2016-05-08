@@ -163,24 +163,93 @@
             <!-- Three columns of text below the carousel -->
             <div class="row">
             <div class="wrapper">
-	<div style="height: 50%;">
-		<center><h1>Registro</h1></center>
-		<center><h3><?php echo $mensaje;?></h3></center>
-		<form class="form" method="post" action="<?php echo $this->config->item('app_url').'index.php/inicio/registrar/'.$id_grupo;?>" >
-			<input id="regUsu" name="nombre" type="text" placeholder="Usuario">
-			<input id="regEmail" name="email" type="text" placeholder="Email">
-			<input id="passUsu" name="password" type="password" placeholder="Contraseña">
-			<center><button type="submit" id="registration_button">Registrarse</button></center>
-		</form>
+	<div class="container">
+		<center><h1>Registro <?=$dato?></h1></center>
+        <center><h3><?php if($mensaje){ echo $mensaje;}?></h3></center>
+        <form class="form" method="post" action="<?php echo $this->config->item('app_url').'index.php/inicio/registrar/'.$id_grupo;?>" >
+            <input id="regUsu" name="nombre" type="text" placeholder="Usuario">
+            <input id="regEmail" name="email" type="text" placeholder="Email">
+            <input id="passUsu" name="password" type="password" placeholder="Contraseña">
+            <center><button type="submit" id="registration_button">Registrarse</button></center>
+            <center><div style="margin-top: 1.5em"><a id="tengo_usuario" href="<?php echo $this->config->item('app_url').'index.php/inicio/';?>">Ya tengo usuario</a></div></center>
+        </form>
 	</div>
 	
-	</div>
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div></div>
+            <div class="row" style="margin-top:420px">
+                <center><div class="col-lg-6">
+                 
+                        <h1>Trabajador</h1>
+                        <p>Regístrate y encontrarás cientos de trabajos perfectos para tu perfil. Podrás encontrar tanto proyectos puntuales como trabajos de larga duración.</p>
+                        <p><div style="margin-top: 1.5em"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/1';?>" role="button">Quiero registrarme</a></div></p>
+          
+                
+                </div></center><!-- /.col-lg-4 -->
+                <center><div class="col-lg-6">
+                   
+                        <h1>Empresa</h1>
+                        <p>Crea tu perfil y encuentra trabajadores que encajen a la perfección con tu proyecto o idea. Podrás dar con tu trabajador ideal en unos sencillos pasos.</p>
+                        <p><div style="margin-top: 1.5em;"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/2';?>" role="button">Quiero registrar mi empresa</a></div></p>
+                  
+                    
+                </div></center><!-- /.col-lg-4 -->
+                
+            </div><!-- /.row -->
+
+
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Conéctate. <span class="text-muted">Relacionate.</span></h2>
+                    <p class="lead">En Work2Day podrás conectar con los trabajadores o empresas directamente y poder discutir todos los detalles sin la necesidad de una entrevista de trabajo.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-responsive center-block" src="http://localhost/codeIgniter/template/img/personasTrajes.jpg" alt="Generic placeholder image">
+                </div>
             </div>
-            
 
-        
+            <hr class="featurette-divider">
 
-        </div>
+            <div class="row featurette">
+               <div class="col-md-5">
+                    <img class="featurette-image img-responsive center-block" src="http://localhost/codeIgniter/template/img/currante.jpg" alt="Generic placeholder image">
+                </div>
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Rapidez. <span class="text-muted">El tiempo es importante.</span></h2>
+                    <p class="lead">No pierdas tiempo, en Work2Day se garantiza una comunicación casi al instante entre trabajador y empresa.</p>
+                </div>
+                
+            </div>
+
+            <hr class="featurette-divider">
+
+            <!-- /END THE FEATURETTES -->
+
+
+            <!-- FOOTER -->
+            <footer>
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            </footer>
+
+        </div><!-- /.container -->
+
+
  
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
@@ -203,9 +272,14 @@
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
          <script>
-       /* function comprobar(){
-            
-        }*/
+   /* $(document).ready(function(){
+        $('#login_button').click(function(){
+            var nombre=document.getElementById("logUsu").value;
+            var password=document.getElementById("passUsu").value;
+             $.post("http://localhost/codeIgniter/index.php/inicio/comprobar", {nombre:nombre,password:password});
+        });
+
+    });*/
         
     
         

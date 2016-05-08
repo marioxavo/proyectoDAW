@@ -29,21 +29,34 @@ class Inicio extends CI_Controller {
     }
     public function comprobar(){
         $comprobado=$this->login_work->processLogin($_POST['nombre'],$_POST['password']);
-        
-        $datosUsuario=$this->login_model->verUsuario($_POST['nombre']);
+
         
         if(!$comprobado){
+            var_dump('hola');
              $data=array('mensaje' => "Login Incorrecto");
              $this->load->view('inicio/index.php',$data);
+
         }
         else{
-            $nombre=$datosUsuario->nombre;
-            $data=array('nombre' => $nombre);
-             $this->load->view('inicio/inicio.php',$data);
+            redirect('inicio/portada');
         }
+
+    }
+    public function portada(){
+        $daniel=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($daniel);
+        $nombre=$datosUsuario->nombre;
+        $data=array('nombre' => $nombre);
+        $this->load->view('inicio/inicio.php',$data);
     }
     public function registro($id_grupo){
-        $data=array('id_grupo' => $id_grupo,'mensaje' => "");
+        if($id_grupo==1){
+            $dato='Trabajador';
+        }
+        else{
+            $dato='Empresa';
+        }
+        $data=array('id_grupo' => $id_grupo,'mensaje' => "", 'dato' => $dato);
         $this->load->view('inicio/registro.php',$data);
     }
     public function registrar($id_grupo){
@@ -60,7 +73,13 @@ class Inicio extends CI_Controller {
             $this->load->view('inicio/index.php',$data);
         }
         else{
-            $data=array('id_grupo' => $id_grupo ,'mensaje' => "Hay campos incorrectos");
+            if($id_grupo==1){
+                $dato='Trabajador';
+            }
+            else{
+                $dato='Empresa';
+            }
+            $data=array('id_grupo' => $id_grupo ,'mensaje' => "Hay campos incorrectos", 'dato' => $dato);
             $this->load->view('inicio/registro.php',$data);
         }
     }
