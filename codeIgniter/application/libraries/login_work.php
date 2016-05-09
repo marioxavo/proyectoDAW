@@ -13,7 +13,6 @@ class login_work  {
 	
 
 	public function isLogged() {
-		
 		if($this->ci->session->userdata('loggin') == true){
 			$data = array();
 			$data['nombre'] = $this->ci->session->userdata('nombre');
@@ -40,7 +39,7 @@ class login_work  {
 			//Logueado!! Guardamos la sesión y lo enviamos a la pagina de inicio
 			$usuario_data = array(
 			   'nombre' => $nombre,
-			   'loggin' => TRUE
+			   'loggin' => true
 			);
 			$this->ci->session->set_userdata($usuario_data);
 			return true;

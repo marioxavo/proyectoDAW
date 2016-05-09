@@ -28,23 +28,37 @@ class Inicio extends CI_Controller {
         $this->load->view('inicio/index.php',$data);
     }
     public function comprobar(){
-        $comprobado=$this->login_work->processLogin($_POST['nombre'],$_POST['password']);
-
+        if($this->login_model->comprobarUsuario($_POST['nombre'], $_POST['password'])){
+			//Logueado!! Guardamos la sesión y lo enviamos a la pagina de inicio
+			$usuario_data = array(
+			   'nombre' => $_POST['nombre'],
+			   'loggin' => true
+			);
+			$this->session->set_userdata($usuario_data);
+			$comprobado=true;
+		}else{
+			$comprobado=false;
+		}
         
         if(!$comprobado){
-            var_dump('hola');
+            
              $data=array('mensaje' => "Login Incorrecto");
              $this->load->view('inicio/index.php',$data);
 
         }
         else{
-            redirect('inicio/portada');
+        $datosUsuario=$this->login_model->verUsuario($this->session->userdata('nombre'));
+        $nombre=$datosUsuario->nombre;
+        $data=array('nombre' => $nombre);
+        $this->load->view('inicio/inicio.php',$data);
+           // redirect('inicio/portada');
         }
 
     }
     public function portada(){
-        $daniel=$this->login_work->isLogged();
-        $datosUsuario=$this->login_model->verUsuario($daniel);
+       var_dump($this->session->all_userdata());
+        //$daniel=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($this->session->userdata('nombre'));
         $nombre=$datosUsuario->nombre;
         $data=array('nombre' => $nombre);
         $this->load->view('inicio/inicio.php',$data);
