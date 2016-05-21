@@ -7,20 +7,20 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="img/favicon.png">
+        <link rel="icon" href="<?php echo $this->config->item('app_url').'template/img/favicon.png';?>">
 
         <title>Work2Day</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/bootstrap.min.css';?>" rel="stylesheet">
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/styleLogin.css">
+        <link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/ie10-viewport-bug-workaround.css';?>" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo $this->config->item('app_url').'template/css/styleLogin.css';?>">
 
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie-emulation-modes-warning.js';?>"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -29,10 +29,12 @@
 <![endif]-->
 
         <!-- Custom styles for this template -->
-        <link href="bootstrap/css/carousel.css" rel="stylesheet">
+        <link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/carousel.css';?>" rel="stylesheet">
+       
     </head>
     <!-- NAVBAR
 ================================================== -->
+    
     <body>
         <!--<div class="navbar-wrapper">
             <div class="container">
@@ -161,14 +163,16 @@
             <!-- Three columns of text below the carousel -->
             <div class="row">
             <div class="wrapper">
-	<div class="containero">
-		<h1>Bienvenido</h1>
-		
-		<form class="form">
-			<input type="text" placeholder="Usuario">
-			<input type="password" placeholder="Contraseña">
-			<button type="submit" id="login-button">Login</button>
-		</form>
+	<div class="container">
+		<center><h1>Registro <?=$dato?></h1></center>
+        <center><h3><?php if($mensaje){ echo $mensaje;}?></h3></center>
+        <form class="form" method="post" action="<?php echo $this->config->item('app_url').'index.php/inicio/registrar/'.$id_grupo;?>" >
+            <input id="regUsu" name="nombre" type="text" placeholder="Usuario">
+            <input id="regEmail" name="email" type="text" placeholder="Email">
+            <input id="passUsu" name="password" type="password" placeholder="Contraseña">
+            <center><button type="submit" id="registration_button">Registrarse</button></center>
+            <center><div style="margin-top: 1.5em"><a id="tengo_usuario" href="<?php echo $this->config->item('app_url').'index.php/inicio/';?>">Ya tengo usuario</a></div></center>
+        </form>
 	</div>
 	
 	<ul class="bg-bubbles">
@@ -187,9 +191,9 @@
             <div class="row" style="margin-top:420px">
                 <center><div class="col-lg-6">
                  
-                        <h1>Candidato</h1>
+                        <h1>Trabajador</h1>
                         <p>Regístrate y encontrarás cientos de trabajos perfectos para tu perfil. Podrás encontrar tanto proyectos puntuales como trabajos de larga duración.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Quiero registrarme</a></p>
+                        <p><div style="margin-top: 1.5em"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/1';?>" role="button">Quiero registrarme</a></div></p>
           
                 
                 </div></center><!-- /.col-lg-4 -->
@@ -197,7 +201,7 @@
                    
                         <h1>Empresa</h1>
                         <p>Crea tu perfil y encuentra trabajadores que encajen a la perfección con tu proyecto o idea. Podrás dar con tu trabajador ideal en unos sencillos pasos.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Quiero registrar mi empresa</a></p>
+                        <p><div style="margin-top: 1.5em;"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/2';?>" role="button">Quiero registrar mi empresa</a></div></p>
                   
                     
                 </div></center><!-- /.col-lg-4 -->
@@ -215,7 +219,7 @@
                     <p class="lead">En Work2Day podrás conectar con los trabajadores o empresas directamente y poder discutir todos los detalles sin la necesidad de una entrevista de trabajo.</p>
                 </div>
                 <div class="col-md-5">
-                    <img class="featurette-image img-responsive center-block" src="img/personasTrajes.jpg" alt="Generic placeholder image">
+                    <img class="featurette-image img-responsive center-block" src="http://localhost/codeIgniter/template/img/personasTrajes.jpg" alt="Generic placeholder image">
                 </div>
             </div>
 
@@ -223,7 +227,7 @@
 
             <div class="row featurette">
                <div class="col-md-5">
-                    <img class="featurette-image img-responsive center-block" src="img/currante.jpg" alt="Generic placeholder image">
+                    <img class="featurette-image img-responsive center-block" src="http://localhost/codeIgniter/template/img/currante.jpg" alt="Generic placeholder image">
                 </div>
                 <div class="col-md-7">
                     <h2 class="featurette-heading">Rapidez. <span class="text-muted">El tiempo es importante.</span></h2>
@@ -243,13 +247,13 @@
                 <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </footer>
 
-        </div>--><!-- /.container -->
+        </div><!-- /.container -->
 
 
  
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-        <script src="js/index.js"></script>
+        <script src="http://localhost/codeIgniter/template/js/index.js"></script>
 
     
 
@@ -260,12 +264,25 @@
 ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-        <script src="bootstrap/js/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="bootstrap/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/jquery.min.js';?>"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/vendor/jquery.min.js';?>"><\/script>')</script>
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/bootstrap.min.js';?>"></script>
         <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-        <script src="bootstrap/js/vendor/holder.min.js"></script>
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/vendor/holder.min.js';?>"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
+         <script>
+   /* $(document).ready(function(){
+        $('#login_button').click(function(){
+            var nombre=document.getElementById("logUsu").value;
+            var password=document.getElementById("passUsu").value;
+             $.post("http://localhost/codeIgniter/index.php/inicio/comprobar", {nombre:nombre,password:password});
+        });
+
+    });*/
+        
+    
+        
+    </script>
     </body>
 </html>
