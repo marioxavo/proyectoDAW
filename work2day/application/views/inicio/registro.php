@@ -219,7 +219,7 @@
                     <p class="lead">En Work2Day podrás conectar con los trabajadores o empresas directamente y poder discutir todos los detalles sin la necesidad de una entrevista de trabajo.</p>
                 </div>
                 <div class="col-md-5">
-                    <img class="featurette-image img-responsive center-block" src="http://localhost/codeIgniter/template/img/personasTrajes.jpg" alt="Generic placeholder image">
+                    <img class="featurette-image img-responsive center-block" src="http://localhost/work2day/template/img/personasTrajes.jpg" alt="Generic placeholder image">
                 </div>
             </div>
 
@@ -227,7 +227,7 @@
 
             <div class="row featurette">
                <div class="col-md-5">
-                    <img class="featurette-image img-responsive center-block" src="http://localhost/codeIgniter/template/img/currante.jpg" alt="Generic placeholder image">
+                    <img class="featurette-image img-responsive center-block" src="http://localhost/work2day/template/img/currante.jpg" alt="Generic placeholder image">
                 </div>
                 <div class="col-md-7">
                     <h2 class="featurette-heading">Rapidez. <span class="text-muted">El tiempo es importante.</span></h2>
@@ -253,7 +253,7 @@
  
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-        <script src="http://localhost/codeIgniter/template/js/index.js"></script>
+        <script src="http://localhost/work2day/template/js/index.js"></script>
 
     
 

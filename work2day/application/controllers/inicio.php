@@ -3,21 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inicio extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	
 	public function index()
 	{
 		redirect('inicio/login');
@@ -29,15 +15,26 @@ class Inicio extends CI_Controller {
     }
     public function comprobar(){
         $comprobado=$this->login_work->processLogin($_POST['nombre'], $_POST['password']);
-        
+        $comprobarLogin=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+        $booleano=false;
+            if($datosUsuario->id_grupo_usuarios==1){
+                $booleano=$this->login_model->comprobarPerfil($datosUsuario->id);
+            }
+            elseif($datosUsuario->id_grupo_usuarios==2){
+                $booleano=$this->login_model->comprobarPerfilEmp($datosUsuario->id);
+            }
         if(!$comprobado){
             
              $data=array('mensaje' => "Login Incorrecto");
              $this->load->view('inicio/index.php',$data);
 
         }
+        else if(!$booleano){
+            redirect('inicio/creacionPerfil');
+        }
         else{
-       
+            
             redirect('inicio/portada');
         }
 
@@ -46,8 +43,12 @@ class Inicio extends CI_Controller {
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$datosUsuario->nombre;
-        $data=array('nombre' => $nombre);
-        $this->load->view('inicio/inicio.php',$data);
+        if($datosUsuario->id_grupo_usuarios==1){
+        $this->load->view('inicio/indexTrabajador.php');
+        }
+        else{
+           $this->load->view('inicio/indexEmpresa.php'); 
+        }
     }
     public function registro($id_grupo){
         if($id_grupo==1){
@@ -68,9 +69,21 @@ class Inicio extends CI_Controller {
             $nombre = $this->input->post('nombre');
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
-            $this->login_model->insertarUsuario($nombre,$email,$password,$id_grupo);
-             $data=array('mensaje' => "Usuario registrado");
+            $mensaje=$this->login_model->insertarUsuario($nombre,$email,$password,$id_grupo);
+            if($mensaje=="Usuario registrado"){
+             $data=array('mensaje' => $mensaje);
             $this->load->view('inicio/index.php',$data);
+            }
+            else{
+                if($id_grupo==1){
+                $dato='Trabajador';
+                }
+                else{
+                $dato='Empresa';
+                }
+            $data=array('id_grupo' => $id_grupo ,'mensaje' => $mensaje, 'dato' => $dato);
+            $this->load->view('inicio/registro.php',$data);
+            }
         }
         else{
             if($id_grupo==1){
@@ -85,5 +98,77 @@ class Inicio extends CI_Controller {
     }
     public function logOut(){
         $this->login_work->logOut();
+    }
+    public function creacionPerfil(){
+        $comprobarLogin=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+        
+        if($datosUsuario->id_grupo_usuarios == 1){
+            $data=array('datosUsuario' => $datosUsuario,'mensaje' => "");
+            $this->load->view('inicio/creacionPerfilT.php',$data);
+        }
+        else if($datosUsuario->id_grupo_usuarios == 2){
+            $data=array('datosUsuario' => $datosUsuario,'mensaje' => "");
+            $this->load->view('inicio/creacionPerfilE.php',$data);
+        }
+    }
+    public function crearPerfil(){
+        $comprobarLogin=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+        
+        $this->form_validation->set_rules('nombre', 'nombre', 'trim|required|min_length[1]|max_length[150]');
+		$this->form_validation->set_rules('estudios', 'estudios', 'trim|required|min_length[1]');
+		$this->form_validation->set_rules('experiencia', 'experiencia', 'trim|required|min_length[1]');
+		$this->form_validation->set_rules('habilidades', 'habilidades', 'trim|required|min_length[1]');
+        
+        if( $this->form_validation->run() ){
+            $nombre = $this->input->post('nombre');
+			$estudios = $this->input->post('estudios');
+			$experiencia = $this->input->post('experiencia');
+			$habilidades = $this->input->post('habilidades');
+            $this->login_model->insertarPerfil($nombre,$estudios,$experiencia,$habilidades,$datosUsuario->id);
+            
+            $nombre=$datosUsuario->nombre;
+            if($datosUsuario->id_grupo_usuarios==1){
+                $this->load->view('inicio/indexTrabajador.php');
+            }
+            else{
+                $this->load->view('inicio/indexEmpresa.php');
+            }
+            
+        }
+        else{
+            $data=array('datosUsuario' => $datosUsuario,'mensaje' => "Hay campos incorectos");
+            $this->load->view('inicio/creacionPerfilT.php',$data);
+        }
+    }
+    public function crearPerfilEmpresa(){
+         $comprobarLogin=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+        
+        $this->form_validation->set_rules('titulo', 'titulo', 'trim|required|min_length[1]|max_length[150]');
+		$this->form_validation->set_rules('descripcion', 'descripcion', 'trim|required|min_length[1]');
+		
+        
+        if( $this->form_validation->run() ){
+            $titulo = $this->input->post('titulo');
+			$descripcion = $this->input->post('descripcion');
+			
+            $this->login_model->insertarPerfilEmpresa($titulo,$descripcion,$datosUsuario->id);
+            
+            $nombre=$datosUsuario->nombre;
+            
+            if($datosUsuario->id_grupo_usuarios==1){
+                $this->load->view('inicio/indexTrabajador.php');
+            }
+            else{
+                $this->load->view('inicio/indexEmpresa.php');
+            }
+            
+        }
+        else{
+            $data=array('datosUsuario' => $datosUsuario,'mensaje' => "Hay campos incorectos");
+            $this->load->view('inicio/creacionPerfilE.php',$data);
+        }
     }
 }

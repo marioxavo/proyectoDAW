@@ -52,14 +52,15 @@
 																								</div>
 																								<div id="navbar" class="navbar-collapse collapse">
 																												<ul class="nav navbar-nav">
-																																<li class="active"><a href="#">Inicio</a></li>
+																																<li class="active"><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
 																																<li><a href="#">Buscar ofertas</a></li>
 																																<li><a href="#about">Mis ofertas</a></li>
 																																<li class="dropdown">
 																																				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">(usuario)<span class="caret"></span></a>
 																																				<ul class="dropdown-menu">
 																																								<li><a href="#">Mi cuenta</a></li>
-																																								<li><a href="#">Cerrar sesión</a></li>
+                                                                                                                                                    <li><a href="<?php echo $this->config->item('app_url').'index.php/usuarios/editarPerfilE';?>">Editar Perfil</a></li>
+																																								<li><a href="<?php echo $this->config->item('app_url').'index.php/inicio/logOut';?>">Cerrar sesión</a></li>
 																																				</ul>
 																																</li>
 																												</ul>
@@ -248,7 +249,7 @@
 
 								<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-								<script src="js/index.js"></script>
+								<script src="<?php echo $this->config->item('app_url').'template/js/index.js';?>"></script>
 
 
 
@@ -259,12 +260,13 @@
 ================================================== -->
 								<!-- Placed at the end of the document so the pages load faster -->
 								<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-								<script src="bootstrap/js/jquery.min.js"></script>
-								<script>window.jQuery || document.write('<script src="bootstrap/js/vendor/jquery.min.js"><\/script>')</script>
-								<script src="bootstrap/js/bootstrap.min.js"></script>
+								<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/jquery.min.js';?>"></script>
+								<script>window.jQuery || document.write('<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/vendor/jquery.min.js';?>"><\/script>')</script>
+								<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/bootstrap.min.js';?>"></script>
 								<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-								<script src="bootstrap/js/vendor/holder.min.js"></script>
+								<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/vendor/holder.min.js';?>"></script>
 								<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-								<script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+								<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
 				</body>
 </html>
+
