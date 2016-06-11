@@ -1,0 +1,131 @@
+
+    <!-- NAVBAR
+================================================== -->
+    <body class="colorFondo">
+        <div class="navbar-wrapper">
+            <div class="container">
+
+                <nav class="navbar navbar-inverse navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Work2Day</a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
+                                <li><a href="#">Buscar ofertas</a></li>
+                                <li><a href="#about">Mis ofertas</a></li>
+                                <li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">(usuario)<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Mi cuenta</a></li>
+                                        <li><a href="<?php echo $this->config->item('app_url').'index.php/usuarios/editarPerfilT';?>">Editar Perfil</a></li>
+                                        <li><a href="<?php echo $this->config->item('app_url').'index.php/inicio/logOut';?>">Cerrar sesión</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="row">
+                    <a class="btn btn-primary" href="<?php echo $this->config->item('app_url') ?>index.php/mensajeria/redactarMensaje" role="button">Redactar mensaje</a>
+                   <div class="panel-mensajes">
+
+                    <ul class="list-group col-md-2 col-sm-3 col-xs-4 col-lg-2">
+
+
+                        <li onclick="cambiarTablaMensajes(0);" style="cursor: pointer" class="list-group-item"><span id="numRecibidos" class="badge"></span>Recibidos</li>
+                        <li onclick="cambiarTablaMensajes(1);" style="cursor: pointer" class="list-group-item"><span class="badge"></span>Enviados</li>
+                    </ul>
+                    </div>
+                    <div id="divMensajes" class="panel panel-default tabla-mensajes col-md-10 col-sm-9 col-xs-8 col-lg-10">
+                       <div class="panel-heading">Recibidos</div>
+                        <table id="mensajes" class="table">
+
+
+                        </table>
+                    </div>
+                    <div id="divEnviados" style="display:none;" class="panel panel-default tabla-mensajes col-md-10 col-sm-9 col-xs-8 col-lg-10">
+                        <div class="panel-heading">Enviados</div>
+                        <table id="mensajesEnv" class="table">
+
+
+                        </table>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <footer style="color: white;">
+                        <p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>
+                        <p>&copy; 2015 Abenza, Inc. &middot; <a style="color: black;" href="#">Privacy</a> &middot; <a style="color: black;" href="#">Terms</a></p>
+                    </footer>
+                </div>
+                <!-- FOOTER -->
+
+
+            </div>
+        </div>
+
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/index.js'; ?>"></script>
+
+
+
+
+
+
+        <!-- Bootstrap core JavaScript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/jquery.min.js';?>"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/vendor/jquery.min.js';?>"><\/script>')</script>
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/bootstrap.min.js';?>"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/vendor/holder.min.js';?>"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
+        <script>
+             $(document).ready(function(){
+                 var mensajes=<?= $mensajes; ?>;
+                 var mensajesEnv=<?= $mensajesEnviados; ?>;
+                 var j=0;
+                 if(mensajes[0]){
+                     for(var i=0;i<mensajes.length;i++){
+                         $('#mensajes').append('<tr id="mensaje'+i+'"></tr>');
+                         $('#mensaje'+i).append('<td width="25%">'+mensajes[i]['nombre']+'</td><td><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td>');
+                         if(mensajes[i]['leido']==0){
+                             j++;
+                         }
+                     }
+                     $('#numRecibidos').html(j);
+                 }
+                 if(mensajesEnv[0]){
+                     for(var i=0;i<mensajesEnv.length;i++){
+                         $('#mensajesEnv').append('<tr id="mensajeEnv'+i+'"></tr>');
+                         $('#mensajeEnv'+i).append('<td width="25%">'+mensajesEnv[i]['nombre']+'</td><td>'+mensajesEnv[i]['asunto']+'</td>');
+                     }
+                 }
+             });
+
+            function cambiarTablaMensajes(i){
+                if(i==0){
+                    $('#divMensajes').show();
+                    $('#divEnviados').hide();
+                }
+                if(i==1){
+                    $('#divMensajes').hide();
+                    $('#divEnviados').show();
+                }
+            }
+        </script>
+    </body>
+    </html>

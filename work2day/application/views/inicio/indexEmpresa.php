@@ -55,6 +55,7 @@
 																																<li class="active"><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
 																																<li><a href="#">Buscar ofertas</a></li>
 																																<li><a href="#about">Mis ofertas</a></li>
+																																<li><a href="#about">Mensajes</a></li>
 																																<li class="dropdown">
 																																				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">(usuario)<span class="caret"></span></a>
 																																				<ul class="dropdown-menu">
