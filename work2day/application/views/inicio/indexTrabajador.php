@@ -57,7 +57,7 @@
                                 <li><a href="#about">Mis ofertas</a></li>
                                 <li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">(usuario)<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Mi cuenta</a></li>
                                         <li><a href="<?php echo $this->config->item('app_url').'index.php/usuarios/editarPerfilT';?>">Editar Perfil</a></li>

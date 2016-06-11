@@ -42,12 +42,13 @@ class Inicio extends CI_Controller {
     public function portada(){
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
-        $nombre=$datosUsuario->nombre;
+        $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
+        $data=array('nombre'=>$nombre);
         if($datosUsuario->id_grupo_usuarios==1){
-        $this->load->view('inicio/indexTrabajador.php');
+        $this->load->view('inicio/indexTrabajador.php', $data);
         }
         else{
-           $this->load->view('inicio/indexEmpresa.php'); 
+           $this->load->view('inicio/indexEmpresa.php', $data);
         }
     }
     public function registro($id_grupo){

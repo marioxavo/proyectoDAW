@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-06-2016 a las 18:57:23
+-- Tiempo de generación: 11-06-2016 a las 20:03:06
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Versión de PHP: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -66,6 +66,33 @@ INSERT INTO `grupo_usuarios` (`id_grupo`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `mensajes`
+--
+
+CREATE TABLE `mensajes` (
+  `id_mensaje` int(11) NOT NULL,
+  `id_emisor` int(11) NOT NULL,
+  `id_receptor` int(11) NOT NULL,
+  `asunto` varchar(255) NOT NULL,
+  `mensaje` varchar(1000) NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `leido` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`id_mensaje`, `id_emisor`, `id_receptor`, `asunto`, `mensaje`, `fecha`, `leido`) VALUES
+(1, 1, 2, 'pa ti mi cola', 'hola carola', '2016-06-21 21:45:00', 1),
+(2, 2, 4, 'me has robao el nomresskikfo', 'JAJAJJAJAAJAJAJAJAJJAJAJAJJAJAJAJA DANIEEEEEEEEEEL AJKAJJAJAAK', '2016-06-02 00:00:00', 0),
+(3, 2, 1, 'asduhf', 'jihndfsgsdfghcscacacacacaca', '2016-06-11 01:23:13', 0),
+(4, 2, 4, 'dsgfs', 'jgfdjgdfghdfhfcsdcsvfsbsdgnhdghdegthdhgdfhgyusuifgsudhgfuysdgfhagsi FHDSJDIJADKAJHDASJDFHGSFHSDFHKJSDHGIUEJRSGHFLDISUGHSUIHDFGSDFKJGNSFMVJSDHVKLNCUHVFHJSDGFUHSDIGFIUSDHF DANIEIEIEIEIELELELLELELLDB SANBDAHSBFDHIGASJFBJUHGSDFBHFSDUGBFUHYSDJFSHGHJUHJUGHGKLSDJGFUY WGTJKLSDFHSFH', '2016-06-11 01:23:53', 0),
+(5, 2, 1, 'cacadelaburadedaniel', 'caca', '2016-06-11 01:31:47', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ofertas`
 --
 
@@ -97,7 +124,8 @@ CREATE TABLE `perfiles` (
 --
 
 INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`) VALUES
-(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina');
+(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina'),
+(2, 2, 'Subnormal pero al menos buena persona :3', 'ºjfhdjhfjiakdshfijhadjifbhdijtkjdwsgfyu', 'fjiodsjfjs', 'difsdjkh');
 
 -- --------------------------------------------------------
 
@@ -160,6 +188,12 @@ ALTER TABLE `grupo_usuarios`
   ADD PRIMARY KEY (`id_grupo`);
 
 --
+-- Indices de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  ADD PRIMARY KEY (`id_mensaje`);
+
+--
 -- Indices de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
@@ -193,6 +227,11 @@ ALTER TABLE `usuarios`
 ALTER TABLE `grupo_usuarios`
   MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
@@ -201,7 +240,7 @@ ALTER TABLE `ofertas`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_empresa`
 --
