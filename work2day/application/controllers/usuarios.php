@@ -7,17 +7,17 @@ class Usuarios extends CI_Controller {
         $comprobarLogin=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
         $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
-        $perfilUsuario=$this->usuarios_model->sacarPerfil($datosUsuario->id);
-        $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre);
+        
+        if($datosUsuario->id_grupo_usuarios==1){
+            $perfilUsuario=$this->usuarios_model->sacarPerfil($datosUsuario->id);
+             $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre);
         $this->load->view('usuarios/editarPerfilT',$data);
-    }
-    public function editarPerfilE(){
-         $comprobarLogin=$this->login_work->isLogged();
-        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
-        	$nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
-        $perfilUsuario=$this->usuarios_model->sacarPerfilEmpresa($datosUsuario->id);
-        $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre);
-        $this->load->view('usuarios/editarPerfilE',$data);
+        }
+        elseif($datosUsuario->id_grupo_usuarios==2){
+            $perfilUsuario=$this->usuarios_model->sacarPerfilEmpresa($datosUsuario->id);
+             $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre);
+            $this->load->view('usuarios/editarPerfilE',$data);
+        }
     }
     
 	public function actualizarPerfilT(){

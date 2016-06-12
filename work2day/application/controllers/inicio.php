@@ -130,12 +130,8 @@ class Inicio extends CI_Controller {
             $this->login_model->insertarPerfil($nombre,$estudios,$experiencia,$habilidades,$datosUsuario->id);
             
             $nombre=$datosUsuario->nombre;
-            if($datosUsuario->id_grupo_usuarios==1){
-                $this->load->view('inicio/indexTrabajador.php');
-            }
-            else{
-                $this->load->view('inicio/indexEmpresa.php');
-            }
+                redirect('inicio/portada');
+           
             
         }
         else{
@@ -159,12 +155,8 @@ class Inicio extends CI_Controller {
             
             $nombre=$datosUsuario->nombre;
             
-            if($datosUsuario->id_grupo_usuarios==1){
-                $this->load->view('inicio/indexTrabajador.php');
-            }
-            else{
-                $this->load->view('inicio/indexEmpresa.php');
-            }
+                redirect('inicio/portada');
+            
             
         }
         else{
