@@ -3,9 +3,11 @@
 ================================================== -->
     <body class="colorFondo">
         <div class="navbar-wrapper">
-            <div class="container contenido">
+            <div class="container">
 
-              
+                <nav class="navbar navbar-inverse navbar-static-top">
+                    <?php include("cabecera.php"); ?>
+                </nav>
                 <div class="row">
                     <a class="btn btn-primary" href="<?php echo $this->config->item('app_url') ?>index.php/mensajeria/redactarMensaje" role="button">Redactar mensaje</a>
                    <div class="panel-mensajes">

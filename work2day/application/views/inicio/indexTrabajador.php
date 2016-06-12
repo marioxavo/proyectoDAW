@@ -37,9 +37,16 @@
 ================================================== -->
     <body class="colorFondo">
         <div class="navbar-wrapper">
-            <div class="container contenido">
+            <div class="container">
 
-                
+                <nav class="navbar navbar-inverse navbar-static-top">
+                    
+                    
+                    
+                    <?php include("cabecera.php"); ?>
+                  
+                    
+                </nav>
                 <div class="row">
                     <h2 style="color:white;" class="col-md-offset-3 col-md-6">Empieza buscando ofertas en tu ciudad</h2>
                     <div class="col-md-6 col-md-offset-3">

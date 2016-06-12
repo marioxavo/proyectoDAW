@@ -43,14 +43,12 @@ class Inicio extends CI_Controller {
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
-        $head=array('nombre' => $nombre,'grupo_usuario' => $datosUsuario->id_grupo_usuarios);
+        $data=array('nombre'=>$nombre);
         if($datosUsuario->id_grupo_usuarios==1){
-         $this->load->view('inicio/head.php',$head);
-        $this->load->view('inicio/indexTrabajador.php');
+        $this->load->view('inicio/indexTrabajador.php', $data);
         }
         else{
-             $this->load->view('inicio/head.php',$head);
-           $this->load->view('inicio/indexEmpresa.php');
+           $this->load->view('inicio/indexEmpresa.php', $data);
         }
     }
     public function registro($id_grupo){
@@ -84,7 +82,6 @@ class Inicio extends CI_Controller {
                 else{
                 $dato='Empresa';
                 }
-
             $data=array('id_grupo' => $id_grupo ,'mensaje' => $mensaje, 'dato' => $dato);
             $this->load->view('inicio/registro.php',$data);
             }
@@ -106,17 +103,13 @@ class Inicio extends CI_Controller {
     public function creacionPerfil(){
         $comprobarLogin=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
-        $nombre=$datosUsuario->nombre;
+        
         if($datosUsuario->id_grupo_usuarios == 1){
-            
             $data=array('datosUsuario' => $datosUsuario,'mensaje' => "");
-            
             $this->load->view('inicio/creacionPerfilT.php',$data);
         }
         else if($datosUsuario->id_grupo_usuarios == 2){
-            
             $data=array('datosUsuario' => $datosUsuario,'mensaje' => "");
-            
             $this->load->view('inicio/creacionPerfilE.php',$data);
         }
     }
@@ -136,19 +129,16 @@ class Inicio extends CI_Controller {
 			$habilidades = $this->input->post('habilidades');
             $this->login_model->insertarPerfil($nombre,$estudios,$experiencia,$habilidades,$datosUsuario->id);
             
-            
-            
+            $nombre=$datosUsuario->nombre;
             if($datosUsuario->id_grupo_usuarios==1){
-                redirect('inicio/portada');
+                $this->load->view('inicio/indexTrabajador.php');
             }
             else{
-                redirect('inicio/portada');
+                $this->load->view('inicio/indexEmpresa.php');
             }
             
         }
         else{
-           
-            
             $data=array('datosUsuario' => $datosUsuario,'mensaje' => "Hay campos incorectos");
             $this->load->view('inicio/creacionPerfilT.php',$data);
         }
@@ -167,22 +157,18 @@ class Inicio extends CI_Controller {
 			
             $this->login_model->insertarPerfilEmpresa($titulo,$descripcion,$datosUsuario->id);
             
-            $nombreUser=$datosUsuario->nombre;
-            $head=array('nombre' => $nombreUser);
+            $nombre=$datosUsuario->nombre;
             
             if($datosUsuario->id_grupo_usuarios==1){
-                redirect('inicio/portada');
+                $this->load->view('inicio/indexTrabajador.php');
             }
             else{
-                redirect('inicio/portada');
+                $this->load->view('inicio/indexEmpresa.php');
             }
             
         }
         else{
-            
-            
             $data=array('datosUsuario' => $datosUsuario,'mensaje' => "Hay campos incorectos");
-         
             $this->load->view('inicio/creacionPerfilE.php',$data);
         }
     }

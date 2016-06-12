@@ -37,9 +37,11 @@
 ================================================== -->
     <body class="colorFondo">
         <div class="navbar-wrapper">
-            <div class="container contenido">
+            <div class="container">
 
-              
+                <nav class="navbar navbar-inverse navbar-static-top">
+                    <?php include("cabecera.php"); ?>
+                </nav>
                <div id="perfil"></div>
                 <div id="mensaje"></div>
             </div>
