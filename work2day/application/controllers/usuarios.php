@@ -6,17 +6,23 @@ class Usuarios extends CI_Controller {
 	public function editarPerfilT(){
         $comprobarLogin=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+        $nombre=$datosUsuario->nombre;
+        $head=array('nombre' => $nombre,'grupo_usuario' => $datosUsuario->id_grupo_usuarios);
         
         $perfilUsuario=$this->usuarios_model->sacarPerfil($datosUsuario->id);
+        $this->load->view('inicio/head.php',$head);
         $data=array('perfilUsuario'=> $perfilUsuario);
         $this->load->view('usuarios/editarPerfilT',$data);
     }
     public function editarPerfilE(){
          $comprobarLogin=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+        $nombre=$datosUsuario->nombre;
+        $head=array('nombre' => $nombre,'grupo_usuario' => $datosUsuario->id_grupo_usuarios);
         
         $perfilUsuario=$this->usuarios_model->sacarPerfilEmpresa($datosUsuario->id);
         $data=array('perfilUsuario'=> $perfilUsuario);
+        $this->load->view('inicio/head.php',$head);
         $this->load->view('usuarios/editarPerfilE',$data);
     }
     

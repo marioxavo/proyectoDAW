@@ -17,8 +17,11 @@ class Mensajeria extends CI_Controller {
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $mensaje=$this->mensajeria_model->getTextoMensaje($id_mensaje);
+        $nombre=$datosUsuario->nombre;
+        
+        $head=array('nombre' => $nombre,'grupo_usuario' => $datosUsuario->id_grupo_usuarios);
         $data=array('id_usuario' => $datosUsuario->id,'mensaje' => $mensaje);
-        $this->load->view('inicio/head.php');
+        $this->load->view('inicio/head.php',$head);
         $this->load->view('mensajes/leermensaje.php',$data);
     }
 
@@ -36,9 +39,9 @@ class Mensajeria extends CI_Controller {
         elseif($error==3){
             $acierto="El mensaje ha sido enviado con éxito.";
         }
-
+        $head=array('nombre' => $nombre,'grupo_usuario' => $datosUsuario->id_grupo_usuarios);
         $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'error' => $errorMensaje,'acierto' => $acierto);
-        $this->load->view('inicio/head.php');
+        $this->load->view('inicio/head.php',$head);
         $this->load->view('mensajes/redactarmensaje.php',$data);
     }
 
@@ -75,8 +78,11 @@ class Mensajeria extends CI_Controller {
         $mensajesEnviados=$this->mensajeria_model->getMensajesEnviados($datosUsuario->id);
         $p=json_encode($mensajes);
         $p2=json_encode($mensajesEnviados);
+        $nombre=$datosUsuario->nombre;
+        $head=array('nombre' => $nombre,'grupo_usuario' => $datosUsuario->id_grupo_usuarios);
+        
         $data=array('id_usuario' => $datosUsuario->id,'mensajes' => $p,'mensajesEnviados' => $p2);
-        $this->load->view('inicio/head.php');
+        $this->load->view('inicio/head.php',$head);
         $this->load->view('mensajes/mensajes.php',$data);
     }
     public function getMensajesNuevos(){
