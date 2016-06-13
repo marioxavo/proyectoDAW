@@ -102,7 +102,7 @@ class Usuarios_model extends CI_Model {
         $this->db->where('id',$id);
         $this->db->update('usuarios',$data);
         
-        return json_encode($this->sacarCuenta($id));
+        return $this->sacarCuenta($id);
     }
 
 }

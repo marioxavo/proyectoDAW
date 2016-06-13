@@ -15,27 +15,31 @@ class Inicio extends CI_Controller {
     }
     public function comprobar(){
         $comprobado=$this->login_work->processLogin($_POST['nombre'], $_POST['password']);
-        $comprobarLogin=$this->login_work->isLogged();
-        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
-        $booleano=false;
-            if($datosUsuario->id_grupo_usuarios==1){
-                $booleano=$this->login_model->comprobarPerfil($datosUsuario->id);
-            }
-            elseif($datosUsuario->id_grupo_usuarios==2){
-                $booleano=$this->login_model->comprobarPerfilEmp($datosUsuario->id);
-            }
+        
         if(!$comprobado){
             
              $data=array('mensaje' => "Login Incorrecto");
              $this->load->view('inicio/index.php',$data);
 
         }
-        else if(!$booleano){
+        else{
+            $comprobarLogin=$this->login_work->isLogged();
+            $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+            $booleano=false;
+            if($datosUsuario->id_grupo_usuarios==1){
+                $booleano=$this->login_model->comprobarPerfil($datosUsuario->id);
+            }
+            elseif($datosUsuario->id_grupo_usuarios==2){
+                $booleano=$this->login_model->comprobarPerfilEmp($datosUsuario->id);
+            }
+        
+        if(!$booleano){
             redirect('inicio/creacionPerfil');
         }
         else{
             
             redirect('inicio/portada');
+        }
         }
 
     }
