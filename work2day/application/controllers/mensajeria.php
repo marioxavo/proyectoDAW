@@ -16,9 +16,9 @@ class Mensajeria extends CI_Controller {
     public function leermensaje($id_mensaje){
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
-								$nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
+        $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
         $mensaje=$this->mensajeria_model->getTextoMensaje($id_mensaje);
-        $data=array('id_usuario' => $datosUsuario->id,'mensaje' => $mensaje,'nombre' => $nombre);
+        $data=array('id_usuario' => $datosUsuario->id,'mensaje' => $mensaje,'nombre' => $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
         $this->load->view('inicio/head.php');
         $this->load->view('mensajes/leermensaje.php',$data);
     }
@@ -38,7 +38,7 @@ class Mensajeria extends CI_Controller {
             $acierto="El mensaje ha sido enviado con éxito.";
         }
 
-        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'error' => $errorMensaje,'acierto' => $acierto);
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'error' => $errorMensaje,'acierto' => $acierto,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
         $this->load->view('inicio/head.php');
         $this->load->view('mensajes/redactarmensaje.php',$data);
     }
@@ -77,7 +77,7 @@ class Mensajeria extends CI_Controller {
         $mensajesEnviados=$this->mensajeria_model->getMensajesEnviados($datosUsuario->id);
         $p=json_encode($mensajes);
         $p2=json_encode($mensajesEnviados);
-        $data=array('id_usuario' => $datosUsuario->id,'mensajes' => $p,'mensajesEnviados' => $p2,'nombre'=>$nombre);
+        $data=array('id_usuario' => $datosUsuario->id,'mensajes' => $p,'mensajesEnviados' => $p2,'nombre'=>$nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
         $this->load->view('inicio/head.php');
         $this->load->view('mensajes/mensajes.php',$data);
     }
