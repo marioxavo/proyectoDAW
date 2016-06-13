@@ -71,5 +71,38 @@ class Usuarios_model extends CI_Model {
         
         return json_encode($this->sacarPerfilEmpresa($id));
     }
+	
+				 public function sacarCuenta($id){
+        $this->db->select('*');
+        $this->db->from('usuarios');
+        $this->db->where('id',$id);
+        
+        $query=$this->db->get();
+        
+        $data=array();
+        
+        
+        foreach($query->result() as $row){
+            $data['id_cuenta']=$row->id;       
+            $data['nombre']=$row->nombre;    
+            $data['email']=$row->email;    
+            $data['password']=$row->password;    
+            
+            
+        }
+        
+        return $data;
+    }
+	 public function actualizarCuenta($id,$nombre,$email,$password){
+        $data=array(
+        'nombre' => $nombre,
+        'email' => $email,
+        'password' => $password
+        );
+        $this->db->where('id',$id);
+        $this->db->update('usuarios',$data);
+        
+        return json_encode($this->sacarCuenta($id));
+    }
 
 }
