@@ -18,12 +18,9 @@ class Mensajeria extends CI_Controller {
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
         $mensaje=$this->mensajeria_model->getTextoMensaje($id_mensaje);
-<<<<<<< HEAD
         $data=array('id_usuario' => $datosUsuario->id,'mensaje' => $mensaje,'nombre' => $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
-=======
-        $data=array('id_usuario' => $datosUsuario->id,'mensaje' => $mensaje,'nombre' => $nombre);
-								$this->mensajeria_model->marcarMensajeLeido($id_mensaje);
->>>>>>> origin/master
+        $this->mensajeria_model->marcarMensajeLeido($id_mensaje);
+
         $this->load->view('inicio/head.php');
         $this->load->view('mensajes/leermensaje.php',$data);
     }
