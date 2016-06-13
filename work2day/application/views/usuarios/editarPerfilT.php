@@ -1,38 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<link rel="icon" href="<?php echo $this->config->item('app_url').'template/img/favicon.png';?>">
-
-		<title>Work2Day</title>
-
-		<!-- Bootstrap core CSS -->
-		<link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/bootstrap.min.css';?>" rel="stylesheet">
-
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/ie10-viewport-bug-workaround.css';?>" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo $this->config->item('app_url').'template/css/styleLogin.css';?>">
-		<link rel="stylesheet" href="<?php echo $this->config->item('app_url').'template/css/style.css';?>">
-
-
-		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-		<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie-emulation-modes-warning.js';?>"></script>
-
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-		<!-- Custom styles for this template -->
-		<link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/carousel.css';?>" rel="stylesheet">
-	</head>
+<?php include("head.php"); ?>
 	<style type="text/css">
 
 		
@@ -55,7 +23,7 @@
 					<?php include("cabecera.php"); ?>
 				</nav>
 				<div class="row">
-					<div id="perfil"></div>
+					<div id="perfil" ></div>
 					<div id="mensaje"></div>
 				</div>
 
@@ -97,11 +65,11 @@
 					$('#perfil').html('');
 					$('#perfil').fadeIn(400);
 					//$('#perfil').append('<div class="campo" id="nombre">'+datos['nombre']+'</div>');
-					$('#perfil').append('<div class="panel panel-primary panelChange"><div class="panel-heading" id="nombre">Nombre</div><h4><div id="nombreValue" class="panel-body">'+datos['nombre']+'</div></h4></div>')
-					$('#perfil').append('<div class="panel panel-primary panelChange"><div class="panel-heading" id="habilidades">Habilidades</div><h4><div id="habilidadesValue" class="panel-body">'+datos['habilidades']+'</div></h4></div>');
-					$('#perfil').append('<div class="panel panel-primary panelChange"><div class="panel-heading" id="estudios">Estudios</div><h4><div id="estudiosValue" class="panel-body">'+datos['estudios']+'</div></h4></div>');
-					$('#perfil').append('<div class="panel panel-primary panelChange"><div class="panel-heading" id="experiencia">Experiencia</div><h4><div id="experienciaValue" class="panel-body">'+datos['experiencia']+'</div></h4></div>');
-					$('#perfil').append('<input class="btn btn-primary col-md-offset-3 col-md-6 col-md-offset-3" type="button" value="Editar" onclick="editarPerfil()"></div>');
+					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">Nombre</div><h4><div id="nombreValue" class="panel-body">'+datos['nombre']+'</div></h4></div></div>')
+					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="habilidades">Habilidades</div><h4><div id="habilidadesValue" class="panel-body">'+datos['habilidades']+'</div></h4></div></div>');
+					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="estudios">Estudios</div><h4><div id="estudiosValue" class="panel-body">'+datos['estudios']+'</div></h4></div></div>');
+					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="experiencia">Experiencia</div><h4><div id="experienciaValue" class="panel-body">'+datos['experiencia']+'</div></h4></div></div>');
+					$('#perfil').append('<div class="panelChange"><input class="btn btn-primary col-md-12 col-xs-12" type="button" value="Editar" onclick="editarPerfil()"></div>');
 				});
 
 			}
@@ -113,16 +81,16 @@
 				$('#perfil').fadeOut(400,function(){
 					$('#perfil').html('');
 					$('#perfil').fadeIn(400);
-					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="nombreNuevo">Habilidades:</label></h4><input type="text" class="form-control" id="nombreNuevo" aria-describedby="basic-addon3" value="'+nombre+'"></div>');
+					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="nombreNuevo">Nombre:</label></h4><input type="text" class="form-control" id="nombreNuevo" aria-describedby="basic-addon3" value="'+nombre+'"></div>');
 					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="habilidadesNuevo">Habilidades:</label></h4><textarea class="form-control" rows="5" id="habilidadesNuevo">'+habilidades+'</textarea></div>');
 					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="estudiosNuevo">Estudios:</label></h4><textarea class="form-control" rows="5" id="estudiosNuevo">'+estudios+'</textarea></div>');
-					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="experienciaNuevo">Experiencia:</label></h4><textarea class="form-control" rows="5" id="experienciaNuevo">'+estudios+'</textarea></div>');
+					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="experienciaNuevo">Experiencia:</label></h4><textarea class="form-control" rows="5" id="experienciaNuevo">'+experiencia+'</textarea></div>');
 					
 					/*$('#perfil').append('<div class="campo" ><input type="text" id="nombreNuevo" value="'+nombre+'"/></div>');
 					$('#perfil').append('<div class="campo" ><textarea id="habilidadesNuevo" >'+habilidades+'</textarea></div>');
 					$('#perfil').append('<div class="campo" ><textarea id="estudiosNuevo" >'+estudios+'</textarea></div>');
 					$('#perfil').append('<div class="campo" ><textarea id="experienciaNuevo" >'+experiencia+'</textarea></div>');*/
-					$('#perfil').append('<div class="botones col-md-7" ><input class="btn btn-primary col-md-2" type="button" value="Actualizar" onclick="actualizarPerfil()"><input class="btn btn-primary col-md-offset-1 col-md-2" type="button" value="Volver" onclick="volverPerfil()"></div>');
+					$('#perfil').append('<div class="botones col-md-7" col-xs-7 ><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Actualizar" onclick="actualizarPerfil()"><input class="btn btn-primary col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" type="button" value="Volver" onclick="volverPerfil()"></div>');
 				});
 
 			}

@@ -15,6 +15,15 @@ class Mensajeria_model extends CI_Model
         $this->db->insert('mensajes',$data);
     }
 
+	
+			public function marcarMensajeLeido($id_Mensaje){
+								$data = array(
+																			'leido' => 1,
+																);
+								$this->db->where('id_mensaje', $id_Mensaje);
+								$this->db->update('mensajes', $data); 
+				
+			}
     public function sacarReceptorByNombre($nombre_usuario){
         $this->db->select('id');
         $this->db->from('usuarios');

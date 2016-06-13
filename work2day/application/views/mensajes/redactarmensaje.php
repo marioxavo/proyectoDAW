@@ -1,6 +1,7 @@
-
+<?php include("head.php"); ?>
 <!-- NAVBAR
 ================================================== -->
+
 <body class="colorFondo">
 <div class="navbar-wrapper">
     <div class="container">
@@ -10,11 +11,14 @@
         </nav>
         <div class="row">
             <div class="panel-mensajes">
-                <ul class="list-group col-md-2 col-sm-3 col-xs-4 col-lg-2">
-                    <li style="cursor: pointer" class="list-group-item"><a href="<?= $this->config->item('app_url') ?>index.php/mensajeria/"><span id="numRecibidos" class="badge"></span>Bandeja de entrada</a></li>
+                <ul class="list-group col-md-2 col-sm-3 col-xs-4 col-lg-2" style="list-style:none;">
+                    
+                    
+                    <li><a id="redactarBtn" class="btn btn-primary" href="<?php echo $this->config->item('app_url') ?>index.php/mensajeria/" role="button">Bandeja de entrada</a></li>
                 </ul>
             </div>
-            <div id="divMensajes" class="panel panel-default tabla-mensajes col-md-10 col-sm-9 col-xs-8 col-lg-10">
+            <div class="col-md-10 col-sm-9 col-xs-8 col-lg-10">
+            <div id="divMensajes" class="panel panel-primary tabla-mensajes ">
 
                 <div class="panel-heading">Redactar mensaje</div>
                 <div class="panel-body">
@@ -28,17 +32,17 @@
                         <div class="input-group">
 
                             <span class="input-group-addon" id="sizing-addon2">De</span>
-                            <input name="emisor" readonly type="text" class="form-control" value="<?= $nombre; ?>" aria-describedby="sizing-addon2">
+                            <input name="emisor" readonly type="text" class="form-control" value="<?= $nombre; ?>" aria-describedby="sizing-addon1">
 
 
                             <span class="input-group-addon" id="sizing-addon2">Para</span>
-                            <input name="receptor" type="text" class="form-control" aria-describedby="sizing-addon2">
+                            <input name="receptor" type="text" class="form-control" aria-describedby="sizing-addon1">
 
                         </div>
                         <div class="input-group">
 
                             <span class="input-group-addon" id="sizing-addon2">Asunto</span>
-                            <input name="asunto" type="text" class="form-control" aria-describedby="sizing-addon2">
+                            <input name="asunto" type="text" class="form-control" aria-describedby="sizing-addon1">
 
 
                         </div>
@@ -46,6 +50,7 @@
                         <input class="btn btn-primary" type="submit" value="Enviar"/>
                     </form>
                 </div>
+            </div>
             </div>
 
         </div>

@@ -191,7 +191,7 @@
                  
                         <h1>Trabajador</h1>
                         <p>Regístrate y encontrarás cientos de trabajos perfectos para tu perfil. Podrás encontrar tanto proyectos puntuales como trabajos de larga duración.</p>
-                        <p><div style="margin-top: 1.5em"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/1';?>" role="button">Quiero registrarme</a></div></p>
+                        <p><div style="margin-top: 1.5em"><a class="botones btn btn-primary" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/1';?>" role="button">Quiero registrarme</a></div></p>
           
                 
                 </div></center><!-- /.col-lg-4 -->
@@ -199,7 +199,7 @@
                    
                         <h1>Empresa</h1>
                         <p>Crea tu perfil y encuentra trabajadores que encajen a la perfección con tu proyecto o idea. Podrás dar con tu trabajador ideal en unos sencillos pasos.</p>
-                        <p><div style="margin-top: 1.5em"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/2';?>" role="button">Quiero registrar mi empresa</a></div></p>
+                        <p><div style="margin-top: 1.5em"><a class="botones btn btn-primary" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/2';?>" role="button">Quiero registrar mi empresa</a></div></p>
                   
                     
                 </div></center><!-- /.col-lg-4 -->

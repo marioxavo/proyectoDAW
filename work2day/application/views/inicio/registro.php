@@ -1,37 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="<?php echo $this->config->item('app_url').'template/img/favicon.png';?>">
-
-        <title>Work2Day</title>
-
-        <!-- Bootstrap core CSS -->
-        <link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/bootstrap.min.css';?>" rel="stylesheet">
-
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/ie10-viewport-bug-workaround.css';?>" rel="stylesheet">
-        <link rel="stylesheet" href="<?php echo $this->config->item('app_url').'template/css/styleLogin.css';?>">
-
-        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie-emulation-modes-warning.js';?>"></script>
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-        <!-- Custom styles for this template -->
-        <link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/carousel.css';?>" rel="stylesheet">
-       
-    </head>
+    <?php include("head.php"); ?>
     <!-- NAVBAR
 ================================================== -->
     
@@ -171,7 +140,8 @@
             <input id="regEmail" name="email" type="text" placeholder="Email">
             <input id="passUsu" name="password" type="password" placeholder="Contraseña">
             <center><button type="submit" id="registration_button">Registrarse</button></center>
-            <center><div style="margin-top: 1.5em"><a id="tengo_usuario" href="<?php echo $this->config->item('app_url').'index.php/inicio/';?>">Ya tengo usuario</a></div></center>
+            <center><div style="margin-top: 1.5em;"><a id="tengo_usuario" class="botones btn btn-primary" href="<?php echo $this->config->item('app_url').'index.php/inicio/';?>" role="button">Ya tengo usuario</a></div></center>
+            
         </form>
 	</div>
 	
@@ -193,7 +163,7 @@
                  
                         <h1>Trabajador</h1>
                         <p>Regístrate y encontrarás cientos de trabajos perfectos para tu perfil. Podrás encontrar tanto proyectos puntuales como trabajos de larga duración.</p>
-                        <p><div style="margin-top: 1.5em"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/1';?>" role="button">Quiero registrarme</a></div></p>
+                        <p><div style="margin-top: 1.5em"><a class="botones btn btn-primary" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/1';?>" role="button">Quiero registrarme</a></div></p>
           
                 
                 </div></center><!-- /.col-lg-4 -->
@@ -201,7 +171,7 @@
                    
                         <h1>Empresa</h1>
                         <p>Crea tu perfil y encuentra trabajadores que encajen a la perfección con tu proyecto o idea. Podrás dar con tu trabajador ideal en unos sencillos pasos.</p>
-                        <p><div style="margin-top: 1.5em;"><a class="botones" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/2';?>" role="button">Quiero registrar mi empresa</a></div></p>
+                        <p><div style="margin-top: 1.5em;"><a class="botones btn btn-primary" href="<?php echo $this->config->item('app_url').'index.php/inicio/registro/2';?>" role="button">Quiero registrar mi empresa</a></div></p>
                   
                     
                 </div></center><!-- /.col-lg-4 -->

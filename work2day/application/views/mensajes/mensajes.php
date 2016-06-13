@@ -1,6 +1,14 @@
-
+<?php include("head.php"); ?>
     <!-- NAVBAR
 ================================================== -->
+<style type="text/css">
+	#redactarBtn{
+		margin-bottom: 5%;
+	}
+	.ee{
+		background:lightgrey;
+	}
+</style>
     <body class="colorFondo">
         <div class="navbar-wrapper">
             <div class="container">
@@ -9,29 +17,33 @@
                     <?php include("cabecera.php"); ?>
                 </nav>
                 <div class="row">
-                    <a class="btn btn-primary" href="<?php echo $this->config->item('app_url') ?>index.php/mensajeria/redactarMensaje" role="button">Redactar mensaje</a>
+                    
                    <div class="panel-mensajes">
 
-                    <ul class="list-group col-md-2 col-sm-3 col-xs-4 col-lg-2">
+                    <ul class="list-group col-md-2 col-sm-3 col-xs-4 col-lg-2" style="list-style:none;">
 
-
-                        <li onclick="cambiarTablaMensajes(0);" style="cursor: pointer" class="list-group-item"><span id="numRecibidos" class="badge"></span>Recibidos</li>
-                        <li onclick="cambiarTablaMensajes(1);" style="cursor: pointer" class="list-group-item"><span class="badge"></span>Enviados</li>
+																								<li><a id="redactarBtn" class="btn btn-primary" href="<?php echo $this->config->item('app_url') ?>index.php/mensajeria/redactarMensaje" role="button">Redactar mensaje</a></li>
+                        <li id="RecibidosBtn" onclick="cambiarTablaMensajes(0);" style="cursor: pointer" class="list-group-item"><span id="numRecibidos" class="badge"></span>Recibidos</li>
+                        <li id="EnviadosBtn" onclick="cambiarTablaMensajes(1);" style="cursor: pointer" class="list-group-item"><span class="badge"></span>Enviados</li>
                     </ul>
                     </div>
-                    <div id="divMensajes" class="panel panel-default tabla-mensajes col-md-10 col-sm-9 col-xs-8 col-lg-10">
+                    <div class="col-md-10 col-sm-9 col-xs-8 col-lg-10">
+                    <div id="divMensajes" class="panel panel-primary tabla-mensajes">
                        <div class="panel-heading">Recibidos</div>
                         <table id="mensajes" class="table">
 
 
                         </table>
                     </div>
-                    <div id="divEnviados" style="display:none;" class="panel panel-default tabla-mensajes col-md-10 col-sm-9 col-xs-8 col-lg-10">
+                    </div>
+                    <div class="col-md-10 col-sm-9 col-xs-8 col-lg-10">
+                    <div id="divEnviados" style="display:none;" class="panel panel-primary tabla-mensajes">
                         <div class="panel-heading">Enviados</div>
                         <table id="mensajesEnv" class="table">
 
 
                         </table>
+                    </div>
                     </div>
                     
                 </div>
@@ -69,16 +81,22 @@
         <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
         <script>
              $(document).ready(function(){
+														$('#RecibidosBtn').addClass("Active");
                  var mensajes=<?= $mensajes; ?>;
                  var mensajesEnv=<?= $mensajesEnviados; ?>;
                  var j=0;
                  if(mensajes[0]){
                      for(var i=0;i<mensajes.length;i++){
                          $('#mensajes').append('<tr id="mensaje'+i+'"></tr>');
-                         $('#mensaje'+i).append('<td width="25%">'+mensajes[i]['nombre']+'</td><td><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td>');
+																						
+                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td>');
                          if(mensajes[i]['leido']==0){
                              j++;
-                         }
+																										$('#columna1'+i).addClass("ee");
+																										$('#columna2'+i).addClass("ee");
+                         }else{
+																										
+																									}
                      }
                      $('#numRecibidos').html(j);
                  }
@@ -92,11 +110,15 @@
 
             function cambiarTablaMensajes(i){
                 if(i==0){
+																				$('#EnviadosBtn').removeClass("Active");
+																				$('#RecibidosBtn').addClass("Active");
                     $('#divMensajes').show();
                     $('#divEnviados').hide();
                 }
                 if(i==1){
                     $('#divMensajes').hide();
+																				$('#RecibidosBtn').removeClass("Active");
+																				$('#EnviadosBtn').addClass("Active");
                     $('#divEnviados').show();
                 }
             }
