@@ -32,6 +32,9 @@ class Inicio extends CI_Controller {
             elseif($datosUsuario->id_grupo_usuarios==2){
                 $booleano=$this->login_model->comprobarPerfilEmp($datosUsuario->id);
             }
+            else{
+                redirect('administracion/ofertas');
+            }
         
         if(!$booleano){
             redirect('inicio/creacionPerfil');

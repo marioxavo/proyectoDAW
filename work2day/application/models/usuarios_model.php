@@ -7,6 +7,47 @@ class Usuarios_model extends CI_Model {
 
         parent::__construct();		
     }
+    public function sacarUsuarios(){
+         $this->db->select('*');
+        $this->db->from('usuarios');
+        $this->db->where('id_grupo_usuarios <>',3);
+        $query=$this->db->get();
+        
+        $data=array(array());
+        $i=0;
+        
+        foreach($query->result() as $row){
+            $data[$i]['id']=$row->id;
+            $data[$i]['nombre']=$row->nombre;
+            $data[$i]['email']=$row->email;
+            $data[$i]['id_grupo_usuarios']=$row->id_grupo_usuarios;
+            if($row->id_grupo_usuarios==1){
+                 $data[$i]['grupo_usuarios']="Trabajador";
+            }
+            else{
+               $data[$i]['grupo_usuarios']="Empresa"; 
+            }
+            $i++;
+        }
+        
+        return json_encode($data);
+    }
+    public function borrarUsuario($id){
+        $dataPerfil=array(
+        'id_usuario' => $id
+        );
+        $this->db->delete('perfiles',$dataPerfil);
+        $this->db->delete('perfiles_empresa',$dataPerfil);
+        
+        $data=array(
+            'id' => $id
+        );
+        $this->db->delete('usuarios',$data);
+        return $this->sacarUsuarios();
+        
+        
+        
+    }
     public function sacarPerfil($id){
         $this->db->select('*');
         $this->db->from('perfiles');

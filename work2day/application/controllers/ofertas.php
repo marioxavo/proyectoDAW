@@ -18,8 +18,10 @@ class Ofertas extends CI_Controller {
         $nombre=$datosUsuario->nombre;
         
         $ofertas=$this->ofertas_model->sacarOfertas($datosUsuario->id);
+        $categorias=$this->ofertas_model->sacarCategorias();
+        $provincias=$this->ofertas_model->mostrarProvincias();
         
-        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios,'categorias' => $categorias,'provincias' => $provincias);
         
         $this->load->view('inicio/head.php');
         $this->load->view('ofertas/bandejaOfertas.php',$data);
@@ -45,11 +47,11 @@ class Ofertas extends CI_Controller {
          echo json_encode($ofertas);
     }
     public function crearOferta(){
-        $ofertas=$this->ofertas_model->crearOferta($_POST['id_empresa'],$_POST['texto'],$_POST['categoria']);
+        $ofertas=$this->ofertas_model->crearOferta($_POST['id_empresa'],$_POST['titulo'],$_POST['texto'],$_POST['categoria'],$_POST['provincia']);
         echo json_encode($ofertas);
     }
     public function actualizarOferta($id){
-        $ofertas=$this->ofertas_model->actualizarOferta($id,$_POST['id_empresa'],$_POST['texto'],$_POST['categoria']);
+        $ofertas=$this->ofertas_model->actualizarOferta($id,$_POST['id_empresa'],$_POST['titulo'],$_POST['texto'],$_POST['categoria'],$_POST['provincia']);
         echo json_encode($ofertas);
     }
     

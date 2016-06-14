@@ -6,9 +6,10 @@
            <?php include("cabecera.php"); ?>
         </nav>
         <div class="row">
-            
-            <div id="ofertas">
+          
+            <div id="usuarios">
             </div>
+            
 
         </div>
         <div class="row">
@@ -45,21 +46,24 @@
 <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
 <script>
     $(document).ready(function(){
-        var ofertas=<?= json_encode($ofertas);?>;
-        mostrarOfertas(ofertas);
+        var usuarios=<?= $usuarios;?>;
+        mostrarUsuarios(usuarios);
     });
 
-    function mostrarOfertas(ofertas){
+    function mostrarUsuarios(usuarios){
         
-        $('#ofertas').fadeOut(400,function(){
-           $('#ofertas').html('');
-           $('#ofertas').fadeIn(400);
+        $('#usuarios').fadeOut(400,function(){
+           $('#usuarios').html('');
+           $('#usuarios').fadeIn(400);
             
-            if(ofertas[0].length!=0){
-                for(i=0;i<ofertas.length;i++){
-                    $('#ofertas').append('<div id="oferta-'+ofertas[i]['id_oferta']+'"></div>');
-                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">'+ofertas[i]['nombre_empresa']+'</div><h4><div class="titulo_oferta" class="panel-body">'+ofertas[i]['titulo_oferta']+'</div></h4><h4><div class="texto_oferta" class="panel-body">'+ofertas[i]['texto_oferta']+'</div></h4><h4><div class="categoria" class="panel-body">'+ofertas[i]['categoria']+'</div></h4><h4><div class="municipio" class="panel-body">'+ofertas[i]['provincia']+'</div></h4><h4><div id="candidatos" class="panel-body">'+ofertas[i]['candidatosNombres']+'</div></h4></div></div>');
-                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Me apunto" onclick="apuntarOferta('+ofertas[i]['id_oferta']+')"></div>');
+            if(usuarios[0].length!=0){
+                for(i=0;i<usuarios.length;i++){
+                    $('#usuarios').append('<div id="usuario-'+usuarios[i]['id']+'"></div>');
+                    $('#usuario-'+usuarios[i]['id']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" >Id</div><h4><div  class="panel-body">'+usuarios[i]['id']+'</div></h4></div></div>');
+                    $('#usuario-'+usuarios[i]['id']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" >Nombre</div><h4><div class="panel-body">'+usuarios[i]['nombre']+'</div></h4></div></div>');
+                    $('#usuario-'+usuarios[i]['id']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" >Email</div><h4><div class="panel-body">'+usuarios[i]['email']+'</div></h4></div></div>');
+					$('#usuario-'+usuarios[i]['id']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" >Grupo usuarios</div><h4><div class="panel-body">'+usuarios[i]['grupo_usuarios']+'</div></h4></div></div>');
+                    $('#usuario-'+usuarios[i]['id']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Borrar" onclick="borrarUsuario('+usuarios[i]['id']+')"></div>');
                     
                 }
             }
@@ -67,14 +71,14 @@
             
         });
     }
-    function apuntarOferta(id){
-        var id_usuario=<?= $id_usuario;?>;
-         $.post('<?php echo $this->config->item('app_url').'index.php/ofertas/apuntarseOferta/';?>'+id,{id_usuario: id_usuario},function(data){
+    function borrarUsuario(id){
+         $.post('<?php echo $this->config->item('app_url').'index.php/administracion/borrarUsuario/';?>'+id,function(data){
                 
-                mostrarOfertas(data);
-            },'json');
+                mostrarUsuarios(data);
+           },'json');
     }
-    
+   
+   
     
 </script>
 </body>
