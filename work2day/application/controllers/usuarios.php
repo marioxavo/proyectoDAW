@@ -73,7 +73,7 @@ class Usuarios extends CI_Controller {
         
     }
   public function actualizarCuenta(){
-        $cuentaUsuario=$this->usuarios_model->actualizarCuenta($_POST['id_cuenta'],$_POST['nombre'],$_POST['email'],$_POST['password']);
+        $cuentaUsuario=$this->usuarios_model->actualizarCuenta($_POST['id_cuenta'],$_POST['email'],$_POST['password']);
         $this->login_work->processLogin($cuentaUsuario['nombre'],$cuentaUsuario['password']);
         echo json_encode($cuentaUsuario);
     }

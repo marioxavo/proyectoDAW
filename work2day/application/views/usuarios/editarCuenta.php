@@ -69,23 +69,23 @@
 					$('#perfil').html('');
 					$('#perfil').fadeIn(400);
 					//$('#perfil').append('<div class="campo" id="nombre">'+datos['nombre']+'</div>');
-					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">Nombre</div><h4><div id="nombreValue" class="panel-body">'+datos['nombre']+'</div></h4></div></div>')
+					
 					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="email">Email</div><h4><div id="emailValue" class="panel-body">'+datos['email']+'</div></h4></div></div>');
-					$('#perfil').append('<div class="col-md-offset-3 col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="password">Password</div><h4><div id="passwordValue" class="panel-body">'+datos['password']+'</div></h4></div></div>');
+					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="password">Password</div><h4><div id="passwordValue" class="panel-body">'+datos['password']+'</div></h4></div></div>');
 					
 					$('#perfil').append('<div class="panelChange"><input class="btn btn-primary col-md-12 col-xs-12" type="button" value="Editar" onclick="editarCuenta()"></div>');
 				});
 
 			}
 			function editarCuenta(){
-				var nombre=document.getElementById('nombreValue').innerHTML;
+				
 				var email=document.getElementById('emailValue').innerHTML;
 				var password=document.getElementById('passwordValue').innerHTML;
 				
 				$('#perfil').fadeOut(400,function(){
 					$('#perfil').html('');
 					$('#perfil').fadeIn(400);
-					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="nombreNuevo">Nombre:</label></h4><input type="text" class="form-control" id="nombreNuevo" aria-describedby="basic-addon3" value="'+nombre+'"></div>');
+
 					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="emailNuevo">Email:</label></h4><input type="text" class="form-control" id="emailNuevo" aria-describedby="basic-addon3" value="'+email+'"></div>');
 					$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="passwordNuevo">Password:</label></h4><input type="password" class="form-control" id="passwordNuevo" aria-describedby="basic-addon3" value="'+password+'"></div>');
 					
@@ -97,16 +97,15 @@
 			}
 			function actualizarCuenta(){
 				var id_cuenta=<?php echo $cuentaUsuario['id_cuenta'];?>;
-				var nombre=document.getElementById('nombreNuevo').value;
 				var email=document.getElementById('emailNuevo').value;
 				var password=document.getElementById('passwordNuevo').value;
 				
-				if(nombre=="" || email=="" || password==""){
+				if(email=="" || password==""){
 					$('#mensaje').fadeIn(400);
 					$('#mensaje').html('Hay campos necesarios sin rellenar');
 				}
 				else{
-					$.post("<?php echo $this->config->item('app_url')?>index.php/usuarios/actualizarCuenta",{id_cuenta:id_cuenta,nombre:nombre,email: email, password: password},function(data){
+					$.post("<?php echo $this->config->item('app_url')?>index.php/usuarios/actualizarCuenta",{id_cuenta:id_cuenta,email: email, password: password},function(data){
 						$('#mensaje').fadeIn(400);
 						$('#mensaje').html('');
 						mostrarDatosCuenta(data);

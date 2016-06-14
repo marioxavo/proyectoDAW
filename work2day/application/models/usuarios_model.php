@@ -24,7 +24,7 @@ class Usuarios_model extends CI_Model {
             $data['habilidades']=$row->habilidades;    
             $data['estudios']=$row->estudios;    
             $data['experiencia']=$row->experiencia;
-            $data['imagen']=$row->imagen;
+            
         }
         
         return $data;
@@ -93,9 +93,8 @@ class Usuarios_model extends CI_Model {
         
         return $data;
     }
-	 public function actualizarCuenta($id,$nombre,$email,$password){
+	 public function actualizarCuenta($id,$email,$password){
         $data=array(
-        'nombre' => $nombre,
         'email' => $email,
         'password' => $password
         );

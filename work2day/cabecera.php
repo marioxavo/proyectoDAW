@@ -9,14 +9,15 @@
 		<a class="navbar-brand" href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Work2Day</a>
 	</div>
 	<div id="navbar" class="navbar-collapse collapse">
-		<ul class="nav navbar-nav">
+		<ul class="lista nav navbar-nav">
 			<li class="active"><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
             <?php if($id_grupo_usuarios==1){
             ?>
             <li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/sacarOfertas">Buscar ofertas</a></li>
 			<li><a href="#about">Mis ofertas</a></li>
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
-			<li class="dropdown">
+			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contacto</a></li>
+			<li class="dropdown derecha">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?><span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					
@@ -32,7 +33,8 @@
            
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas">Mis ofertas</a></li>
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
-			<li class="dropdown">
+			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contacto</a></li>
+			<li class="dropdown derecha">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?><span class="caret"></span></a>
 				<ul class="dropdown-menu">
      <li><a href="<?php echo $this->config->item('app_url').'index.php/usuarios/editarCuenta';?>">Mi cuenta</a></li>

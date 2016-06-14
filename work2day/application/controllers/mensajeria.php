@@ -93,4 +93,47 @@ class Mensajeria extends CI_Controller {
         $p=json_encode($mensajes);
         echo $p;
     }
+		    public function redactarMensajeAdmin($error=0,$acierto=null){
+        $daniel=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($daniel);
+        $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
+        $errorMensaje='';
+        if($error==1){
+            $errorMensaje="La persona a la que le estás enviando el mensaje no existe.";
+        }
+        elseif($error==2){
+            $errorMensaje="Error, todos los campos son obligatorios.";
+        }
+        elseif($error==3){
+            $acierto="El mensaje ha sido enviado con éxito.";
+        }
+
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'error' => $errorMensaje,'acierto' => $acierto,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+        $this->load->view('inicio/head.php');
+        $this->load->view('mensajes/redactarmensajeadmin.php',$data);
+    }
+			public function enviarMensajeAdmin(){
+        $daniel=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($daniel);
+        $this->form_validation->set_rules('emisor', 'emisor', 'trim|required|min_length[1]|max_length[150]');
+        $this->form_validation->set_rules('receptor', 'receptor', 'trim|required|min_length[1]|max_length[150]');
+        $this->form_validation->set_rules('asunto', 'asunto', 'trim|required|min_length[1]|max_length[150]');
+        $this->form_validation->set_rules('mensaje', 'mensaje', 'trim|required|min_length[1]|max_length[1000]');
+        if( $this->form_validation->run() ){
+            $emisor=$datosUsuario->id;
+            $receptor=$this->mensajeria_model->sacarReceptorByNombre($this->input->post('receptor'));
+            $asunto=$this->input->post('asunto');
+            $mensaje=$this->input->post('mensaje');
+            if($receptor!=''){
+                $this->mensajeria_model->insertarMensaje($emisor,$receptor,$asunto,$mensaje);
+                redirect('mensajeria/redactarmensajeadmin/3');
+            }
+            else{
+                redirect('mensajeria/redactarmensajeadmin/1');
+            }
+        }
+        else{
+            redirect('mensajeria/redactarmensajeadmin/2');
+        }
+    }
 }
