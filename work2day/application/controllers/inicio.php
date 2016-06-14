@@ -47,7 +47,8 @@ class Inicio extends CI_Controller {
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
-        $data=array('nombre'=>$nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+        $provincias=$this->ofertas_model->sacarProvincias();
+        $data=array('nombre'=>$nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios,'provincias' => $provincias);
         if($datosUsuario->id_grupo_usuarios==1){
         $this->load->view('inicio/indexTrabajador.php', $data);
         }

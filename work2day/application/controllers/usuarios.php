@@ -7,7 +7,7 @@ class Usuarios extends CI_Controller {
         $comprobarLogin=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
         $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
-        
+
         if($datosUsuario->id_grupo_usuarios==1){
             $perfilUsuario=$this->usuarios_model->sacarPerfil($datosUsuario->id);
              $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
@@ -19,7 +19,28 @@ class Usuarios extends CI_Controller {
             $this->load->view('usuarios/editarPerfilE',$data);
         }
     }
-    
+
+    public function insertarImagenT(){
+        $ruta=$this->config->item('app_url')."template/img/imgPerfilT/";//ruta carpeta donde queremos copiar las imágenes
+        $uploadfile_temporal=$_FILES['imagen']['tmp_name'];
+        $uploadfile_nombre=$ruta.$_FILES['imagen']['name'];
+
+        if (is_uploaded_file($uploadfile_temporal))
+        {
+            move_uploaded_file($uploadfile_temporal,$uploadfile_nombre);
+        }
+        else
+        {
+            echo "error";
+        }
+        $directorio=opendir($ruta);
+        while($ficheros=readdir($directorio))
+        {
+            $url=$ruta.$ficheros;
+            echo "<img src=".$url.">";
+        }
+    }
+
 	public function actualizarPerfilT(){
         $perfilUsuario=$this->usuarios_model->actualizarPerfil($_POST['id_usuario'],$_POST['nombre'],$_POST['habilidades'],$_POST['estudios'],$_POST['experiencia']);
         echo $perfilUsuario;

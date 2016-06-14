@@ -9,6 +9,22 @@ class Ofertas_model extends CI_Model
 
         parent::__construct();
     }
+
+    public function sacarProvincias(){
+        $this->db->select('*');
+        $this->db->from('provincias');
+        $query=$this->db->get();
+
+        $data=array(array());
+        $i=0;
+        foreach($query->result() as $row){
+            $data[$i]['id']=$row->id;
+            $data[$i]['provincia']=$row->provincia;
+            $i++;
+        }
+        return $data;
+    }
+
     public function sacarOfertas($id){
         
         $this->db->select('*');

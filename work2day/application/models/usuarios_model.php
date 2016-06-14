@@ -24,7 +24,7 @@ class Usuarios_model extends CI_Model {
             $data['habilidades']=$row->habilidades;    
             $data['estudios']=$row->estudios;    
             $data['experiencia']=$row->experiencia;
-            
+            $data['imagen']=$row->imagen;
         }
         
         return $data;

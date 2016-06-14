@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2016 a las 20:03:06
+-- Tiempo de generación: 14-06-2016 a las 19:30:11
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.21
 
@@ -101,7 +101,8 @@ CREATE TABLE `ofertas` (
   `id_empresa` int(11) NOT NULL,
   `texto_oferta` text NOT NULL,
   `categoria` int(11) NOT NULL,
-  `candidatos` text NOT NULL
+  `candidatos` text NOT NULL,
+  `id_ciudad` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -116,16 +117,17 @@ CREATE TABLE `perfiles` (
   `nombre` varchar(120) NOT NULL,
   `habilidades` text NOT NULL,
   `estudios` text NOT NULL,
-  `experiencia` text NOT NULL
+  `experiencia` text NOT NULL,
+  `imagen` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfiles`
 --
 
-INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`) VALUES
-(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina'),
-(2, 2, 'Subnormal pero al menos buena persona :3', 'ºjfhdjhfjiakdshfijhadjifbhdijtkjdwsgfyu', 'fjiodsjfjs', 'difsdjkh');
+INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`, `imagen`) VALUES
+(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina', ''),
+(2, 2, 'Subnormal pero al menos buena persona :3', 'ºjfhdjhfjiakdshfijhadjifbhdijtkjdwsgfyu', 'fjiodsjfjs', 'difsdjkh', 'http://imagenestop.net/wp-content/uploads/2015/07/74.jpg');
 
 -- --------------------------------------------------------
 
@@ -146,6 +148,75 @@ CREATE TABLE `perfiles_empresa` (
 
 INSERT INTO `perfiles_empresa` (`id_perfil`, `id_usuario`, `titulo_completo`, `descripcion`) VALUES
 (2, 4, 'AnimeEspQueTeden.Inc', 'Ter voy a matar kbrn');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `provincias`
+--
+
+CREATE TABLE `provincias` (
+  `id` int(11) NOT NULL,
+  `provincia` varchar(500) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `provincias`
+--
+
+INSERT INTO `provincias` (`id`, `provincia`) VALUES
+(1, 'Álava'),
+(2, 'Albacete'),
+(3, 'Alicante'),
+(4, 'Almería'),
+(5, 'Ávila'),
+(6, 'Badajoz'),
+(7, 'Baleares (Illes)'),
+(8, 'Barcelona'),
+(9, 'Burgos'),
+(10, 'Cáceres'),
+(11, 'Cádiz'),
+(12, 'Castellón'),
+(13, 'Ciudad Real'),
+(14, 'Córdoba'),
+(15, 'A Coruña'),
+(16, 'Cuenca'),
+(17, 'Girona'),
+(18, 'Granada'),
+(19, 'Guadalajara'),
+(20, 'Guipúzcoa'),
+(21, 'Huelva'),
+(22, 'Huesca'),
+(23, 'Jaén'),
+(24, 'León'),
+(25, 'Lleida'),
+(26, 'La Rioja'),
+(27, 'Lugo'),
+(28, 'Madrid'),
+(29, 'Málaga'),
+(30, 'Murcia'),
+(31, 'Navarra'),
+(32, 'Ourense'),
+(33, 'Asturias'),
+(34, 'Palencia'),
+(35, 'Las Palmas'),
+(36, 'Pontevedra'),
+(37, 'Salamanca'),
+(38, 'Santa Cruz de Tenerife'),
+(39, 'Cantabria'),
+(40, 'Segovia'),
+(41, 'Sevilla'),
+(42, 'Soria'),
+(43, 'Tarragona'),
+(44, 'Teruel'),
+(45, 'Toledo'),
+(46, 'Valencia'),
+(47, 'Valladolid'),
+(48, 'Vizcaya'),
+(49, 'Zamora'),
+(50, 'Zaragoza'),
+(51, 'Ceuta'),
+(52, 'Melilla');
 
 -- --------------------------------------------------------
 
@@ -212,6 +283,12 @@ ALTER TABLE `perfiles_empresa`
   ADD PRIMARY KEY (`id_perfil`);
 
 --
+-- Indices de la tabla `provincias`
+--
+ALTER TABLE `provincias`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -235,7 +312,7 @@ ALTER TABLE `mensajes`
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
@@ -246,6 +323,11 @@ ALTER TABLE `perfiles`
 --
 ALTER TABLE `perfiles_empresa`
   MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `provincias`
+--
+ALTER TABLE `provincias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

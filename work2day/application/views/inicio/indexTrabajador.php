@@ -23,11 +23,9 @@
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ciudad <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    <?php foreach($provincias as $provincia){ ?>
+                                        <li><a href=""><?= $provincia['provincia']; ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </div><!-- /btn-group -->
                         </div><!-- /input-group -->
