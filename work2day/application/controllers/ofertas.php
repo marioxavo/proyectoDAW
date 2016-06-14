@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ofertas extends CI_Controller {
     public function index(){
-        redirect('mensajeria/bandejaEntrada');
+        redirect('ofertas/misOfertas');
     }
     public function misOfertas(){
         $daniel=$this->login_work->isLogged();
@@ -19,10 +19,38 @@ class Ofertas extends CI_Controller {
         
         $ofertas=$this->ofertas_model->sacarOfertas($datosUsuario->id);
         
-        $data=array('nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
         
         $this->load->view('inicio/head.php');
         $this->load->view('ofertas/bandejaOfertas.php',$data);
+    }
+    public function sacarOfertas(){
+         $daniel=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($daniel);
+        $nombre=$datosUsuario->nombre;
+        
+        $ofertas=$this->ofertas_model->ofertasCompleto();
+        
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+        
+        $this->load->view('inicio/head.php');
+        $this->load->view('ofertas/generalOfertas',$data);
+    }
+    public function apuntarseOferta($id){
+        $ofertas=$this->ofertas_model->apuntarse($id,$_POST['id_usuario']);
+         echo json_encode($ofertas);
+    }
+    public function refrescarOfertas($id){
+         $ofertas=$this->ofertas_model->sacarOfertas($id);
+         echo json_encode($ofertas);
+    }
+    public function crearOferta(){
+        $ofertas=$this->ofertas_model->crearOferta($_POST['id_empresa'],$_POST['texto'],$_POST['categoria']);
+        echo json_encode($ofertas);
+    }
+    public function actualizarOferta($id){
+        $ofertas=$this->ofertas_model->actualizarOferta($id,$_POST['id_empresa'],$_POST['texto'],$_POST['categoria']);
+        echo json_encode($ofertas);
     }
     
 }

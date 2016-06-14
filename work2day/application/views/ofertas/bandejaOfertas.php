@@ -9,7 +9,10 @@
            <?php include("cabecera.php"); ?>
         </nav>
         <div class="row">
-            
+            <input type="button" class="btn btn-primary" style="margin-bottom: 20px;" value="Crear oferta" onclick="crearOferta()"/><br>
+            <div id="ofertas">
+            </div>
+            <div id="mensaje"></div>
 
         </div>
         <div class="row">
@@ -46,11 +49,90 @@
 <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
 <script>
     $(document).ready(function(){
-        
+        var ofertas=<?= json_encode($ofertas);?>;
+        mostrarOfertas(ofertas);
     });
 
-
+    function mostrarOfertas(ofertas){
+        
+        $('#ofertas').fadeOut(400,function(){
+           $('#ofertas').html('');
+           $('#ofertas').fadeIn(400);
+            
+            if(ofertas[0].length!=0){
+                for(i=0;i<ofertas.length;i++){
+                    $('#ofertas').append('<div id="oferta-'+ofertas[i]['id_oferta']+'"></div>');
+                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">'+ofertas[i]['nombre_empresa']+'</div><h4><div class="texto_oferta" class="panel-body">'+ofertas[i]['texto_oferta']+'</div></h4><h4><div class="categoria" class="panel-body">'+ofertas[i]['categoria']+'</div></h4><h4><div id="candidatos" class="panel-body">'+ofertas[i]['candidatosNombres']+'</div></h4></div></div>');
+                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Editar" onclick="editarOferta('+ofertas[i]['id_oferta']+')"></div>');
+                    
+                }
+            }
+            
+            
+        });
     }
+    function crearOferta(){
+        $('#ofertas').fadeOut(400,function(){
+					$('#ofertas').html('');
+					$('#ofertas').fadeIn(400);
+					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="texto_oferta">Nombre</label></h4><input type="text" class="form-control" id="texto_oferta" aria-describedby="basic-addon3"></div>');
+					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="categoria">Categoria</label></h4><input type="text" class="form-control" id="categoria" aria-describedby="basic-addon3"></div>');
+					
+					$('#ofertas').append('<div class="botones col-md-7" col-xs-7 ><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Crear" onclick="crear()"><input class="btn btn-primary col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" type="button" value="Volver" onclick="volver()"></div>');
+				});
+    }
+    function editarOferta(id){
+        var texto=$('#oferta-'+id+' .texto_oferta').html();
+        var categoria=$('#oferta-'+id+' .categoria').html();
+        $('#ofertas').fadeOut(400,function(){
+					$('#ofertas').html('');
+					$('#ofertas').fadeIn(400);
+					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="texto_oferta">Nombre</label></h4><input type="text" class="form-control" id="texto_oferta" aria-describedby="basic-addon3" value="'+texto+'"></div>');
+					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="categoria">Categoria</label></h4><input type="text" class="form-control" id="categoria" aria-describedby="basic-addon3" value="'+categoria+'"></div>');
+					
+					$('#ofertas').append('<div class="botones col-md-7" col-xs-7 ><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Editar" onclick="editar('+id+')"><input class="btn btn-primary col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" type="button" value="Volver" onclick="volver()"></div><br>');
+				});
+    }
+    function crear(){
+        var id_usuario=<?= $id_usuario;?>;
+        var texto=document.getElementById('texto_oferta').value;
+        var categoria=document.getElementById('categoria').value;
+        
+        if(texto=="" || categoria==""){
+            $('#mensaje').fadeIn(400);
+            $('#mensaje').html("Debes rellenar todos los campos");
+        }
+        else{
+            $.post('<?php echo $this->config->item('app_url').'index.php/ofertas/crearOferta';?>',{id_empresa: id_usuario,texto: texto,categoria: categoria},function(data){
+                $('#mensaje').fadeOut(400);
+                mostrarOfertas(data);
+            },'json');
+        }
+    }
+    function volver(){
+         var id_usuario=<?= $id_usuario;?>;
+           $.post('<?php echo $this->config->item('app_url').'index.php/ofertas/refrescarOfertas/';?>'+id_usuario,function(data){
+                $('#mensaje').fadeOut(400);
+                mostrarOfertas(data);
+           },'json');
+    }
+    function editar(id){
+        var id_usuario=<?= $id_usuario;?>;
+         var texto=document.getElementById('texto_oferta').value;
+        var categoria=document.getElementById('categoria').value;
+        
+        if(texto=="" || categoria==""){
+            $('#mensaje').fadeIn(400);
+            $('#mensaje').html("Debes rellenar todos los campos");
+        }
+        else{
+            $.post('<?php echo $this->config->item('app_url').'index.php/ofertas/actualizarOferta/';?>'+id,{id_empresa: id_usuario,texto: texto,categoria: categoria},function(data){
+                $('#mensaje').fadeOut(400);
+                mostrarOfertas(data);
+            },'json');
+        }
+    }
+    
 </script>
 </body>
 </html>
