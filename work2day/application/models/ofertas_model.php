@@ -146,11 +146,18 @@ class Ofertas_model extends CI_Model
         $this->db->select('candidatos');
         $this->db->from('ofertas');
         $this->db->where('id_oferta',$id);
-        $this->db->where('candidatos NOT LIKE','%'.$id_usuario.'%');
+        
         $query=$this->db->get();
         $candidatos="";
         foreach($query->result() as $row){
             $candidatos=$row->candidatos;
+        }
+        $booleano=false;
+        $arrayCandidatos=explode(';',$candidatos);
+        for($i=0;$i<count($arrayCandidatos);$i++){
+            if($arrayCandidatos[$i]==$id_usuario){
+                $booleano=true;
+            }
         }
         if($candidatos==""){
            $candidatos=$id_usuario;
@@ -158,11 +165,13 @@ class Ofertas_model extends CI_Model
         else{
             $candidatos.=';'.$id_usuario;
         }
+        if(!$booleano){
         $data=array(
             'candidatos' => $candidatos
         );
          $this->db->where('id_oferta',$id);
         $this->db->update('ofertas',$data);
+        }
         return $this->ofertasCompleto();
     }
     public function sacarCategorias(){
