@@ -15,7 +15,7 @@
             ?>
             <li class="active"><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
             <li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/sacarOfertas">Buscar ofertas</a></li>
-			<li><a href="#about">Mis ofertas</a></li>
+			<li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/misOfertasT">Mis ofertas</a></li>
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contacto</a></li>
 			<li class="dropdown derecha">

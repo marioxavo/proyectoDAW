@@ -59,9 +59,9 @@
                 for(i=0;i<ofertas.length;i++){
                     $('#ofertas').append('<div id="oferta-'+ofertas[i]['id_oferta']+'"></div>');
                     $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">'+ofertas[i]['nombre_empresa']+'</div><h4><div class="titulo_oferta" class="panel-body">'+ofertas[i]['titulo_oferta']+'</div></h4><h4><div class="texto_oferta" class="panel-body">'+ofertas[i]['texto_oferta']+'</div></h4><h4><div class="categoria" class="panel-body">'+ofertas[i]['categoria']+'</div></h4><h4><div class="municipio" class="panel-body">'+ofertas[i]['provincia']+'</div></h4><h4><div id="candidatos" class="panel-body"></div></h4></div></div>');
-                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Me apunto" onclick="apuntarOferta('+ofertas[i]['id_oferta']+')"></div>');
+                    
                     var arrayCandidatos=ofertas[i]['candidatosNombres'].split(';');
-                   if(ofertas[i]['candidatos']!=null){
+                    if(ofertas[i]['candidatos']!=null){
                     var arrayNumeros=ofertas[i]['candidatos'].split(';');
                     }
                     for(j=0;j<arrayCandidatos.length;j++){
@@ -72,13 +72,6 @@
             
             
         });
-    }
-    function apuntarOferta(id){
-        var id_usuario=<?= $id_usuario;?>;
-         $.post('<?php echo $this->config->item('app_url').'index.php/ofertas/apuntarseOferta/';?>'+id,{id_usuario: id_usuario},function(data){
-                
-                mostrarOfertas(data);
-            },'json');
     }
     
     

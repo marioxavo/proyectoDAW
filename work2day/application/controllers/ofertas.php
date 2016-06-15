@@ -51,6 +51,18 @@ class Ofertas extends CI_Controller {
         $this->load->view('inicio/head.php');
         $this->load->view('ofertas/generalOfertas',$data);
     }
+    public function misOfertasT(){
+         $daniel=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($daniel);
+        $nombre=$datosUsuario->nombre;
+        
+        $ofertas=$this->ofertas_model->misOfertasT($datosUsuario->id);
+        
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+        
+        $this->load->view('inicio/head.php');
+        $this->load->view('ofertas/misOfertasT',$data);
+    }
     public function apuntarseOferta($id){
         $ofertas=$this->ofertas_model->apuntarse($id,$_POST['id_usuario']);
          echo json_encode($ofertas);
