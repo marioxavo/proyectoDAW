@@ -65,7 +65,31 @@
 					$('#perfil').html('');
 					$('#perfil').fadeIn(400);
 					//$('#perfil').append('<div class="campo" id="nombre">'+datos['nombre']+'</div>');
-					$('#perfil').append('<div class="row"><div class="col-xs-6 col-md-2"><img style="width: 150px; height: 200px; border-radius: 10px; margin-bottom: 20px; margin-left: 15px;" src="'+datos['imagen']+'"></img></div><div class="col-xs-6 col-md-2"><form method="POST" action="<?php echo $this->config->item('app_url').'index.php/usuarios/insertarImagenT'; ?>" enctype="multipart/form-data"><input name="imagen" type="file" /><input type="submit" value="Enviar imagen" /></div></form></div>');
+                    if(datos['imagen']=="" || datos['imagen']==null){
+					$('#perfil').append('<div class="row"><div class="col-xs-6 col-md-2" id="imagenUser"><img style="width: 150px; height: 200px; border-radius: 10px; margin-bottom: 20px; margin-left: 15px;" src="<?php echo $this->config->item('app_url').'template/img/favicon.png'; ?>"></img></div><div class="col-xs-6 col-md-2"><form method="POST" action="<?php echo $this->config->item('app_url').'index.php/usuarios/insertarImagenT/'; ?>'+datos['id_perfil']+'" id="formularioImagen" enctype="multipart/form-data"><input name="imagen" type="file" accept="image/*" /><input type="submit" value="Enviar imagen" /></div></form></div>');
+                    }
+                    else{
+                    $('#perfil').append('<div class="row"><div class="col-xs-6 col-md-2" id="imagenUser"><img style="width: 150px; height: 200px; border-radius: 10px; margin-bottom: 20px; margin-left: 15px;" src="<?php echo $this->config->item('app_url').'template/img/usuarios/'; ?>'+datos['imagen']+'"></img></div><div class="col-xs-6 col-md-2"><form method="POST" action="<?php echo $this->config->item('app_url').'index.php/usuarios/insertarImagenT/'; ?>'+datos['id_perfil']+'" id="formularioImagen" enctype="multipart/form-data"><input name="imagen" type="file" accept="image/*" /><input type="submit" value="Enviar imagen" /></div></form></div>');
+                    }
+                    /*$('#formularioImagen').on('submit',function(e){
+                        e.preventDefault();
+                        var formData=new FormData(this);
+                        
+                        $.ajax({
+                            
+                            url:"<?php echo $this->config->item('app_url').'index.php/usuarios/insertarImagenT/'; ?>"+datos['id_perfil'],
+                             data: formData,
+                             cache: false,
+                             contentType: false,
+                            processData: false,
+                            type: 'POST',     
+                            success: function(data){
+                                $('#imagenUser').html('');
+                                $('#imagenUser').append('<img style="width: 150px; height: 200px; border-radius: 10px; margin-bottom: 20px; margin-left: 15px;" src="<?php echo $this->config->item('app_url').'template/img/usuarios/'; ?>'+data+'"></img>')
+                            }
+                            
+                        });
+                    });*/
 					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">Nombre</div><h4><div id="nombreValue" class="panel-body">'+datos['nombre']+'</div></h4></div></div>');
 					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="habilidades">Habilidades</div><h4><div id="habilidadesValue" class="panel-body">'+datos['habilidades']+'</div></h4></div></div>');
 					$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="estudios">Estudios</div><h4><div id="estudiosValue" class="panel-body">'+datos['estudios']+'</div></h4></div></div>');

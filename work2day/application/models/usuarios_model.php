@@ -62,7 +62,8 @@ class Usuarios_model extends CI_Model {
             $data['id_perfil']=$row->id_perfil;    
             $data['id_usuario']=$row->id_usuario;    
             $data['nombre']=$row->nombre;    
-            $data['habilidades']=$row->habilidades;    
+            $data['habilidades']=$row->habilidades;  
+            $data['imagen']=$row->imagen;
             $data['estudios']=$row->estudios;    
             $data['experiencia']=$row->experiencia;
             
@@ -143,6 +144,13 @@ class Usuarios_model extends CI_Model {
         $this->db->update('usuarios',$data);
         
         return $this->sacarCuenta($id);
+    }
+    public function subirImagen($id,$imagen){
+        $data=array(
+        'imagen'=>$imagen
+        );
+        $this->db->where('id_perfil',$id);
+        $this->db->update('perfiles',$data);
     }
 
 }
