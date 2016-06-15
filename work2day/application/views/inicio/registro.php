@@ -137,7 +137,7 @@
         <center><h3><?php if($mensaje){ echo $mensaje;}?></h3></center>
         <form class="form" method="post" action="<?php echo $this->config->item('app_url').'index.php/inicio/registrar/'.$id_grupo;?>" >
             <input id="regUsu" name="nombre" type="text" placeholder="Usuario">
-            <input id="regEmail" name="email" type="text" placeholder="Email">
+            <input id="regEmail" name="email" type="email" placeholder="Email">
             <input id="passUsu" name="password" type="password" placeholder="Contraseña">
             <center><button type="submit" id="registration_button">Registrarse</button></center>
             <center><div style="margin-top: 1.5em;"><a id="tengo_usuario" class="botones btn btn-primary" href="<?php echo $this->config->item('app_url').'index.php/inicio/';?>" role="button">Ya tengo usuario</a></div></center>
