@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2016 a las 12:28:29
+-- Tiempo de generación: 15-06-2016 a las 18:33:11
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.21
+-- Versión de PHP: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -110,13 +110,9 @@ CREATE TABLE `mensajes` (
 INSERT INTO `mensajes` (`id_mensaje`, `id_emisor`, `id_receptor`, `asunto`, `mensaje`, `fecha`, `leido`) VALUES
 (1, 1, 2, 'pa ti mi cola', 'hola carola', '2016-06-21 21:45:00', 1),
 (2, 2, 4, 'me has robao el nomresskikfo', 'JAJAJJAJAAJAJAJAJAJJAJAJAJJAJAJAJA DANIEEEEEEEEEEL AJKAJJAJAAK', '2016-06-02 00:00:00', 0),
-(3, 2, 1, 'asduhf', 'jihndfsgsdfghcscacacacacaca', '2016-06-11 01:23:13', 1),
+(3, 2, 1, 'asduhf', 'jihndfsgsdfghcscacacacacaca', '2016-06-11 01:23:13', 0),
 (4, 2, 4, 'dsgfs', 'jgfdjgdfghdfhfcsdcsvfsbsdgnhdghdegthdhgdfhgyusuifgsudhgfuysdgfhagsi FHDSJDIJADKAJHDASJDFHGSFHSDFHKJSDHGIUEJRSGHFLDISUGHSUIHDFGSDFKJGNSFMVJSDHVKLNCUHVFHJSDGFUHSDIGFIUSDHF DANIEIEIEIEIELELELLELELLDB SANBDAHSBFDHIGASJFBJUHGSDFBHFSDUGBFUHYSDJFSHGHJUHJUGHGKLSDJGFUY WGTJKLSDFHSFH', '2016-06-11 01:23:53', 1),
-(5, 2, 1, 'cacadelaburadedaniel', 'caca', '2016-06-11 01:31:47', 1),
-(6, 1, 2, 'IN DAT HUDD MADAFAKA', 'YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE NIGG', '2016-06-15 02:03:40', 0),
-(7, 1, 2, 'daf', 'sg', '2016-06-15 02:07:38', 0),
-(8, 1, 2, 'sgrf', 'fhg', '2016-06-15 02:08:42', 0),
-(9, 1, 2, 'fj', 'hjk', '2016-06-15 02:09:19', 0);
+(5, 2, 1, 'cacadelaburadedaniel', 'caca', '2016-06-11 01:31:47', 0);
 
 -- --------------------------------------------------------
 
@@ -8283,7 +8279,7 @@ CREATE TABLE `ofertas` (
 --
 
 INSERT INTO `ofertas` (`id_oferta`, `id_empresa`, `titulo_oferta`, `texto_oferta`, `categoria`, `candidatos`, `id_ciudad`) VALUES
-(1, 4, 'Fontanero sida', 'Quiero un fontanero que se parezca a Daniel', 'Hostelería', '2;1', '1');
+(1, 4, 'dsf', 'fdf', 'Hostelería', '2;1', '1');
 
 -- --------------------------------------------------------
 
@@ -8306,8 +8302,8 @@ CREATE TABLE `perfiles` (
 --
 
 INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`, `imagen`) VALUES
-(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina', ''),
-(2, 2, 'Subnormal pero al menos buena persona :3', 'ºjfhdjhfjiakdshfijhadjifbhdijtkjdwsgfyu', 'fjiodsjfjs', 'difsdjkh', 'http://imagenestop.net/wp-content/uploads/2015/07/74.jpg');
+(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina', '1_marioxavo.jpg'),
+(2, 2, 'Comorabos', 'Comorabos', 'fjiodsjfjs', 'difsdjkh', '2_albertiki.jpg');
 
 -- --------------------------------------------------------
 
@@ -8505,7 +8501,7 @@ ALTER TABLE `grupo_usuarios`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --
