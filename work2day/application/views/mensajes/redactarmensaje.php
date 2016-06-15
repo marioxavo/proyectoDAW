@@ -36,7 +36,7 @@
 
 
                             <span class="input-group-addon" id="sizing-addon2">Para</span>
-                            <input name="receptor" type="text" class="form-control" aria-describedby="sizing-addon1">
+                            <input name="receptor" type="text" class="form-control" value="<?= $nombreReceptor; ?>" aria-describedby="sizing-addon1">
 
                         </div>
                         <div class="input-group">

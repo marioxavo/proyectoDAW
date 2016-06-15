@@ -22,7 +22,7 @@
                             <input type="text" class="form-control" aria-label="...">
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ciudad <span class="caret"></span></button>
-                                <ul class="dropdown-menu dropdown-menu-right">
+                                <ul style="overflow-y: scroll; max-height: 200px;" class="dropdown-menu dropdown-menu-right">
                                     <?php foreach($provincias as $provincia){ ?>
                                         <li><a href=""><?= $provincia['provincia']; ?></a></li>
                                     <?php } ?>

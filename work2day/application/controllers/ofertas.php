@@ -12,6 +12,19 @@ class Ofertas extends CI_Controller {
     public function index(){
         redirect('ofertas/misOfertas');
     }
+    public function verPerfil($id){
+        $daniel=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($daniel);
+        $nombre=$datosUsuario->nombre;
+
+        $perfil=$this->usuarios_model->sacarPerfil($id);
+
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios, 'perfil' => $perfil);
+
+        $this->load->view('inicio/head.php');
+        $this->load->view('ofertas/verPerfil.php',$data);
+    }
+
     public function misOfertas(){
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);

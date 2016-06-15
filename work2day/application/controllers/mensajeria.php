@@ -29,6 +29,10 @@ class Mensajeria extends CI_Controller {
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
+        $nr="";
+        if(isset($_GET['nr'])){
+            $nr=$_GET['nr'];
+        }
         $errorMensaje='';
         if($error==1){
             $errorMensaje="La persona a la que le estás enviando el mensaje no existe.";
@@ -40,7 +44,7 @@ class Mensajeria extends CI_Controller {
             $acierto="El mensaje ha sido enviado con éxito.";
         }
 
-        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'error' => $errorMensaje,'acierto' => $acierto,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'error' => $errorMensaje,'acierto' => $acierto,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios, 'nombreReceptor' => $nr);
         $this->load->view('inicio/head.php');
         $this->load->view('mensajes/redactarmensaje.php',$data);
     }
