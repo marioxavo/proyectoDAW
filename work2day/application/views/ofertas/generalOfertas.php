@@ -65,7 +65,9 @@
                     var arrayNumeros=ofertas[i]['candidatos'].split(';');
                     }
                     for(j=0;j<arrayCandidatos.length;j++){
+                        if(arrayCandidatos[j]!=""){
                         $('#oferta-'+ofertas[i]['id_oferta']+' .candidatos').append('<a href="<?php echo $this->config->item('app_url'); ?>index.php/mensajeria/redactarMensaje?nr='+arrayCandidatos[j]+'">'+arrayCandidatos[j]+'</a> → <a href="<?php echo $this->config->item('app_url'); ?>index.php/ofertas/verPerfil/'+arrayNumeros[j]+'">Ver perfil</a></br>');
+                        }
                     }
                 }
             }
