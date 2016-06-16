@@ -16,8 +16,9 @@
             </div>
             <div class="col-md-10 col-sm-9 col-xs-8 col-lg-10">
             <div id="divMensajes" class="panel panel-primary tabla-mensajes ">
-                <div class="panel-heading"><?= $mensaje['asunto']; ?></div>
+                <div class="panel-heading">Asunto: <?= $mensaje['asunto']; ?></div>
                 <div class="panel-body">
+                    Mensaje:<br>
                     <?= $mensaje['mensaje']; ?>
                 </div>
             </div>

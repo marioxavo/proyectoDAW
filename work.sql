@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2016 a las 18:33:11
+-- Tiempo de generación: 16-06-2016 a las 14:36:59
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Versión de PHP: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,12 +36,12 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nombre_cat`) VALUES
-(1, 'Hostelería'),
-(2, 'Informática'),
+(1, 'Hosteleria'),
+(2, 'Informatica'),
 (4, 'Limpieza'),
-(5, 'Mecánica'),
-(6, 'Ingeniería'),
-(7, 'Educación');
+(5, 'Mecanica'),
+(6, 'Ingenieria'),
+(7, 'Educacion');
 
 -- --------------------------------------------------------
 
@@ -102,17 +102,6 @@ CREATE TABLE `mensajes` (
   `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `leido` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `mensajes`
---
-
-INSERT INTO `mensajes` (`id_mensaje`, `id_emisor`, `id_receptor`, `asunto`, `mensaje`, `fecha`, `leido`) VALUES
-(1, 1, 2, 'pa ti mi cola', 'hola carola', '2016-06-21 21:45:00', 1),
-(2, 2, 4, 'me has robao el nomresskikfo', 'JAJAJJAJAAJAJAJAJAJJAJAJAJJAJAJAJA DANIEEEEEEEEEEL AJKAJJAJAAK', '2016-06-02 00:00:00', 0),
-(3, 2, 1, 'asduhf', 'jihndfsgsdfghcscacacacacaca', '2016-06-11 01:23:13', 0),
-(4, 2, 4, 'dsgfs', 'jgfdjgdfghdfhfcsdcsvfsbsdgnhdghdegthdhgdfhgyusuifgsudhgfuysdgfhagsi FHDSJDIJADKAJHDASJDFHGSFHSDFHKJSDHGIUEJRSGHFLDISUGHSUIHDFGSDFKJGNSFMVJSDHVKLNCUHVFHJSDGFUHSDIGFIUSDHF DANIEIEIEIEIELELELLELELLDB SANBDAHSBFDHIGASJFBJUHGSDFBHFSDUGBFUHYSDJFSHGHJUHJUGHGKLSDJGFUY WGTJKLSDFHSFH', '2016-06-11 01:23:53', 1),
-(5, 2, 1, 'cacadelaburadedaniel', 'caca', '2016-06-11 01:31:47', 0);
 
 -- --------------------------------------------------------
 
@@ -8279,7 +8268,7 @@ CREATE TABLE `ofertas` (
 --
 
 INSERT INTO `ofertas` (`id_oferta`, `id_empresa`, `titulo_oferta`, `texto_oferta`, `categoria`, `candidatos`, `id_ciudad`) VALUES
-(1, 4, 'dsf', 'fdf', 'Hostelería', '2;1', '1');
+(1, 4, 'Desarrorllador web', 'Buscamos un desarrollador con conocimientos de javascript,jquery y php', 'Informatica', '2;1', '30');
 
 -- --------------------------------------------------------
 
@@ -8302,8 +8291,8 @@ CREATE TABLE `perfiles` (
 --
 
 INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`, `imagen`) VALUES
-(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina', '1_marioxavo.jpg'),
-(2, 2, 'Comorabos', 'Comorabos', 'fjiodsjfjs', 'difsdjkh', '2_albertiki.jpg');
+(1, 1, 'Mario Caballero Iniesta', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', '1_marioxavo.jpg'),
+(2, 2, 'Alberto Abenza', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', '2_albertiki.jpg');
 
 -- --------------------------------------------------------
 
@@ -8315,15 +8304,16 @@ CREATE TABLE `perfiles_empresa` (
   `id_perfil` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `titulo_completo` varchar(255) NOT NULL,
-  `descripcion` text NOT NULL
+  `descripcion` text NOT NULL,
+  `imagen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfiles_empresa`
 --
 
-INSERT INTO `perfiles_empresa` (`id_perfil`, `id_usuario`, `titulo_completo`, `descripcion`) VALUES
-(2, 4, 'AnimeEspQueTeden.Inc', 'Ter voy a matar kbrn');
+INSERT INTO `perfiles_empresa` (`id_perfil`, `id_usuario`, `titulo_completo`, `descripcion`, `imagen`) VALUES
+(2, 4, 'AnimeEsp.Inc', 'Empresa de publicidad y marketing especializada en animación japonesa', '4_animeEsp.jpg');
 
 -- --------------------------------------------------------
 
@@ -8501,7 +8491,7 @@ ALTER TABLE `grupo_usuarios`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --

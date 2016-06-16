@@ -86,6 +86,36 @@ class Usuarios extends CI_Controller {
 				redirect('usuarios/editarPerfilT');
 			}
 		
+		 }
+        else{
+             $this->usuarios_model->subirImagen($id,'');
+            redirect('usuarios/editarPerfilT');
+        }
+    }
+     public function insertarImagenE($id){
+        $comprobarLogin=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+        $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
+        if($_FILES['imagen']['name']!=null){
+        $config = array(
+        		'upload_path' => './template/img/usuarios',
+        		'allowed_types' => "gif|jpg|png|jpeg",
+				'file_name' => $datosUsuario->id."_".$nombre.'.'.explode('.',$_FILES['imagen']['name'])[1],
+        		'overwrite' => TRUE,
+        		'max_size' => "2048000", 
+        		'max_height' => "768",
+        		'max_width' => "1024"
+        		);
+			
+			$this->upload->initialize($config);
+			
+			if(!$this->upload->do_upload('imagen')){
+				echo false;
+			}
+			else{
+                $this->usuarios_model->subirImagenE($id,$config['file_name']);
+				redirect('usuarios/editarPerfilT');
+			}
 		
     }
         else{

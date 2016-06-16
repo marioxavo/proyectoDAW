@@ -31,7 +31,7 @@
                     <div id="divMensajes" class="panel panel-primary tabla-mensajes">
                        <div class="panel-heading">Recibidos</div>
                         <table id="mensajes" class="table">
-
+                            <tr><td width="25%">De</td><td>Asunto</td></tr>
 
                         </table>
                     </div>
@@ -40,7 +40,7 @@
                     <div id="divEnviados" style="display:none;" class="panel panel-primary tabla-mensajes">
                         <div class="panel-heading">Enviados</div>
                         <table id="mensajesEnv" class="table">
-
+                            <tr><td width="25%">De</td><td>Asunto</td></tr>
 
                         </table>
                     </div>
@@ -89,7 +89,7 @@
                      for(var i=0;i<mensajes.length;i++){
                          $('#mensajes').append('<tr id="mensaje'+i+'"></tr>');
 																						
-                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td>');
+                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td><td><input type="button" class="btn btn-primary" value="Responder" onclick=responder("'+mensajes[i]['nombre']+'") style="margin-right: 6px;"/><input type="button" class="btn btn-primary" onclick="borrar('+mensajes[i]['id_mensaje']+')" value="Borrar"/></td>');
                          if(mensajes[i]['leido']==0){
                              j++;
 																										$('#columna1'+i).addClass("ee");
@@ -121,6 +121,12 @@
 																				$('#EnviadosBtn').addClass("Active");
                     $('#divEnviados').show();
                 }
+            }
+            function responder(nombre){
+                window.location="<?php echo $this->config->item('app_url').'index.php/mensajeria/redactarMensaje?nr=';?>"+nombre;
+            }
+            function borrar(id){
+                window.location="<?php echo $this->config->item('app_url').'index.php/mensajeria/borrarMensaje/';?>"+id;
             }
         </script>
     </body>

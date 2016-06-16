@@ -70,6 +70,12 @@
                 //$('#perfil').append('<div class="campo" id="titulo">'+datos['titulo_completo']+'</div>');
 															//$('#perfil').append('<div class="campo"><input type="button" value="Editar" onclick="editarPerfil()"></div>');
 															//$('#perfil').append('<div class="campo" id="descripcion">'+datos['descripcion']+'</div>');
+                if(datos['imagen']=="" || datos['imagen']==null){
+					$('#perfil').append('<div class="row"><div class="col-xs-6 col-md-2" id="imagenUser"><img style="width: 150px; height: 200px; border-radius: 10px; margin-bottom: 20px; margin-left: 15px;" src="<?php echo $this->config->item('app_url').'template/img/favicon.png'; ?>"></img></div><div class="col-xs-6 col-md-2"><form method="POST" action="<?php echo $this->config->item('app_url').'index.php/usuarios/insertarImagenE/'; ?>'+datos['id_perfil']+'" id="formularioImagen" enctype="multipart/form-data"><input name="imagen" type="file" accept="image/*" /><input type="submit" value="Enviar imagen" /></div></form></div>');
+                    }
+                    else{
+                    $('#perfil').append('<div class="row"><div class="col-xs-6 col-md-2" id="imagenUser"><img style="width: 150px; height: 200px; border-radius: 10px; margin-bottom: 20px; margin-left: 15px;" src="<?php echo $this->config->item('app_url').'template/img/usuarios/'; ?>'+datos['imagen']+'"></img></div><div class="col-xs-6 col-md-2"><form method="POST" action="<?php echo $this->config->item('app_url').'index.php/usuarios/insertarImagenE/'; ?>'+datos['id_perfil']+'" id="formularioImagen" enctype="multipart/form-data"><input name="imagen" type="file" accept="image/*" /><input type="submit" value="Enviar imagen" /></div></form></div>');
+                    }
 															$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">Nombre de Empresa</div><h4><div id="titulo" class="panel-body">'+datos['titulo_completo']+'</div></h4></div></div>');
 															$('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">Descripción</div><h4><div id="descripcion" class="panel-body">'+datos['descripcion']+'</div></h4></div></div>');
 															$('#perfil').append('<div class="panelChange"><input class="btn btn-primary col-md-12 col-xs-12" type="button" value="Editar" onclick="editarPerfil()"></div>');
@@ -87,7 +93,7 @@
             $('#perfil').fadeOut(400,function(){
                 $('#perfil').html('');
                 $('#perfil').fadeIn(400);
-               
+                
                	$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="tituloNuevo">Título:</label></h4><input type="text" class="form-control" id="tituloNuevo" aria-describedby="basic-addon3" value="'+titulo+'"></div>');
 													
 																$('#perfil').append('<div class="col-md-7"><h4><label class="label label-primary" for="descripcionNuevo">Descripción:</label></h4><textarea class="form-control" rows="5" id="descripcionNuevo">'+descripcion+'</textarea></div>');

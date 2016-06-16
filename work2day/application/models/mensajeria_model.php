@@ -175,5 +175,12 @@ class Mensajeria_model extends CI_Model
             return $lista;
         }
     }
+    public function borrarMensaje($id){
+         $data=array(
+        'id_mensaje'=> $id
+        );
+        
+        $this->db->delete('mensajes',$data);
+    }
 
 }

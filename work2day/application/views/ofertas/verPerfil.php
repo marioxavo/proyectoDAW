@@ -24,7 +24,7 @@
         </nav>
         <div class="row">
             <div id="perfil" ></div>
-            <div id="mensaje"></div>
+            
         </div>
 
     </div>

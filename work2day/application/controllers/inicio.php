@@ -33,7 +33,7 @@ class Inicio extends CI_Controller {
                 $booleano=$this->login_model->comprobarPerfilEmp($datosUsuario->id);
             }
             else{
-                redirect('administracion/ofertas');
+                redirect('administracion/usuarios');
             }
         
         if(!$booleano){

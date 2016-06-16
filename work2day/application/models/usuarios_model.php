@@ -83,7 +83,8 @@ class Usuarios_model extends CI_Model {
         
         foreach($query->result() as $row){
             $data['id_perfil']=$row->id_perfil;    
-            $data['id_usuario']=$row->id_usuario;    
+            $data['id_usuario']=$row->id_usuario; 
+             $data['imagen']=$row->imagen;
             $data['titulo_completo']=$row->titulo_completo;    
             $data['descripcion']=$row->descripcion;    
             
@@ -152,5 +153,11 @@ class Usuarios_model extends CI_Model {
         $this->db->where('id_perfil',$id);
         $this->db->update('perfiles',$data);
     }
-
+    public function subirImagenE($id,$imagen){
+        $data=array(
+        'imagen'=>$imagen
+        );
+        $this->db->where('id_perfil',$id);
+        $this->db->update('perfiles_empresa',$data);
+    }
 }

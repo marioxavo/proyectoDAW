@@ -116,7 +116,7 @@ class Mensajeria extends CI_Controller {
         $this->load->view('inicio/head.php');
         $this->load->view('mensajes/redactarmensajeadmin.php',$data);
     }
-			public function enviarMensajeAdmin(){
+public function enviarMensajeAdmin(){
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $this->form_validation->set_rules('emisor', 'emisor', 'trim|required|min_length[1]|max_length[150]');
@@ -139,5 +139,9 @@ class Mensajeria extends CI_Controller {
         else{
             redirect('mensajeria/redactarmensajeadmin/2');
         }
+    }
+    public function borrarMensaje($id){
+        $this->mensajeria_model->borrarMensaje($id);
+        redirect('mensajeria/bandejaEntrada');
     }
 }
