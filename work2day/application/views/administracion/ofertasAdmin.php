@@ -72,6 +72,9 @@
                 }
             }
             }
+            else{
+                $('#ofertas').append('<div class="alert alert-danger" role="alert">No existen ofertas</div>');
+            }
             
         });
     }

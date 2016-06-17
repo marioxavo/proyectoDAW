@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2016 a las 14:36:59
+-- Tiempo de generación: 17-06-2016 a las 20:53:34
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.21
+-- Versión de PHP: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,12 +36,12 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nombre_cat`) VALUES
-(1, 'Hosteleria'),
-(2, 'Informatica'),
+(1, 'Hostelería'),
+(2, 'Informática'),
 (4, 'Limpieza'),
-(5, 'Mecanica'),
-(6, 'Ingenieria'),
-(7, 'Educacion');
+(5, 'Mecánica'),
+(6, 'Ingeniería'),
+(7, 'Educación');
 
 -- --------------------------------------------------------
 
@@ -8260,15 +8260,16 @@ CREATE TABLE `ofertas` (
   `texto_oferta` text NOT NULL,
   `categoria` varchar(255) NOT NULL,
   `candidatos` text,
-  `id_ciudad` varchar(500) NOT NULL
+  `id_ciudad` varchar(500) NOT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ofertas`
 --
 
-INSERT INTO `ofertas` (`id_oferta`, `id_empresa`, `titulo_oferta`, `texto_oferta`, `categoria`, `candidatos`, `id_ciudad`) VALUES
-(1, 4, 'Desarrorllador web', 'Buscamos un desarrollador con conocimientos de javascript,jquery y php', 'Informatica', '2;1', '30');
+INSERT INTO `ofertas` (`id_oferta`, `id_empresa`, `titulo_oferta`, `texto_oferta`, `categoria`, `candidatos`, `id_ciudad`, `fecha_creacion`) VALUES
+(5, 7, 'Desarrollador web', 'Se necesita un informático con conocimentos en mySql,php,javascript y jquery', 'Informática', '2', '30', '2016-06-17 16:21:14');
 
 -- --------------------------------------------------------
 
@@ -8283,7 +8284,7 @@ CREATE TABLE `perfiles` (
   `habilidades` text NOT NULL,
   `estudios` text NOT NULL,
   `experiencia` text NOT NULL,
-  `imagen` varchar(500) NOT NULL
+  `imagen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -8291,8 +8292,8 @@ CREATE TABLE `perfiles` (
 --
 
 INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`, `imagen`) VALUES
-(1, 1, 'Mario Caballero Iniesta', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', '1_marioxavo.jpg'),
-(2, 2, 'Alberto Abenza', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', '2_albertiki.jpg');
+(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina', '1.jpg'),
+(2, 2, 'Alberto Abenza Romero', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', '2.jpg');
 
 -- --------------------------------------------------------
 
@@ -8305,7 +8306,7 @@ CREATE TABLE `perfiles_empresa` (
   `id_usuario` int(11) NOT NULL,
   `titulo_completo` varchar(255) NOT NULL,
   `descripcion` text NOT NULL,
-  `imagen` varchar(255) NOT NULL
+  `imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -8313,7 +8314,9 @@ CREATE TABLE `perfiles_empresa` (
 --
 
 INSERT INTO `perfiles_empresa` (`id_perfil`, `id_usuario`, `titulo_completo`, `descripcion`, `imagen`) VALUES
-(2, 4, 'AnimeEsp.Inc', 'Empresa de publicidad y marketing especializada en animación japonesa', '4_animeEsp.jpg');
+(2, 4, 'AnimeEsp.Inc', 'Lorem Ipsum Dolor et Amet', '2.jpg'),
+(3, 6, 'Alpes Sd', 'Nos dedicamos a la creación de software', '3.jpg'),
+(4, 7, 'Boogle.SL', 'Empresa de software dedicada a crear programas y entornos para las últimas tecnologías', '4.jpg');
 
 -- --------------------------------------------------------
 
@@ -8406,7 +8409,9 @@ INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `id_grupo_usuarios`
 (1, 'marioxavo', 'marioxavo@gmail.com', 'work1234', 1),
 (2, 'albertiki', 'albertiki96@gmail.com', 'albertiki', 1),
 (4, 'animeEsp', 'animeEsp@alberto.com', 'animeEsp', 2),
-(5, 'Work2day', 'work2day@work2day.es', 'work2day', 3);
+(5, 'Work2day', 'work2day@work2day.es', 'work2day', 3),
+(6, 'Alpes', 'alpes@alpes.com', 'alpes', 2),
+(7, 'Boogle', 'boogle@gmail.com', 'boogle', 2);
 
 --
 -- Índices para tablas volcadas
@@ -8491,7 +8496,7 @@ ALTER TABLE `grupo_usuarios`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --
@@ -8501,7 +8506,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
@@ -8511,7 +8516,7 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `perfiles_empresa`
 --
 ALTER TABLE `perfiles_empresa`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `provincias`
 --
@@ -8521,7 +8526,7 @@ ALTER TABLE `provincias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

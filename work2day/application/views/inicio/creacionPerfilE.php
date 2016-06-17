@@ -7,7 +7,7 @@
 <div class="navbar-wrapper">
     <div class="container">
 <div class="row">
-<h2 style="color:white;" class="col-md-offset-3 col-md-6">Empieza busacando trabajadores que se ajusten a tus exigencias</h2>
+<h2 style="color:white;" class="col-md-offset-3 col-md-6">Crea un perfil básico para tu empresa</h2>
 </div>
 <form method="POST" action="<?php echo $this->config->item('app_url').'index.php/inicio/crearPerfilEmpresa'?>">
   <fieldset class="form-group">

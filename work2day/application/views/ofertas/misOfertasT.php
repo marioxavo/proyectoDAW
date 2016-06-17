@@ -58,7 +58,7 @@
             if(ofertas[0].length!=0){
                 for(i=0;i<ofertas.length;i++){
                     $('#ofertas').append('<div id="oferta-'+ofertas[i]['id_oferta']+'"></div>');
-                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading"  class="titulo_oferta">'+ofertas[i]['titulo_oferta']+'</div><h4><div  id="nombre" class="panel-body"><b>Empresa:</b><br>  '+ofertas[i]['nombre_empresa']+'</div></h4><h4><div  class="panel-body "><b>Descripción de la oferta:</b><br>   '+ofertas[i]['texto_oferta']+'</div></h4><h4><div  class="panel-body "><b>Categoría:</b><br>'+ofertas[i]['categoria']+'</div></h4><h4><div  class="panel-body" ><b>Provincia:</b><br>'+ofertas[i]['provincia']+'</div></h4><h4><div class="panel-body candidatos" class="panel-body "><b>Candidatos:</b><br></div></h4></div></div>');
+                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading"  class="titulo_oferta">'+ofertas[i]['titulo_oferta']+'</div><h4><div  id="nombre" class="panel-body"><b>Empresa:</b><br> '+ofertas[i]['nombre_empresa']+' → <a href="<?php echo $this->config->item('app_url'); ?>index.php/mensajeria/redactarMensaje?nr='+ofertas[i]['nombre_empresa']+'">Contactar</a> <br><a href="<?php echo $this->config->item('app_url'); ?>index.php/ofertas/verPerfilE/'+ofertas[i]['id_empresa']+'">Ver perfil de la empresa</a></div></h4><h4><div  class="panel-body "><b>Descripción de la oferta:</b><br>   '+ofertas[i]['texto_oferta']+'</div></h4><h4><div  class="panel-body "><b>Categoría:</b><br>'+ofertas[i]['categoria']+'</div></h4><h4><div  class="panel-body" ><b>Provincia:</b><br>'+ofertas[i]['provincia']+'</div></h4><h4><div class="panel-body candidatos" class="panel-body "><b>Candidatos:</b><br></div></h4></div></div>');
                
                     
                     var arrayCandidatos=ofertas[i]['candidatosNombres'].split(';');
@@ -66,11 +66,13 @@
                     var arrayNumeros=ofertas[i]['candidatos'].split(';');
                     }
                     for(j=0;j<arrayCandidatos.length;j++){
-                        $('#oferta-'+ofertas[i]['id_oferta']+' .candidatos').append(''+arrayCandidatos[j]+'</a> → <a href="<?php echo $this->config->item('app_url'); ?>index.php/ofertas/verPerfil/'+arrayNumeros[j]+'">Ver perfil</a></br>');
+                        $('#oferta-'+ofertas[i]['id_oferta']+' .candidatos').append(''+arrayCandidatos[j]+' → <a href="<?php echo $this->config->item('app_url'); ?>index.php/ofertas/verPerfil/'+arrayNumeros[j]+'">Ver perfil</a></br>');
                     }
                 }
             }
-            
+            else{
+                $('#ofertas').append('<div class="alert alert-danger" role="alert">No estás apuntado a ninguna oferta</div>');
+            }
             
         });
     }

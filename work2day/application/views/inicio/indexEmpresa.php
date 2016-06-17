@@ -11,7 +11,7 @@
 				<?php include("cabecera.php"); ?>
 				</nav>
 				<div class="row">
-					<h2 style="color:white;" class="col-md-offset-3 col-md-6">Empieza busacando trabajadores que se ajusten a tus exigencias</h2>
+					<h2 style="color:white;" class="col-md-offset-3 col-md-6">Empieza buscando trabajadores que se ajusten a tus exigencias</h2>
 					<div class="col-md-6 col-md-offset-3">
 						 <div class="input-group" style="width:100%;">
                             <input type="text" class="form-control" aria-label="..." id="inputBusc"><input type="button" class="btn btn-primary" id="buscarTexto" onclick="buscar()" value="Buscar" style="width:100%;">

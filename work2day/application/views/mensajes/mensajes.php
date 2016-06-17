@@ -89,11 +89,12 @@
                      for(var i=0;i<mensajes.length;i++){
                          $('#mensajes').append('<tr id="mensaje'+i+'"></tr>');
 																						
-                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td><td><input type="button" class="btn btn-primary" value="Responder" onclick=responder("'+mensajes[i]['nombre']+'") style="margin-right: 6px;"/><input type="button" class="btn btn-primary" onclick="borrar('+mensajes[i]['id_mensaje']+')" value="Borrar"/></td>');
+                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td><td id="columna3'+i+'"><input type="button" class="btn btn-primary" value="Responder" onclick=responder("'+mensajes[i]['nombre']+'") style="margin-right: 6px;"/><input type="button" class="btn btn-primary" onclick="borrar('+mensajes[i]['id_mensaje']+')" value="Borrar"/></td>');
                          if(mensajes[i]['leido']==0){
                              j++;
 																										$('#columna1'+i).addClass("ee");
 																										$('#columna2'+i).addClass("ee");
+																										$('#columna3'+i).addClass("ee");
                          }else{
 																										
 																									}

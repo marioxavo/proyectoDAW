@@ -160,4 +160,17 @@ class Usuarios_model extends CI_Model {
         $this->db->where('id_perfil',$id);
         $this->db->update('perfiles_empresa',$data);
     }
+    public function getNombrePerfil($id){
+        $nombre="";
+        $this->db->select('nombre');
+        $this->db->from('perfiles');
+        $this->db->where('id_usuario',$id);
+        $query=$this->db->get();
+        
+        foreach($query->result() as $row){
+            $nombre=$row->nombre;
+        }
+        return $nombre;
+        
+    }
 }

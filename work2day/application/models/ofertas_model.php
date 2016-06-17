@@ -92,6 +92,7 @@ class Ofertas_model extends CI_Model
     public function ofertasCompleto(){
         $this->db->select('*');
         $this->db->from('ofertas');
+        $this->db->order_by('fecha_creacion','DESC');
         $query=$this->db->get();
         
         $data=array(array());
@@ -110,10 +111,10 @@ class Ofertas_model extends CI_Model
             $data[$i]['candidatosNombres']="";
             for($j=0;$j<count($candidatos);$j++){
                 if($data[$i]['candidatosNombres']==""){
-                    $data[$i]['candidatosNombres']=$this->mensajeria_model->getNombre($candidatos[$j]);
+                    $data[$i]['candidatosNombres']=$this->usuarios_model->getNombrePerfil($candidatos[$j]);
                 }
                 else{
-                    $data[$i]['candidatosNombres'].=';'.$this->mensajeria_model->getNombre($candidatos[$j]);
+                    $data[$i]['candidatosNombres'].=';'.$this->usuarios_model->getNombrePerfil($candidatos[$j]);
                 }
             }
             $i++;

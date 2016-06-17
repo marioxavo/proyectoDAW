@@ -76,6 +76,9 @@
                     }
                 }
             }
+            else{
+                $('#ofertas').append('<div class="alert alert-danger" role="alert">No has creado ninguna oferta</div>')
+            }
             
             
         });
