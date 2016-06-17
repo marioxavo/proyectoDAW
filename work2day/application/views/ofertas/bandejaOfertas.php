@@ -1,6 +1,7 @@
 
 <!-- NAVBAR
 ================================================== -->
+
 <body class="colorFondo">
 <div class="navbar-wrapper">
     <div class="container">
@@ -62,7 +63,7 @@
             if(ofertas[0].length!=0){
                 for(i=0;i<ofertas.length;i++){
                     $('#ofertas').append('<div id="oferta-'+ofertas[i]['id_oferta']+'"></div>');
-                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">'+ofertas[i]['nombre_empresa']+'</div><h4><div class="titulo_oferta" class="panel-body">'+ofertas[i]['titulo_oferta']+'</div></h4><h4><div class="texto_oferta" class="panel-body">'+ofertas[i]['texto_oferta']+'</div></h4><h4><div class="categoria" class="panel-body">'+ofertas[i]['categoria']+'</div></h4><h4><div class="municipio" class="panel-body">'+ofertas[i]['provincia']+'</div></h4><h4><div class="candidatos" class="panel-body"></div></h4></div></div>');
+                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-7 col-xs-7"><div class="panel panel-primary "><div class="panel-heading titulo_oferta" >'+ofertas[i]['titulo_oferta']+'</div><h4><div id="nombre" class="panel-body"><b>Empresa:</b><br>'+ofertas[i]['nombre_empresa']+'</div></h4><h4><label class="panel-body">Descripión de la oferta:</label><div class=" panel-body texto_oferta">'+ofertas[i]['texto_oferta']+'</div></h4><h4><div class="panel-body categoria" ><b>Categoría:</b><br>'+ofertas[i]['categoria']+'</div></h4><h4><div class=" panel-body municipio"><b>Provincia:</b><br>'+ofertas[i]['provincia']+'</div></h4><h4><div class="panel-body candidatos"><b>Candidatos</b><br></div></h4></div></div>');
                     $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Editar" onclick="editarOferta('+ofertas[i]['id_oferta']+')"></div>');
                     var arrayCandidatos=ofertas[i]['candidatosNombres'].split(';');
                    if(ofertas[i]['candidatos']!=null){
@@ -109,7 +110,7 @@
 					$('#ofertas').html('');
 					$('#ofertas').fadeIn(400);
 					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="texto_oferta">Puesto</label></h4><input type="text" class="form-control" id="titulo_oferta" aria-describedby="basic-addon3" value="'+titulo+'"></div>');
-					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="texto_oferta">Nombre</label></h4><input type="text" class="form-control" id="texto_oferta" aria-describedby="basic-addon3" value="'+texto+'"></div>');
+					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="texto_oferta">Descripción</label></h4><input type="text" class="form-control" id="texto_oferta" aria-describedby="basic-addon3" value="'+texto+'"></div>');
 					
 					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="categoria">Categoria</label></h4><select class="form-control" id="categoria"></select>');
                     for(i=0;i<categorias.length;i++){
