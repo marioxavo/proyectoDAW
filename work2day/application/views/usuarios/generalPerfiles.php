@@ -62,7 +62,7 @@
     function mostrarDatosPerfil(datos){
 
         
-            
+            if(datos[0].length!=0){
                 for(i=0;i<datos.length;i++){
                     var nombreUser=datos[i]['nombre_user'];
                     $('#perfiles').append('<div id="perfil-'+datos[i]['id_perfil']+'"></div>');
@@ -74,11 +74,15 @@
                     }
                     $('#perfil-'+datos[i]['id_perfil']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">Nombre</div><h4><div id="nombreValue" class="panel-body">'+datos[i]['nombre']+'</div></h4></div></div>');
                     $('#perfil-'+datos[i]['id_perfil']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="habilidades">Habilidades</div><h4><div id="habilidadesValue" class="panel-body">'+datos[i]['habilidades']+'</div></h4></div></div>');
-                    $('#perfil-'+datos[i]['id_perfil']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="estudios">Estudios</div><h4><div id="estudiosValue" class="panel-body">'+datos[i]['estudios']+'</div></h4></div></div>');
-                    $('#perfil-'+datos[i]['id_perfil']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="experiencia">Experiencia</div><h4><div id="experienciaValue" class="panel-body">'+datos[i]['experiencia']+'</div></h4></div></div>');
+                    $('#perfil-'+datos[i]['id_perfil']).append('<div class="col-md-4"><div class="panel panel-primary "><div class="panel-heading" id="estudios">Estudios</div><h4><div id="estudiosValue" class="panel-body">'+datos[i]['estudios']+'</div></h4></div></div>');
+                    $('#perfil-'+datos[i]['id_perfil']).append('<div class="col-md-4"><div class="panel panel-primary "><div class="panel-heading" id="experiencia">Experiencia</div><h4><div id="experienciaValue" class="panel-body">'+datos[i]['experiencia']+'</div></h4></div></div>');
+                    $('#perfil-'+datos[i]['id_perfil']).append('<div class="col-md-4"><div class="panel panel-primary "><div class="panel-heading" id="ciudad">Ciudad</div><h4><div id="ciudadValue" class="panel-body">'+datos[i]['provincia']+'</div></h4></div></div>');
                     $('#perfil-'+datos[i]['id_perfil']).append('<div class="botones col-md-12 col-xs-12" style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Contactar" onclick=contactar("'+nombreUser+'")></div>');
                 }
-            
+            }
+        else{
+             $('#perfiles').append('<div class="alert alert-danger" role="alert">No hay trabajadores con estas características disponibles</div>');
+        }
             
         
         

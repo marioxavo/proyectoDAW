@@ -112,8 +112,9 @@ class Inicio extends CI_Controller {
         $comprobarLogin=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
         
+        $provincias=$this->ofertas_model->sacarProvincias();
         if($datosUsuario->id_grupo_usuarios == 1){
-            $data=array('datosUsuario' => $datosUsuario,'mensaje' => "");
+            $data=array('datosUsuario' => $datosUsuario,'mensaje' => "",'provincias' => $provincias);
             $this->load->view('inicio/creacionPerfilT.php',$data);
         }
         else if($datosUsuario->id_grupo_usuarios == 2){
@@ -135,7 +136,8 @@ class Inicio extends CI_Controller {
 			$estudios = $this->input->post('estudios');
 			$experiencia = $this->input->post('experiencia');
 			$habilidades = $this->input->post('habilidades');
-            $this->login_model->insertarPerfil($nombre,$estudios,$experiencia,$habilidades,$datosUsuario->id);
+            $ciudad=$this->input->post('ciudad');
+            $this->login_model->insertarPerfil($nombre,$estudios,$experiencia,$habilidades,$datosUsuario->id,$ciudad);
             
             $nombre=$datosUsuario->nombre;
                 redirect('inicio/portada');

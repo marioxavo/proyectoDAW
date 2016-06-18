@@ -28,6 +28,14 @@
     <label for="habilidades">Habilidades</label>
       <textarea class="form-control" id="habilidades" name="habilidades"></textarea>
   </fieldset>
+      <fieldset class="form-group">
+    <label for="habilidades">Habilidades</label>
+      <select class="form-control" id="ciudad" name="ciudad">
+          <?php foreach($provincias as $provincia){ ?>
+                                        <option value="<?= $provincia['id'];?>"><?= $provincia['provincia']; ?></option>
+                                    <?php } ?>
+          </select>
+  </fieldset>
      <button type="submit" class="btn btn-primary">Enviar</button>
     <?php
     if($mensaje!=""){

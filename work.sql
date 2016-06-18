@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2016 a las 20:53:34
+-- Tiempo de generación: 18-06-2016 a las 16:20:32
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -42,30 +42,6 @@ INSERT INTO `categorias` (`id`, `nombre_cat`) VALUES
 (5, 'Mecánica'),
 (6, 'Ingeniería'),
 (7, 'Educación');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ci_sessions`
---
-
-CREATE TABLE `ci_sessions` (
-  `id` varchar(40) NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `data` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `ci_sessions`
---
-
-INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('5f51747d640e57351d0ebc66730ffbd028731bcb', '::1', 1462915796, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436323931353539393b6e6f6d6272657c733a393a22616c62657274696b69223b6c6f6767696e7c623a313b),
-('6d55a099f8ec1ff0881337926e6e5f45065e487b', '::1', 1462779788, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436323737393734303b),
-('7e21c9249c2392fd51d4ebe640f5d6a1b75b29bd', '::1', 1462915726, 0x5f5f63695f6c6173745f726567656e65726174657c693a313436323931353639333b),
-('8a7a19db0cfebe78cea1f977353935a1d3a99b4b', '::1', 1462779926, 0x6e6f6d6272657c733a393a22616c62657274696b69223b6c6f6767696e7c623a313b5f5f63695f6c6173745f726567656e65726174657c693a313436323737393735303b),
-('f6e706df0cf5d00c91d16387d94ee91e6bab7dc6', '::1', 1462780274, 0x6e6f6d6272657c733a393a22616c62657274696b69223b6c6f6767696e7c623a313b5f5f63695f6c6173745f726567656e65726174657c693a313436323738303237343b);
 
 -- --------------------------------------------------------
 
@@ -8260,16 +8236,9 @@ CREATE TABLE `ofertas` (
   `texto_oferta` text NOT NULL,
   `categoria` varchar(255) NOT NULL,
   `candidatos` text,
-  `id_ciudad` varchar(500) NOT NULL,
+  `id_ciudad` int(11) NOT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `ofertas`
---
-
-INSERT INTO `ofertas` (`id_oferta`, `id_empresa`, `titulo_oferta`, `texto_oferta`, `categoria`, `candidatos`, `id_ciudad`, `fecha_creacion`) VALUES
-(5, 7, 'Desarrollador web', 'Se necesita un informático con conocimentos en mySql,php,javascript y jquery', 'Informática', '2', '30', '2016-06-17 16:21:14');
 
 -- --------------------------------------------------------
 
@@ -8284,16 +8253,16 @@ CREATE TABLE `perfiles` (
   `habilidades` text NOT NULL,
   `estudios` text NOT NULL,
   `experiencia` text NOT NULL,
-  `imagen` varchar(255) NOT NULL
+  `imagen` varchar(255) NOT NULL,
+  `id_ciudad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `perfiles`
 --
 
-INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`, `imagen`) VALUES
-(1, 1, 'Mario Caballero Iniesta', 'Makina', 'Makina', 'Makina', '1.jpg'),
-(2, 2, 'Alberto Abenza Romero', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', '2.jpg');
+INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`, `imagen`, `id_ciudad`) VALUES
+(4, 9, 'Trabajador', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', '9.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -8314,9 +8283,7 @@ CREATE TABLE `perfiles_empresa` (
 --
 
 INSERT INTO `perfiles_empresa` (`id_perfil`, `id_usuario`, `titulo_completo`, `descripcion`, `imagen`) VALUES
-(2, 4, 'AnimeEsp.Inc', 'Lorem Ipsum Dolor et Amet', '2.jpg'),
-(3, 6, 'Alpes Sd', 'Nos dedicamos a la creación de software', '3.jpg'),
-(4, 7, 'Boogle.SL', 'Empresa de software dedicada a crear programas y entornos para las últimas tecnologías', '4.jpg');
+(5, 10, 'Empresa.SL', 'Lorem Ipsum Dolor et amet', '10.jpg');
 
 -- --------------------------------------------------------
 
@@ -8406,12 +8373,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `id_grupo_usuarios`) VALUES
-(1, 'marioxavo', 'marioxavo@gmail.com', 'work1234', 1),
-(2, 'albertiki', 'albertiki96@gmail.com', 'albertiki', 1),
-(4, 'animeEsp', 'animeEsp@alberto.com', 'animeEsp', 2),
 (5, 'Work2day', 'work2day@work2day.es', 'work2day', 3),
-(6, 'Alpes', 'alpes@alpes.com', 'alpes', 2),
-(7, 'Boogle', 'boogle@gmail.com', 'boogle', 2);
+(9, 'trabajador', 't@trabajador.com', 'trabajador', 1),
+(10, 'Empresa', 'empresa@empresa.com', 'empresa', 2);
 
 --
 -- Índices para tablas volcadas
@@ -8422,13 +8386,6 @@ INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `id_grupo_usuarios`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `ci_sessions`
---
-ALTER TABLE `ci_sessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
 -- Indices de la tabla `grupo_usuarios`
@@ -8496,7 +8453,7 @@ ALTER TABLE `grupo_usuarios`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --
@@ -8506,17 +8463,17 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_empresa`
 --
 ALTER TABLE `perfiles_empresa`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `provincias`
 --
@@ -8526,7 +8483,7 @@ ALTER TABLE `provincias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

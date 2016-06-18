@@ -56,9 +56,10 @@ class Ofertas extends CI_Controller {
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$datosUsuario->nombre;
         
+        $mensaje="Últimas ofertas";
         $ofertas=$this->ofertas_model->ofertasCompleto();
         
-        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios,'mensaje' => $mensaje);
         
         $this->load->view('inicio/head.php');
         $this->load->view('ofertas/generalOfertas',$data);

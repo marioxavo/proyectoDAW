@@ -5,8 +5,28 @@
         <nav class="navbar navbar-inverse navbar-static-top">
            <?php include("cabecera.php"); ?>
         </nav>
+        <div class="row" style="margin-bottom: 80px;">
+                    <h3 style="color:white;" class="col-md-offset-3 col-md-6">Realizar otra busqueda</h3>
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="input-group" style="width: 100%;">
+                            <input type="text" class="form-control" aria-label="..." id="inputBusc"><select id="sCiudad" class="form-control" style="overflow-y: scroll; max-height:250px;">
+                            <option value=0>Todas</option>
+                            <?php foreach($provincias as $provincia){ ?>
+                                        <option value="<?= $provincia['id'];?>"><?= $provincia['provincia']; ?></option>
+                                    <?php } ?>
+                            </select>
+                        
+                        
+                            
+                            <input type="button" class="btn btn-primary" id="buscarTexto" onclick="buscar()" value="Buscar" style="width: 100%;" >
+                        </div>
+                    </div><!-- /.col-lg-6 -->
+                </div>
         <div class="row">
-            
+         <h3 style="color:white;" class="col-md-12"><?= $mensaje;?></h3>
+        </div>
+        <div class="row">
+           
             <div id="ofertas">
             </div>
 
@@ -85,6 +105,12 @@
                 mostrarOfertas(data);
             },'json');
     }
+    function buscar(){
+            var texto="";
+            texto=document.getElementById('inputBusc').value;
+            var ciudad=document.getElementById('sCiudad').value;
+            window.location='<?php echo $this->config->item('app_url').'index.php/busquedas/buscarGeneral?texto=';?>'+texto+'&ciudad='+ciudad;
+        }
     
     
 </script>

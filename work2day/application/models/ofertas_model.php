@@ -28,6 +28,7 @@ class Ofertas_model extends CI_Model
         $this->db->select('*');
         $this->db->from('ofertas');
         $this->db->where('candidatos LIKE','%'.$id.'%');
+         $this->db->order_by('fecha_creacion','DESC');
         $query=$this->db->get();
         
         $data=array(array());
@@ -61,6 +62,7 @@ class Ofertas_model extends CI_Model
         $this->db->select('*');
         $this->db->from('ofertas');
         $this->db->where('id_empresa',$id);
+         $this->db->order_by('fecha_creacion','DESC');
         $query=$this->db->get();
         
         $data=array(array());
@@ -260,54 +262,20 @@ class Ofertas_model extends CI_Model
         }
         return $data;
     }
-    public function buscarCiudad($ciudad){
-        /*$this->db->select('id');
-        $this->db->from('provincias');
-        $this->db->where('provincia',$ciudad);
-        $query=$this->db->get();
-        $id_ciudad=1;
-        foreach($query->result() as $row){
-            $id_ciudad=$row->id;
-        }*/
-        
+    
+    public function buscarGeneral($texto="",$ciudad=0){
         $this->db->select('*');
         $this->db->from('ofertas');
-        $this->db->where('id_ciudad',$ciudad);
-        $query=$this->db->get();
-        
-        $data=array(array());
-        $i=0;
-        foreach($query->result() as $row){
-            $data[$i]['id_oferta']=$row->id_oferta;
-            $data[$i]['id_empresa']=$row->id_empresa;
-            
-            $data[$i]['titulo_oferta']=$row->titulo_oferta;
-            $data[$i]['texto_oferta']=$row->texto_oferta;
-            $data[$i]['nombre_empresa']=$this->mensajeria_model->getNombre($row->id_empresa);
-            $data[$i]['categoria']=$row->categoria;
-            $data[$i]['candidatos']=$row->candidatos;
-             $candidatos=explode(';',$row->candidatos);
-            $data[$i]['provincia']=$this->sacarProvincia($row->id_ciudad);
-            $data[$i]['candidatosNombres']="";
-            for($j=0;$j<count($candidatos);$j++){
-                if($data[$i]['candidatosNombres']==""){
-                    $data[$i]['candidatosNombres']=$this->mensajeria_model->getNombre($candidatos[$j]);
-                }
-                else{
-                    $data[$i]['candidatosNombres'].=';'.$this->mensajeria_model->getNombre($candidatos[$j]);
-                }
-            }
-            $i++;
+        if($ciudad!=0){
+        $this->db->where('id_ciudad',$ciudad);    
         }
-        return $data;
-    }
-    public function buscarGeneral($texto){
-        $this->db->select('*');
-        $this->db->from('ofertas');
+        if($texto!=""){
         $this->db->where('titulo_oferta LIKE','%'.$texto.'%');
         $this->db->or_where('titulo_oferta LIKE','%'.$texto.'%');
         $this->db->or_where('texto_oferta LIKE','%'.$texto.'%');
         $this->db->or_where('categoria LIKE','%'.$texto.'%');
+        }
+         $this->db->order_by('fecha_creacion','DESC');
         $query=$this->db->get();
         
         $data=array(array());
@@ -336,13 +304,18 @@ class Ofertas_model extends CI_Model
         }
         return $data;
     }
-    public function buscarPerfiles($texto){
+    public function buscarPerfiles($texto="",$ciudad=0){
         $this->db->select('*');
         $this->db->from('perfiles');
+        if($ciudad!=0){
+            $this->db->where('id_ciudad',$ciudad);
+        }
+        if($texto!=""){
         $this->db->where('nombre LIKE','%'.$texto.'%');
         $this->db->or_where('habilidades LIKE','%'.$texto.'%');
         $this->db->or_where('estudios LIKE','%'.$texto.'%');
         $this->db->or_where('experiencia LIKE','%'.$texto.'%');
+        }
         $query=$this->db->get();
         
         $data=array(array());
@@ -353,6 +326,8 @@ class Ofertas_model extends CI_Model
             $data[$i]['nombre']=$row->nombre;    
             $data[$i]['habilidades']=$row->habilidades;  
             $data[$i]['imagen']=$row->imagen;
+            $data[$i]['id_ciudad']=$row->id_ciudad;
+            $data[$i]['provincia']=$this->sacarProvincia($row->id_ciudad);
             $data[$i]['estudios']=$row->estudios;    
             $data[$i]['experiencia']=$row->experiencia;
             $data[$i]['nombre_user']=$this->mensajeria_model->getNombre($row->id_usuario);

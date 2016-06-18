@@ -91,7 +91,7 @@
 					$('#ofertas').html('');
 					$('#ofertas').fadeIn(400);
 					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="titulo_oferta">Puesto</label></h4><input type="text" class="form-control" id="titulo_oferta" aria-describedby="basic-addon3"></div>');
-					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="texto_oferta">Nombre</label></h4><input type="text" class="form-control" id="texto_oferta" aria-describedby="basic-addon3"></div>');
+					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="texto_oferta">Especificaciones</label></h4><input type="text" class="form-control" id="texto_oferta" aria-describedby="basic-addon3"></div>');
 					$('#ofertas').append('<div class="col-md-7"><h4><label class="label label-primary" for="categoria">Categoria</label></h4><select class="form-control" id="categoria"></select>');
                     for(i=0;i<categorias.length;i++){
                         $('#categoria').append('<option>'+categorias[i]['nombre']+'</option>');

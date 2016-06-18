@@ -89,13 +89,14 @@ public function comprobarUsuario($nombre,$password){
         return $booleano;
         }
     }
-    public function insertarPerfil($nombre,$estudios,$experiencia,$habilidades,$id_usuario){
+    public function insertarPerfil($nombre,$estudios,$experiencia,$habilidades,$id_usuario,$ciudad){
         $data=array(
         'id_usuario' => $id_usuario,
             'nombre' => $nombre,
             'estudios' => $estudios,
             'experiencia' => $experiencia,
-            'habilidades' =>$habilidades
+            'habilidades' =>$habilidades,
+            'id_ciudad' => $ciudad
         );
         $this->db->insert('perfiles',$data);
         

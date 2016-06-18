@@ -73,8 +73,9 @@
             }
             $('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="nombre">Nombre</div><h4><div id="nombreValue" class="panel-body">'+datos['nombre']+'</div></h4></div></div>');
             $('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="habilidades">Habilidades</div><h4><div id="habilidadesValue" class="panel-body">'+datos['habilidades']+'</div></h4></div></div>');
-            $('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="estudios">Estudios</div><h4><div id="estudiosValue" class="panel-body">'+datos['estudios']+'</div></h4></div></div>');
-            $('#perfil').append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" id="experiencia">Experiencia</div><h4><div id="experienciaValue" class="panel-body">'+datos['experiencia']+'</div></h4></div></div>');
+            $('#perfil').append('<div class="col-md-4"><div class="panel panel-primary "><div class="panel-heading" id="estudios">Estudios</div><h4><div id="estudiosValue" class="panel-body">'+datos['estudios']+'</div></h4></div></div>');
+            $('#perfil').append('<div class="col-md-4"><div class="panel panel-primary "><div class="panel-heading" id="experiencia">Experiencia</div><h4><div id="experienciaValue" class="panel-body">'+datos['experiencia']+'</div></h4></div></div>');
+            $('#perfil').append('<div class="col-md-4"><div class="panel panel-primary "><div class="panel-heading" id="ciudad">Ciudad</div><h4><div id="ciudadValue" class="panel-body">'+datos['provincia']+'</div></h4></div></div>');
         });
 
     }

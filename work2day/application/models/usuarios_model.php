@@ -64,6 +64,8 @@ class Usuarios_model extends CI_Model {
             $data['nombre']=$row->nombre;    
             $data['habilidades']=$row->habilidades;  
             $data['imagen']=$row->imagen;
+            $data['id_ciudad']=$row->id_ciudad;
+            $data['provincia']=$this->ofertas_model->sacarProvincia($row->id_ciudad);
             $data['estudios']=$row->estudios;    
             $data['experiencia']=$row->experiencia;
             
@@ -92,12 +94,13 @@ class Usuarios_model extends CI_Model {
         
         return $data;
     }
-    public function actualizarPerfil($id,$nombre,$habilidades,$estudios,$experiencia){
+    public function actualizarPerfil($id,$nombre,$habilidades,$estudios,$experiencia,$ciudad){
         $data=array(
         'nombre' => $nombre,
         'habilidades' => $habilidades,
         'estudios' => $estudios,
-        'experiencia' => $experiencia
+        'experiencia' => $experiencia,
+        'id_ciudad' => $ciudad
         );
         $this->db->where('id_usuario',$id);
         $this->db->update('perfiles',$data);
@@ -114,8 +117,7 @@ class Usuarios_model extends CI_Model {
         
         return json_encode($this->sacarPerfilEmpresa($id));
     }
-	
-				 public function sacarCuenta($id){
+	public function sacarCuenta($id){
         $this->db->select('*');
         $this->db->from('usuarios');
         $this->db->where('id',$id);

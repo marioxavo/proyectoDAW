@@ -18,19 +18,18 @@
                 <div class="row">
                     <h2 style="color:white;" class="col-md-offset-3 col-md-6">Empieza buscando ofertas en tu ciudad</h2>
                     <div class="col-md-6 col-md-offset-3">
-                        <div class="input-group" style="width:100%;">
-                            <input type="text" class="form-control" aria-label="..." id="inputBusc"><input type="button" class="btn btn-primary" id="buscarTexto" onclick="buscar()" value="Buscar" style="width:100%;">
-                        
-                        </div> 
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ciudad <span class="caret"></span></button>
-                                <ul style="overflow-y: scroll; max-height: 200px;" class="dropdown-menu dropdown-menu-right">
-                                    <?php foreach($provincias as $provincia){ ?>
-                                        <li><a href="<?php echo $this->config->item('app_url').'index.php/busquedas/buscarCiudad/'.$provincia['id'];?>"><?= $provincia['provincia']; ?></a></li>
+                        <div class="input-group" style="width: 100%;">
+                            <input type="text" class="form-control" aria-label="..." id="inputBusc"><select id="sCiudad" class="form-control" style="overflow-y: scroll; max-height:250px;">
+                            <option value=0>Todas</option>
+                            <?php foreach($provincias as $provincia){ ?>
+                                        <option value="<?= $provincia['id'];?>"><?= $provincia['provincia']; ?></option>
                                     <?php } ?>
-                                </ul>
-                            </div><!-- /btn-group -->
-                       
+                            </select>
+                        
+                        
+                            
+                            <input type="button" class="btn btn-primary" id="buscarTexto" onclick="buscar()" value="Buscar" style="width: 100%;" >
+                        </div>
                     </div><!-- /.col-lg-6 -->
                 </div>
                 <div class="row marginCategorias">
@@ -142,7 +141,8 @@
         function buscar(){
             var texto="";
             texto=document.getElementById('inputBusc').value;
-            window.location='<?php echo $this->config->item('app_url').'index.php/busquedas/buscarGeneral/';?>'+texto;
+            var ciudad=document.getElementById('sCiudad').value;
+            window.location='<?php echo $this->config->item('app_url').'index.php/busquedas/buscarGeneral?texto=';?>'+texto+'&ciudad='+ciudad;
         }
         </script>
     </body>
