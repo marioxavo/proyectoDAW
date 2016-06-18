@@ -17,7 +17,7 @@
             <li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/sacarOfertas">Buscar ofertas</a></li>
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/misOfertasT">Mis ofertas</a></li>
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contacto</a></li>
+			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contáctanos</a></li>
 			<li class="dropdown derecha">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?><span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -34,7 +34,7 @@
            <li><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas">Mis ofertas</a></li>
 			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contacto</a></li>
+			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contáctanos</a></li>
 			<li class="dropdown derecha">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?><span class="caret"></span></a>
 				<ul class="dropdown-menu">

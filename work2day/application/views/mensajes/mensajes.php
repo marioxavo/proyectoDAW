@@ -40,7 +40,7 @@
                     <div id="divEnviados" style="display:none;" class="panel panel-primary tabla-mensajes">
                         <div class="panel-heading">Enviados</div>
                         <table id="mensajesEnv" class="table">
-                            <tr><td width="25%">De</td><td>Asunto</td></tr>
+                            <tr><td width="25%">Para</td><td>Asunto</td></tr>
 
                         </table>
                     </div>
