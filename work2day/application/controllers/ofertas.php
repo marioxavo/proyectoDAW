@@ -41,10 +41,9 @@ class Ofertas extends CI_Controller {
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$datosUsuario->nombre;
-        
+         $provincias=$this->ofertas_model->mostrarProvincias();
         $ofertas=$this->ofertas_model->sacarOfertas($datosUsuario->id);
         $categorias=$this->ofertas_model->sacarCategorias();
-        $provincias=$this->ofertas_model->mostrarProvincias();
         
         $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios,'categorias' => $categorias,'provincias' => $provincias);
         
@@ -55,11 +54,13 @@ class Ofertas extends CI_Controller {
          $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$datosUsuario->nombre;
+       
         
         $mensaje="Últimas ofertas";
         $ofertas=$this->ofertas_model->ofertasCompleto();
+        $provincias=$this->ofertas_model->sacarProvincias();
         
-        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios,'mensaje' => $mensaje);
+        $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'ofertas' => $ofertas,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios,'mensaje' => $mensaje,'provincias' => $provincias);
         
         $this->load->view('inicio/head.php');
         $this->load->view('ofertas/generalOfertas',$data);

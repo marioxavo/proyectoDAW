@@ -63,7 +63,7 @@
                     $('#usuario-'+usuarios[i]['id']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" >Nombre</div><h4><div class="panel-body">'+usuarios[i]['nombre']+'</div></h4></div></div>');
                     $('#usuario-'+usuarios[i]['id']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" >Email</div><h4><div class="panel-body">'+usuarios[i]['email']+'</div></h4></div></div>');
 					$('#usuario-'+usuarios[i]['id']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" >Grupo usuarios</div><h4><div class="panel-body">'+usuarios[i]['grupo_usuarios']+'</div></h4></div></div>');
-                    $('#usuario-'+usuarios[i]['id']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Ver Perfil" onclick="verPerfil('+usuarios[i]['id']+')"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Borrar" onclick="borrarUsuario('+usuarios[i]['id']+')"></div>');
+                    $('#usuario-'+usuarios[i]['id']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Ver Perfil" onclick="verPerfil('+usuarios[i]['id']+','+usuarios[i]['id_grupo_usuarios']+')" style="margin-right: 5px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Ver Mensajes" onclick="verMensajes('+usuarios[i]['id']+')" style="margin-right: 5px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Borrar" onclick="borrarUsuario('+usuarios[i]['id']+')"></div>');
                     
                 }
             }
@@ -77,9 +77,18 @@
                 mostrarUsuarios(data);
            },'json');
     }
-    function verPerfil(id){
+    function verPerfil(id,id_grupo_usuarios){
+        if(id_grupo_usuarios==1){
         window.location="<?php echo $this->config->item('app_url').'index.php/ofertas/verPerfil/';?>"+id;
+        }
+        else{
+            window.location="<?php echo $this->config->item('app_url').'index.php/ofertas/verPerfilE/';?>"+id;
+        }
     }
+    function verMensajes(id){
+         window.location="<?php echo $this->config->item('app_url').'index.php/mensajeria/verMensajesUser/';?>"+id;
+    }
+    
    
    
     

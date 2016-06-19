@@ -12,7 +12,19 @@ class Mensajeria extends CI_Controller {
     public function index(){
         redirect('mensajeria/bandejaEntrada');
     }
-
+    public function verMensajesUser($id){
+        $daniel=$this->login_work->isLogged();
+        $datosUsuario=$this->login_model->verUsuario($daniel);
+        $nombre=$this->mensajeria_model->getNombre($datosUsuario->id);
+        
+        $mensajes=$this->mensajeria_model->sacarMensajesCompleto($id);
+        $recibidos=json_encode($mensajes['recibidos']);
+        $enviados=json_encode($mensajes['enviados']);
+        
+          $data=array('id_usuario' => $datosUsuario->id,'recibidos' => $recibidos ,'enviados' => $enviados, 'nombre' => $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+         $this->load->view('inicio/head.php');
+        $this->load->view('mensajes/mensajesUsuario.php',$data);
+    }
     public function leermensaje($id_mensaje){
         $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);

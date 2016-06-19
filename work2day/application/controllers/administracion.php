@@ -12,18 +12,23 @@ class Administracion extends CI_Controller {
          $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$datosUsuario->nombre;
-        
+        if($datosUsuario->id_grupo_usuarios==3){
         $usuarios=$this->usuarios_model->sacarUsuarios();
         
         $data=array('id_usuario' => $datosUsuario->id,'nombre' => $nombre,'usuarios' => $usuarios,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
         
         $this->load->view('inicio/head.php');
         $this->load->view('administracion/usuariosAdmin.php',$data);
+        }
+        else{
+            redirect('inicio/login');
+        }
     }
     public function ofertas(){
          $daniel=$this->login_work->isLogged();
         $datosUsuario=$this->login_model->verUsuario($daniel);
         $nombre=$datosUsuario->nombre;
+        if($datosUsuario->id_grupo_usuarios==3){
         
         $ofertas=$this->ofertas_model->ofertasCompleto();
         
@@ -31,6 +36,10 @@ class Administracion extends CI_Controller {
         
         $this->load->view('inicio/head.php');
         $this->load->view('administracion/ofertasAdmin.php',$data);
+        }
+        else{
+            redirect('inicio/login');
+        }
     }
     public function borrarUsuario($id){
          $usuarios=$this->usuarios_model->borrarUsuario($id);

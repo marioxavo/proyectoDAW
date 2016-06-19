@@ -39,6 +39,11 @@ class Usuarios_model extends CI_Model {
         $this->db->delete('perfiles',$dataPerfil);
         $this->db->delete('perfiles_empresa',$dataPerfil);
         
+        $dataMensaje=array(
+            'id_emisor' => $id
+        );
+        $this->db->delete('mensajes',$dataMensaje);
+        
         $data=array(
             'id' => $id
         );

@@ -86,6 +86,15 @@ class Ofertas_model extends CI_Model
                     $data[$i]['candidatosNombres'].=';'.$this->mensajeria_model->getNombre($candidatos[$j]);
                 }
             }
+            $data[$i]['candidatosNombresPerfil']="";
+            for($j=0;$j<count($candidatos);$j++){
+                if($data[$i]['candidatosNombresPerfil']==""){
+                    $data[$i]['candidatosNombresPerfil']=$this->usuarios_model->getNombrePerfil($candidatos[$j]);
+                }
+                else{
+                    $data[$i]['candidatosNombresPerfil'].=';'.$this->usuarios_model->getNombrePerfil($candidatos[$j]);
+                }
+            }
             $i++;
         }
         return $data;

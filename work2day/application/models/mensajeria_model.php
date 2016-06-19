@@ -182,5 +182,50 @@ class Mensajeria_model extends CI_Model
         
         $this->db->delete('mensajes',$data);
     }
+    public function sacarMensajesCompleto($id_usuario){
+         $this->db->select('*');
+        $this->db->from('mensajes');
+        $this->db->where('id_emisor', $id_usuario);
+        $this->db->order_by('fecha', "desc");
+
+        $query = $this->db->get();
+
+        $dataEnviados = array(array());
+        $i=0;
+        foreach ($query->result() as $row) {
+            $dataEnviados[$i]['id_mensaje'] = $row->id_mensaje;
+            $dataEnviados[$i]['id_emisor'] = $row->id_emisor;
+            $dataEnviados[$i]['id_receptor'] = $row->id_receptor;
+            $dataEnviados[$i]['asunto'] = $row->asunto;
+            $dataEnviados[$i]['mensaje'] = $row->mensaje;
+            $dataEnviados[$i]['fecha'] = $row->fecha;
+            $dataEnviados[$i]['leido'] = $row->leido;
+            $dataEnviados[$i]['nombre'] = $this->getNombre($row->id_receptor);
+            $i++;
+        }
+        
+        $this->db->select('*');
+        $this->db->from('mensajes');
+        $this->db->where('id_receptor', $id_usuario);
+        $this->db->order_by('fecha', "desc");
+        $query = $this->db->get();
+
+        $data = array(array());
+        $i=0;
+        foreach ($query->result() as $row) {
+            $data[$i]['id_mensaje'] = $row->id_mensaje;
+            $data[$i]['id_emisor'] = $row->id_emisor;
+            $data[$i]['id_receptor'] = $row->id_receptor;
+            $data[$i]['asunto'] = $row->asunto;
+            $data[$i]['mensaje'] = $row->mensaje;
+            $data[$i]['fecha'] = $row->fecha;
+            $data[$i]['leido'] = $row->leido;
+            $data[$i]['nombre'] = $this->getNombre($row->id_emisor);
+            $i++;
+        }
+        $mensajes=array('enviados' => $dataEnviados, 'recibidos' => $data);
+        return $mensajes;
+        
+    }
 
 }

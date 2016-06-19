@@ -66,12 +66,13 @@
                     $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-7 col-xs-7"><div class="panel panel-primary "><div class="panel-heading titulo_oferta" >'+ofertas[i]['titulo_oferta']+'</div><h4><div id="nombre" class="panel-body"><b>Empresa:</b><br>'+ofertas[i]['nombre_empresa']+'</div></h4><h4><label class="panel-body">Descripión de la oferta:</label><div class=" panel-body texto_oferta">'+ofertas[i]['texto_oferta']+'</div></h4><h4><div class="panel-body categoria" ><b>Categoría:</b><br>'+ofertas[i]['categoria']+'</div></h4><h4><div class=" panel-body municipio"><b>Provincia:</b><br>'+ofertas[i]['provincia']+'</div></h4><h4><div class="panel-body candidatos"><b>Candidatos</b><br></div></h4></div></div>');
                     $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Editar" onclick="editarOferta('+ofertas[i]['id_oferta']+')"></div>');
                     var arrayCandidatos=ofertas[i]['candidatosNombres'].split(';');
+                    var arrayCandidatosPerfil=ofertas[i]['candidatosNombresPerfil'].split(';');
                    if(ofertas[i]['candidatos']!=null){
                     var arrayNumeros=ofertas[i]['candidatos'].split(';');
                     }
                     for(j=0;j<arrayCandidatos.length;j++){
                         if(arrayCandidatos[j]!=""){
-                        $('#oferta-'+ofertas[i]['id_oferta']+' .candidatos').append('<a href="<?php echo $this->config->item('app_url'); ?>index.php/mensajeria/redactarMensaje?nr='+arrayCandidatos[j]+'">'+arrayCandidatos[j]+'</a> → <a href="<?php echo $this->config->item('app_url'); ?>index.php/ofertas/verPerfil/'+arrayNumeros[j]+'">Ver perfil</a></br>');
+                        $('#oferta-'+ofertas[i]['id_oferta']+' .candidatos').append('<a href="<?php echo $this->config->item('app_url'); ?>index.php/mensajeria/redactarMensaje?nr='+arrayCandidatos[j]+'">'+arrayCandidatosPerfil[j]+'</a> → <a href="<?php echo $this->config->item('app_url'); ?>index.php/ofertas/verPerfil/'+arrayNumeros[j]+'">Ver perfil</a></br>');
                         }
                     }
                 }
