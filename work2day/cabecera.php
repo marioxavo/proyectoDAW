@@ -13,12 +13,12 @@
 			
             <?php if($id_grupo_usuarios==1){
             ?>
-            <li><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
-            <li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/sacarOfertas">Buscar ofertas</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/misOfertasT">Mis ofertas</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contáctanos</a></li>
-			<li class="dropdown derecha">
+            <li id="menu1"><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
+            <li id="menu2"><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/sacarOfertas">Buscar ofertas</a></li>
+			<li id="menu3"><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas/misOfertasT">Mis ofertas</a></li>
+			<li id="menu4"><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
+			<li id="menu5"><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contáctanos</a></li>
+			<li id="menu6" class="dropdown derecha">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?><span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					
@@ -31,11 +31,11 @@
             }
             elseif($id_grupo_usuarios==2){
                 ?>
-           <li><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas">Mis ofertas</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contáctanos</a></li>
-			<li class="dropdown derecha">
+           <li id="menu1"><a href="<?php echo $this->config->item('app_url')?>index.php/inicio/portada">Inicio</a></li>
+			<li id="menu2"><a href="<?php echo $this->config->item('app_url')?>index.php/ofertas">Mis ofertas</a></li>
+			<li id="menu4"><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
+			<li id="menu5"><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria/redactarMensajeAdmin">Contáctanos</a></li>
+			<li id="menu6" class="dropdown derecha">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?><span class="caret"></span></a>
 				<ul class="dropdown-menu">
      <li><a href="<?php echo $this->config->item('app_url').'index.php/usuarios/editarCuenta';?>">Mi cuenta</a></li>
@@ -48,10 +48,10 @@
             elseif($id_grupo_usuarios==3){
                 ?>
            
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/administracion">Usuarios</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/administracion/ofertas">Ofertas</a></li>
-			<li><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
-			<li class="dropdown derecha">
+			<li id="menu1"><a href="<?php echo $this->config->item('app_url')?>index.php/administracion">Usuarios</a></li>
+			<li id="menu2"><a href="<?php echo $this->config->item('app_url')?>index.php/administracion/ofertas">Ofertas</a></li>
+			<li id="menu4"><a href="<?php echo $this->config->item('app_url')?>index.php/mensajeria">Mensajes</a></li>
+			<li id="menu6" class="dropdown derecha">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?><span class="caret"></span></a>
 				<ul class="dropdown-menu">
      <li><a href="<?php echo $this->config->item('app_url').'index.php/usuarios/editarCuenta';?>">Mi cuenta</a></li>

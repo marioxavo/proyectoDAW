@@ -62,6 +62,7 @@
 			$(document).ready(function(){
 				var data=<?php echo json_encode($cuentaUsuario);?>;
 				mostrarDatosCuenta(data);
+				$('#menu6').addClass('active');
 			});
 			function mostrarDatosCuenta(datos){
 

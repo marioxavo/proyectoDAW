@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2016 a las 16:20:32
+-- Tiempo de generación: 19-06-2016 a las 19:34:35
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Versión de PHP: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -8257,13 +8257,6 @@ CREATE TABLE `perfiles` (
   `id_ciudad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `perfiles`
---
-
-INSERT INTO `perfiles` (`id_perfil`, `id_usuario`, `nombre`, `habilidades`, `estudios`, `experiencia`, `imagen`, `id_ciudad`) VALUES
-(4, 9, 'Trabajador', 'Lorem Ipsum', 'Lorem Ipsum', 'Lorem Ipsum', '9.jpg', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -8277,13 +8270,6 @@ CREATE TABLE `perfiles_empresa` (
   `descripcion` text NOT NULL,
   `imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `perfiles_empresa`
---
-
-INSERT INTO `perfiles_empresa` (`id_perfil`, `id_usuario`, `titulo_completo`, `descripcion`, `imagen`) VALUES
-(5, 10, 'Empresa.SL', 'Lorem Ipsum Dolor et amet', '10.jpg');
 
 -- --------------------------------------------------------
 
@@ -8373,9 +8359,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `id_grupo_usuarios`) VALUES
-(5, 'Work2day', 'work2day@work2day.es', 'work2day', 3),
-(9, 'trabajador', 't@trabajador.com', 'trabajador', 1),
-(10, 'Empresa', 'empresa@empresa.com', 'empresa', 2);
+(5, 'Work2day', 'work2day@work2day.es', 'work2day', 3);
 
 --
 -- Índices para tablas volcadas
@@ -8453,7 +8437,7 @@ ALTER TABLE `grupo_usuarios`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --
@@ -8463,7 +8447,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `perfiles`
 --

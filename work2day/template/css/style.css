@@ -8,6 +8,10 @@
     text-align: center;
 }
 .imagenCategoria{
-    max-height: 196.66px!important;
+    height: 196.66px!important;
     width: 350px!important;
+}
+
+.adaptar{
+    width: 100%;
 }

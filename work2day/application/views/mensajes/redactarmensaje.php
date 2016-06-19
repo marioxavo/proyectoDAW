@@ -10,14 +10,14 @@
             <?php include("cabecera.php"); ?>
         </nav>
         <div class="row">
-            <div class="panel-mensajes">
-                <ul class="list-group col-md-2 col-sm-3 col-xs-4 col-lg-2" style="list-style:none;">
+            <div class="panel-mensajes col-md-2 col-sm-3 col-xs-4 col-lg-2">
+
                     
                     
-                    <li><a id="redactarBtn" class="btn btn-primary" href="<?php echo $this->config->item('app_url') ?>index.php/mensajeria/" role="button">Bandeja de entrada</a></li>
-                </ul>
+                    <a id="redactarBtn" class="btn btn-primary" href="<?php echo $this->config->item('app_url') ?>index.php/mensajeria/" role="button">Bandeja de entrada</a>
+
             </div>
-            <div class="col-md-10 col-sm-9 col-xs-8 col-lg-10">
+            <div class="col-md-10 col-sm-9 col-xs-12 col-lg-10">
             <div id="divMensajes" class="panel panel-primary tabla-mensajes ">
 
                 <div class="panel-heading">Redactar mensaje</div>
@@ -47,7 +47,7 @@
 
                         </div>
                         <textarea name="mensaje" class="form-control" placeholder="Escribe tu mensaje" rows="12"></textarea>
-                        <input class="btn btn-primary" type="submit" value="Enviar"/>
+                        <input class="btn btn-primary col-md-6 col-xs-6" type="submit" value="Enviar"/>
                     </form>
                 </div>
             </div>
@@ -56,8 +56,8 @@
         </div>
         <div class="row">
             <footer style="color: white;">
-                <p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>
-                <p>&copy; 2015 Abenza, Inc. &middot; <a style="color: black;" href="#">Privacy</a> &middot; <a style="color: black;" href="#">Terms</a></p>
+                <p class="pull-right"><a style="color: black;" href="#">Ir arriba</a></p>
+                <p>&copy; 2016 Work2Day, S.A. &middot; </p>
             </footer>
         </div>
         <!-- FOOTER -->
@@ -88,6 +88,8 @@
 <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
 <script>
     $(document).ready(function(){
+
+            $('#menu4').addClass('active');
 
     });
 

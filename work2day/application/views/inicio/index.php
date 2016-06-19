@@ -213,7 +213,7 @@
 
             <div class="row featurette">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading">Conéctate. <span class="text-muted">Relacionate.</span></h2>
+                    <h2 id="featu" class="featurette-heading">Conéctate. <span class="text-muted">Relaciónate.</span></h2>
                     <p class="lead">En Work2Day podrás conectar con los trabajadores o empresas directamente y poder discutir todos los detalles sin la necesidad de una entrevista de trabajo.</p>
                 </div>
                 <div class="col-md-5">
@@ -228,7 +228,8 @@
                     <img class="featurette-image img-responsive center-block" src="<?php echo $this->config->item('app_url').'template/img/currante.jpg';?>" alt="Generic placeholder image">
                 </div>
                 <div class="col-md-7">
-                    <h2 class="featurette-heading">Rapidez. <span class="text-muted">El tiempo es importante.</span></h2>
+                    <h2 id="featu" class="featurette-heading">Rapidez. <span class="text-muted">El tiempo es importante.</span></h2>
+                    <h2 id="featu" class="featurette-heading">Rapidez. <span class="text-muted">El tiempo es importante.</span></h2>
                     <p class="lead">No pierdas tiempo, en Work2Day se garantiza una comunicación casi al instante entre trabajador y empresa.</p>
                 </div>
                 
@@ -240,9 +241,9 @@
 
 
             <!-- FOOTER -->
-            <footer>
-                <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            <footer style="color: white;">
+                <p class="pull-right"><a style="color: black;" href="#">Ir arriba</a></p>
+                <p>&copy; 2016 Work2Day, S.A. &middot; </p>
             </footer>
 
         </div><!-- /.container -->

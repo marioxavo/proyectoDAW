@@ -30,4 +30,5 @@
 
         <!-- Custom styles for this template -->
         <link href="<?php echo $this->config->item('app_url').'template/bootstrap/css/carousel.css';?>" rel="stylesheet">
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     </head>

@@ -11,12 +11,12 @@ class Usuarios extends CI_Controller {
         
         if($datosUsuario->id_grupo_usuarios==1){
             $perfilUsuario=$this->usuarios_model->sacarPerfil($datosUsuario->id);
-             $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios,'provincias' => $provincias);
+             $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios,'provincias' => $provincias, 'id_usuario' => $datosUsuario->id);
         $this->load->view('usuarios/editarPerfilT',$data);
         }
         elseif($datosUsuario->id_grupo_usuarios==2){
             $perfilUsuario=$this->usuarios_model->sacarPerfilEmpresa($datosUsuario->id);
-             $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios);
+             $data=array('perfilUsuario'=> $perfilUsuario,'nombre'=> $nombre,'id_grupo_usuarios' => $datosUsuario->id_grupo_usuarios, 'id_usuario' => $datosUsuario->id);
             $this->load->view('usuarios/editarPerfilE',$data);
         }
     }
@@ -62,16 +62,13 @@ class Usuarios extends CI_Controller {
         $p=json_encode($cuentaUsuario);
         echo $p;
     }
-    public function insertarImagenT($id){
-        $comprobarLogin=$this->login_work->isLogged();
-        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
-        
+    public function insertarImagenT($id_usuario,$id){
         
         if($_FILES['imagen']['name']!=null){
         $config = array(
         		'upload_path' => './template/img/usuarios',
         		'allowed_types' => "gif|jpg|png|jpeg",
-				'file_name' => $datosUsuario->id.'.'.explode('.',$_FILES['imagen']['name'])[1],
+				'file_name' => $_FILES['imagen']['name'],
         		'overwrite' => TRUE,
         		'max_size' => "2000"
         		);
@@ -82,7 +79,7 @@ class Usuarios extends CI_Controller {
 				echo false;
 			}
 			else{
-                $this->usuarios_model->subirImagen($id,$datosUsuario->id.'.'.explode('.',$_FILES['imagen']['name'])[1]);
+                $this->usuarios_model->subirImagen($id,$_FILES['imagen']['name']);
 				redirect('usuarios/editarPerfilT');
 			}
 		
@@ -92,15 +89,13 @@ class Usuarios extends CI_Controller {
             redirect('usuarios/editarPerfilT');
         }
     }
-     public function insertarImagenE($id){
-         $comprobarLogin=$this->login_work->isLogged();
-        $datosUsuario=$this->login_model->verUsuario($comprobarLogin);
+     public function insertarImagenE($id_usuario,$id){
          
         if($_FILES['imagen']['name']!=null){
         $config = array(
         		'upload_path' => './template/img/usuarios',
         		'allowed_types' => "gif|jpg|png|jpeg",
-				'file_name' => $datosUsuario->id.'.'.explode('.',$_FILES['imagen']['name'])[1],
+				'file_name' => $_FILES['imagen']['name'],
         		'overwrite' => TRUE,
         		'max_size' => "2000"
         		);
@@ -111,7 +106,7 @@ class Usuarios extends CI_Controller {
 				echo false;
 			}
 			else{
-                $this->usuarios_model->subirImagenE($id,$datosUsuario->id.'.'.explode('.',$_FILES['imagen']['name'])[1]);
+                $this->usuarios_model->subirImagenE($id,$_FILES['imagen']['name']);
 				redirect('usuarios/editarPerfilT');
 			}
 		

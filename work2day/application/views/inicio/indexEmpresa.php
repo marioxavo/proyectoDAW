@@ -21,25 +21,74 @@
                                         <option value="<?= $provincia['id'];?>"><?= $provincia['provincia']; ?></option>
                                     <?php } ?>
                             </select>
-                             <input type="button" class="btn btn-primary" id="buscarTexto" onclick="buscar()" value="Buscar" style="width:100%;">
+                             <input type="button" class="btn btn-primary" id="buscarTexto" onclick="buscar()" value="Buscar" style="width:100%; margin-bottom: 20px;;">
                         
                         </div> 
 						</div><!-- /input-group -->
 
 					</div><!-- /.col-lg-6 -->
+				<!--<div class="row">
+					<section id="miSlide" class="carousel slide">
+						<ol class="carousel-indicators">
+							<li data-target="#miSlide" data-slide-to="0" class="active"></li>
+							<li data-target="#miSlide" data-slide-to="1"></li>
+							<li data-target="#miSlide" data-slide-to="2"></li>
+						</ol>
+
+						<div class="carousel-inner">
+							<div class="item active">
+								<img class="adaptar" src="<?php echo $this->config->item('app_url'); ?>template/img/img1.jpg">
+							</div>
+							<div class="item">
+								<img class="adaptar" src="<?php echo $this->config->item('app_url'); ?>template/img/img2.jpg">
+							</div>
+							<div class="item">
+								<img class="adaptar" src="<?php echo $this->config->item('app_url'); ?>template/img/img3.jpg">
+							</div>
+						</div>
+
+						<a href="#miSlide" class="left carousel-control" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+						<a href="#miSlide" class="right carousel-control" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+					</section>
+				</div>-->
+				<!-- START THE FEATURETTES -->
+
+				<hr class="featurette-divider">
+
+				<div class="row featurette">
+					<div class="col-md-7">
+						<h2 style="color: black;" class="featurette-heading">Publica ofertas. <span style="color: black" class="text-muted"></span></h2>
+						<p style="color: white;" class="lead">Encuentra trabajadores que se ajusten a tus necesidades, en Work2Day podrás encontrar una gran cantidad de profesionales para tu empresa.</p>
+					</div>
+					<div class="col-md-5">
+						<img style="height: 200px" class="featurette-image img-responsive center-block" src="<?php echo $this->config->item('app_url').'template/img/img1.jpg';?>" alt="Generic placeholder image">
+					</div>
 				</div>
-				
+
+				<hr class="featurette-divider">
+
+				<div class="row featurette">
+					<div class="col-md-5">
+						<img style="height: 250px; width: 350px;" class="featurette-image img-responsive center-block" src="<?php echo $this->config->item('app_url').'template/img/img2.jpg';?>" alt="Generic placeholder image">
+					</div>
+					<div class="col-md-7">
+						<h2 style="color: white;" class="featurette-heading">Conéctate. <span style="color: black" class="text-muted">Relaciónate.</span></h2>
+						<p style="color: white;" class="lead">Podrás mantener el contacto con los trabajadores que se apunten a tus ofertas. Contacta con ellos de manera simple, rápida y eficaz.</p>
+					</div>
+
+				</div>
+
+				<hr class="featurette-divider">
 				<div class="row">
 					<footer style="color: white;">
-						<p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>
-						<p>&copy; 2015 Abenza, Inc. &middot; <a style="color: black;" href="#">Privacy</a> &middot; <a style="color: black;" href="#">Terms</a></p>
+						<p class="pull-right"><a style="color: black;" href="#">Ir arriba</a></p>
+						<p>&copy; 2016 Work2Day, S.A. &middot; </p>
 					</footer>
 				</div>
 				<!-- FOOTER -->
 
-
 			</div>
-		</div>
+			</div>
 
 
 
@@ -52,8 +101,14 @@
 
 		<script src="<?php echo $this->config->item('app_url').'template/js/index.js';?>"></script>
 
+		<script>
+			$(document).ready(function(){
+				$('.carousel').carousel({
+					interval:4000
+				})
+			})
 
-
+		</script>
 
 
 
@@ -69,6 +124,9 @@
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
      <script>
+		 $(document).ready(function(){
+			 $('#menu1').addClass('active');
+		 });
         function buscar(){
             var texto="";
             texto=document.getElementById('inputBusc').value;

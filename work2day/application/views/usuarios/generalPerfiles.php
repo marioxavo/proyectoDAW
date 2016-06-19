@@ -58,6 +58,7 @@
     $(document).ready(function(){
         var data=<?php echo json_encode($perfiles);?>;
         mostrarDatosPerfil(data);
+            $('#menu1').addClass('active');
     });
     function mostrarDatosPerfil(datos){
 

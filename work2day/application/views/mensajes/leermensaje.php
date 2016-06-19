@@ -27,8 +27,8 @@
         </div>
         <div class="row">
             <footer style="color: white;">
-                <p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>
-                <p>&copy; 2015 Abenza, Inc. &middot; <a style="color: black;" href="#">Privacy</a> &middot; <a style="color: black;" href="#">Terms</a></p>
+                <p class="pull-right"><a style="color: black;" href="#">Ir arriba</a></p>
+                <p>&copy; 2016 Work2Day, S.A. &middot; </p>
             </footer>
         </div>
         <!-- FOOTER -->
@@ -40,8 +40,11 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 <script src="<?php echo $this->config->item('app_url').'template/bootstrap/js/index.js'; ?>"></script>
-
-
+<script>
+    $(document).ready(function(){
+    $('#menu4').addClass('active');
+    });
+</script>
 
 
 

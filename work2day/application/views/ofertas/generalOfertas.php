@@ -23,7 +23,7 @@
                     </div><!-- /.col-lg-6 -->
                 </div>
         <div class="row">
-         <h3 style="color:white;" class="col-md-12"><?= $mensaje;?></h3>
+         <h3 style="color:white;" class="col-md-9"><?= $mensaje;?></h3>
         </div>
         <div class="row">
            
@@ -33,8 +33,8 @@
         </div>
         <div class="row">
             <footer style="color: white;">
-                <p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>
-                <p>&copy; 2015 Abenza, Inc. &middot; <a style="color: black;" href="#">Privacy</a> &middot; <a style="color: black;" href="#">Terms</a></p>
+                <p class="pull-right"><a style="color: black;" href="#">Ir arriba</a></p>
+                <p>&copy; 2016 Work2Day, S.A. &middot; </p>
             </footer>
         </div>
         <!-- FOOTER -->
@@ -67,7 +67,9 @@
     $(document).ready(function(){
         var ofertas=<?= json_encode($ofertas);?>;
         mostrarOfertas(ofertas);
+        $('#menu2').addClass('active');
     });
+
 
     function mostrarOfertas(ofertas){
         
@@ -79,8 +81,8 @@
                 for(i=0;i<ofertas.length;i++){
                     $('#ofertas').append('<div id="oferta-'+ofertas[i]['id_oferta']+'"></div>');
 																	
-                 $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading"  class="titulo_oferta">'+ofertas[i]['titulo_oferta']+'</div><h4><div  id="nombre" class="panel-body"><b>Empresa:</b><br>  '+ofertas[i]['nombre_empresa']+' → <a href="<?php echo $this->config->item('app_url'); ?>index.php/mensajeria/redactarMensaje?nr='+ofertas[i]['nombre_empresa']+'">Contactar</a> <br><a href="<?php echo $this->config->item('app_url'); ?>index.php/ofertas/verPerfilE/'+ofertas[i]['id_empresa']+'">Ver perfil de la empresa</a></div></h4><h4><label class="panel-body">Descripión de la oferta:</label><div  class="panel-body ">'+ofertas[i]['texto_oferta']+'</div></h4><h4><div  class="panel-body "><b>Categoría:</b><br>'+ofertas[i]['categoria']+'</div></h4><h4><div  class="panel-body" ><b>Provincia:</b><br>'+ofertas[i]['provincia']+'</div></h4><h4><div class="panel-body candidatos" class="panel-body "><b>Candidatos:</b><br></div></h4></div></div>');
-                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="botones col-md-7" col-xs-7 style="margin-bottom: 20px;"><input class="btn btn-primary col-md-2 col-xs-2" type="button" value="Me apunto" onclick="apuntarOferta('+ofertas[i]['id_oferta']+')"></div>');
+                 $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="col-md-6"><div class="panel panel-primary "><div class="panel-heading" class="titulo_oferta" style="font-size: 2em;">'+ofertas[i]['titulo_oferta']+'</div><h4><div  id="nombre" class="panel-body"><b>Empresa:</b><br>  '+ofertas[i]['nombre_empresa']+' → <a href="<?php echo $this->config->item('app_url'); ?>index.php/mensajeria/redactarMensaje?nr='+ofertas[i]['nombre_empresa']+'">Contactar</a> <br><a href="<?php echo $this->config->item('app_url'); ?>index.php/ofertas/verPerfilE/'+ofertas[i]['id_empresa']+'">Ver perfil de la empresa</a></div></h4><h4><label class="panel-body">Descripión de la oferta:</label><div  class="panel-body ">'+ofertas[i]['texto_oferta']+'</div></h4><h4><div  class="panel-body "><b>Categoría:</b><br>'+ofertas[i]['categoria']+'</div></h4><h4><div  class="panel-body" ><b>Provincia:</b><br>'+ofertas[i]['provincia']+'</div></h4><h4><div class="panel-body candidatos" class="panel-body "><b>Candidatos:</b><br></div></h4></div></div>');
+                    $('#oferta-'+ofertas[i]['id_oferta']).append('<div class="botones col-md-7" style="margin-bottom: 40px;"><input class="btn btn-primary col-md-2 col-xs-4" type="button" value="Me apunto" onclick="apuntarOferta('+ofertas[i]['id_oferta']+')"></div>');
                     var arrayCandidatos=ofertas[i]['candidatosNombres'].split(';');
                    if(ofertas[i]['candidatos']!=null){
                     var arrayNumeros=ofertas[i]['candidatos'].split(';');

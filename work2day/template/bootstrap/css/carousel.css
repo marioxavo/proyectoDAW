@@ -135,7 +135,7 @@ body {
 }
 
 @media (min-width: 992px) {
-    .featurette-heading {
+    #featu .featurette-heading {
         margin-top: 120px;
     }
 }

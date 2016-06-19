@@ -49,8 +49,8 @@
                 </div>
                 <div class="row">
                     <footer style="color: white;">
-                        <p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>
-                        <p>&copy; 2015 Abenza, Inc. &middot; <a style="color: black;" href="#">Privacy</a> &middot; <a style="color: black;" href="#">Terms</a></p>
+                        <p class="pull-right"><a style="color: black;" href="#">Ir arriba</a></p>
+                        <p>&copy; 2016 Work2Day, S.A. &middot; </p>
                     </footer>
                 </div>
                 <!-- FOOTER -->
@@ -89,7 +89,7 @@
                      for(var i=0;i<mensajes.length;i++){
                          $('#mensajes').append('<tr id="mensaje'+i+'"></tr>');
 																						
-                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td><td id="columna3'+i+'"><input type="button" class="btn btn-primary col-xs-6 col-sm-6 col-md-3 col-lg-3" value="Responder" onclick=responder("'+mensajes[i]['nombre']+'") style="margin-right: 6px;"/><input type="button" class="btn btn-primary col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="borrar('+mensajes[i]['id_mensaje']+')" value="Borrar"/></td>');
+                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td><td id="columna3'+i+'"><input type="button" class="btn btn-primary col-xs-12 col-sm-6 col-md-3 col-lg-3" value="Responder" onclick=responder("'+mensajes[i]['nombre']+'") style="margin-right: 6px;"/><input type="button" class="btn btn-primary col-xs-12 col-sm-6 col-md-3 col-lg-3" onclick="borrar('+mensajes[i]['id_mensaje']+')" value="Borrar"/></td>');
                          if(mensajes[i]['leido']==0){
                              j++;
 																										$('#columna1'+i).addClass("ee");
@@ -107,6 +107,10 @@
                          $('#mensajeEnv'+i).append('<td width="25%">'+mensajesEnv[i]['nombre']+'</td><td>'+mensajesEnv[i]['asunto']+'</td>');
                      }
                  }
+
+
+                     $('#menu4').addClass('active');
+
              });
 
             function cambiarTablaMensajes(i){

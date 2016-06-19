@@ -39,8 +39,7 @@
                             <img class="imagenCategoria" src="<?php echo $this->config->item('app_url').'template/img/informatica.jpg';?>" alt="...">
                             <div class="caption">
                                 <h3 class="centrado">Informática</h3>
-                                <p>...</p>
-                                 
+
                             </div>
                             </div></a>
                     </div>
@@ -50,8 +49,7 @@
                             <img class="imagenCategoria" src="<?php echo $this->config->item('app_url').'template/img/limpieza.jpg';?>" alt="...">
                             <div class="caption">
                                 <h3 class="centrado">Limpieza</h3>
-                                <p>...</p>
-                                 
+
                             </div>
                             </div></a>
                     </div>
@@ -61,8 +59,7 @@
                             <img class="imagenCategoria" src="<?php echo $this->config->item('app_url').'template/img/mecanica.jpg';?>" alt="...">
                             <div class="caption">
                                 <h3 class="centrado">Mecánica</h3>
-                                <p>...</p>
-                                 
+
                             </div>
                             </div></a>
                     </div>
@@ -72,8 +69,7 @@
                             <img class="imagenCategoria" src="<?php echo $this->config->item('app_url').'template/img/ingenieria.jpg';?>" alt="...">
                             <div class="caption">
                                 <h3 class="centrado">Ingeniería</h3>
-                                <p>...</p>
-                                 
+
                             </div>
                             </div></a>
                     </div>
@@ -83,8 +79,7 @@
                             <img class="imagenCategoria" src="<?php echo $this->config->item('app_url').'template/img/educacion.jpg';?>"  alt="...">
                             <div class="caption">
                                 <h3 class="centrado">Educación</h3>
-                                <p>...</p>
-                                 
+
                             </div>
                             </div></a>
                     </div>
@@ -95,8 +90,7 @@
                             <img class="imagenCategoria" src="<?php echo $this->config->item('app_url').'template/img/hosteleria.jpg';?>" alt="...">
                             <div class="caption">
                                 <h3 class="centrado">Hostelería</h3>
-                                <p>...</p>
-                                 
+
                             </div>
                             </div></a>
                     </div>
@@ -104,8 +98,8 @@
                 
                 <div class="row">
                     <footer style="color: white;">
-                        <p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>
-                        <p>&copy; 2015 Abenza, Inc. &middot; <a style="color: black;" href="#">Privacy</a> &middot; <a style="color: black;" href="#">Terms</a></p>
+                        <p class="pull-right"><a style="color: black;" href="#">Ir arriba</a></p>
+                        <p>&copy; 2016 Work2Day, S.A. &middot; </p>
                     </footer>
                 </div>
                 <!-- FOOTER -->
@@ -140,12 +134,16 @@
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="?php echo $this->config->item('app_url').'template/bootstrap/js/ie10-viewport-bug-workaround.js';?>"></script>
         <script>
+            $(document).ready(function(){
+                $('#menu1').addClass('active');
+            });
         function buscar(){
             var texto="";
             texto=document.getElementById('inputBusc').value;
             var ciudad=document.getElementById('sCiudad').value;
             window.location='<?php echo $this->config->item('app_url').'index.php/busquedas/buscarGeneral?texto=';?>'+texto+'&ciudad='+ciudad;
         }
+
         </script>
     </body>
 </html>

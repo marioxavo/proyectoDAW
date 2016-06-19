@@ -14,8 +14,8 @@
         </div>
         <div class="row">
             <footer style="color: white;">
-                <p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>
-                <p>&copy; 2015 Abenza, Inc. &middot; <a style="color: black;" href="#">Privacy</a> &middot; <a style="color: black;" href="#">Terms</a></p>
+                <p class="pull-right"><a style="color: black;" href="#">Ir arriba</a></p>
+                <p>&copy; 2016 Work2Day, S.A. &middot; </p>
             </footer>
         </div>
         <!-- FOOTER -->
@@ -48,6 +48,7 @@
     $(document).ready(function(){
         var ofertas=<?= json_encode($ofertas);?>;
         mostrarOfertas(ofertas);
+        $('#menu2').addClass('active');
     });
 
     function mostrarOfertas(ofertas){
