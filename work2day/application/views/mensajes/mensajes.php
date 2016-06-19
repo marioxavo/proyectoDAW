@@ -18,16 +18,16 @@
                 </nav>
                 <div class="row">
                     
-                   <div class="panel-mensajes">
+                   <div class="panel-mensajes col-md-2 col-sm-3 col-xs-12 col-lg-2">
 
-                    <ul class="list-group col-md-2 col-sm-3 col-xs-4 col-lg-2" style="list-style:none;">
+                    <ul class="list-group " style="list-style:none;">
 
 																								<li><a id="redactarBtn" class="btn btn-primary" href="<?php echo $this->config->item('app_url') ?>index.php/mensajeria/redactarMensaje" role="button">Redactar mensaje</a></li>
                         <li id="RecibidosBtn" onclick="cambiarTablaMensajes(0);" style="cursor: pointer" class="list-group-item"><span id="numRecibidos" class="badge"></span>Recibidos</li>
                         <li id="EnviadosBtn" onclick="cambiarTablaMensajes(1);" style="cursor: pointer" class="list-group-item"><span class="badge"></span>Enviados</li>
                     </ul>
                     </div>
-                    <div class="col-md-10 col-sm-9 col-xs-8 col-lg-10">
+                    <div class="col-md-10 col-sm-9 col-xs-12 col-lg-10">
                     <div id="divMensajes" class="panel panel-primary tabla-mensajes">
                        <div class="panel-heading">Recibidos</div>
                         <table id="mensajes" class="table">
@@ -36,7 +36,7 @@
                         </table>
                     </div>
                     </div>
-                    <div class="col-md-10 col-sm-9 col-xs-8 col-lg-10">
+                    <div class="col-md-10 col-sm-9 col-xs-12 col-lg-10">
                     <div id="divEnviados" style="display:none;" class="panel panel-primary tabla-mensajes">
                         <div class="panel-heading">Enviados</div>
                         <table id="mensajesEnv" class="table">
@@ -89,7 +89,7 @@
                      for(var i=0;i<mensajes.length;i++){
                          $('#mensajes').append('<tr id="mensaje'+i+'"></tr>');
 																						
-                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td><td id="columna3'+i+'"><input type="button" class="btn btn-primary" value="Responder" onclick=responder("'+mensajes[i]['nombre']+'") style="margin-right: 6px;"/><input type="button" class="btn btn-primary" onclick="borrar('+mensajes[i]['id_mensaje']+')" value="Borrar"/></td>');
+                         $('#mensaje'+i).append('<td id="columna1'+i+'" width="25%">'+mensajes[i]['nombre']+'</td><td id="columna2'+i+'"><a href="<?= $this->config->item("app_url"); ?>index.php/mensajeria/leermensaje/'+mensajes[i]['id_mensaje']+'">'+mensajes[i]['asunto']+'</a></td><td id="columna3'+i+'"><input type="button" class="btn btn-primary col-xs-6 col-sm-6 col-md-3 col-lg-3" value="Responder" onclick=responder("'+mensajes[i]['nombre']+'") style="margin-right: 6px;"/><input type="button" class="btn btn-primary col-xs-6 col-sm-6 col-md-3 col-lg-3" onclick="borrar('+mensajes[i]['id_mensaje']+')" value="Borrar"/></td>');
                          if(mensajes[i]['leido']==0){
                              j++;
 																										$('#columna1'+i).addClass("ee");

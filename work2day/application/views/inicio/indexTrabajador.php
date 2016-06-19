@@ -15,7 +15,7 @@
                   
                     
                 </nav>
-                <div class="row">
+                <div class="row" style="margin-bottom: 30px;">
                     <h2 style="color:white;" class="col-md-offset-3 col-md-6">Empieza buscando ofertas en tu ciudad</h2>
                     <div class="col-md-6 col-md-offset-3">
                         <div class="input-group" style="width: 100%;">
@@ -32,18 +32,7 @@
                         </div>
                     </div><!-- /.col-lg-6 -->
                 </div>
-                <div class="row marginCategorias">
-                    <div class="col-sm-6 col-md-4">
-                        <a href="<?php echo $this->config->item('app_url').'index.php/busquedas/buscarCategoria/Hosteleria';?>">
-                        <div class="thumbnail">
-                            <img class="imagenCategoria" src="<?php echo $this->config->item('app_url').'template/img/hosteleria.jpg';?>" alt="...">
-                            <div class="caption">
-                                <h3 class="centrado">Hostelería</h3>
-                                <p>...</p>
-                                 
-                            </div>
-                            </div></a>
-                    </div>
+                
                     <div class="col-sm-6 col-md-4">
                         <a href="<?php echo $this->config->item('app_url').'index.php/busquedas/buscarCategoria/Informatica';?>">
                         <div class="thumbnail">
@@ -99,7 +88,20 @@
                             </div>
                             </div></a>
                     </div>
+              
+                    <div class="col-sm-6 col-md-4">
+                        <a href="<?php echo $this->config->item('app_url').'index.php/busquedas/buscarCategoria/Hosteleria';?>">
+                        <div class="thumbnail">
+                            <img class="imagenCategoria" src="<?php echo $this->config->item('app_url').'template/img/hosteleria.jpg';?>" alt="...">
+                            <div class="caption">
+                                <h3 class="centrado">Hostelería</h3>
+                                <p>...</p>
+                                 
+                            </div>
+                            </div></a>
+                    </div>
                 </div>
+                
                 <div class="row">
                     <footer style="color: white;">
                         <p class="pull-right"><a style="color: black;" href="#">Back to top</a></p>

@@ -24,10 +24,10 @@ class login_work  {
 	}
 	
    public function logOut($returnUrl = 'inicio/login' ) {
-      $usuario_data = array(
-         'loggin' => FALSE
-      );
-      $this->ci->session->set_userdata($usuario_data);
+      $this->ci->session->unset_userdata('data_three');
+       $this->ci->session->unset_userdata('data_one');
+      $this->ci->session->sess_destroy();
+
       redirect($returnUrl);
    }
    
